@@ -1,0 +1,30 @@
+5) Elaborar um programa para uma loja que leia o preço de um produto e informe as duas opções de pagamento: à vista com 10% de desconto ou o mesmo valor em 3x.
+
+Algoritmo Loja
+
+DECLARAÇÃO DE CONSTANTES
+quantidade_parcelas=3;
+
+DECLARAÇÃO DE VARIÁVEIS
+real:preco_produto,preco_a_vista,preco_a_prazo;
+
+
+INÍCIO
+escreva("Informa o Preço do Produto");
+leia(preco_produto);
+
+
+preco_a_vista <= preco_produto*0.9;
+
+escreva("O Produto pago à vista têm 10% de desconto e sairá por ",preco_pagamento_a_vista);
+
+
+preco_a_prazo <= preco_produto/quantidade_parcelas;
+
+
+escreva("O Produto pode ser pago em 3X de  ",preco_a_prazo);
+
+
+
+
+FIM

@@ -1,0 +1,26 @@
+3) Elaborar uma programa que leia um número. Informe o número anterior e o posterior.
+
+
+ALGORITMO LeituraNumeros
+
+DECLARAÇÃO DE VARIÁVEIS
+
+inteiro:numero, numero_anterior, numero_posterior;
+
+
+
+INÍCIO
+
+	escreva("Digite um número");
+	leia(numero);
+
+	numero_anterior <= numero-1;
+
+	numero_posterior <= numero+1;
+
+	escreva("Você digitou o número: ",numero,". O número anterior é: ",numero_anterior,". O número posterior é: ",numero_posterior);
+
+
+FIM
+
+

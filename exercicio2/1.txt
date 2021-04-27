@@ -1,0 +1,26 @@
+Exercícios - Unidade 2 - Slide 129
+
+1) Elaborar um programa que leia o valor de um jantar. Calcule e informe o valor da taxa do garçom (10%) e o valor total a ser pago.
+
+
+Algoritmo Jantar
+
+	DECLARAÇÃO DE CONSTANTES
+
+		taxa_garcom=0.1; //10%
+
+	DECLARAÇÃO DE VARIÁVEIS
+		real: valor_jantar;
+		real:valor_jantar_total;
+		
+		
+	INICIO
+		escreva("Favor informar o valor do Jantar");
+		leia(valor_jantar);
+		valor_jantar_total <= valor_jantar+(taxa_garcom*valor_jantar);		
+		escreva("O valor total do Jantar é de ",valor_jantar_total,". Foi incluso a taxa do Garçom de 10%");		
+		
+		
+	FIM
+
+

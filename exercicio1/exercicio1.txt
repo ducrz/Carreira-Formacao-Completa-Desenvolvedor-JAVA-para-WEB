@@ -1,0 +1,104 @@
+Exercícios Unidade 2- SLIDE 99
+
+1) Tipo de dado a ser utilizado.
+A) O saldo bancário de André é de R$ 4.531,50
+Real
+B) João possui 3 irmãos.
+Inteiro
+C) Constava na prova "Use somente caneta!".
+Caracter
+D) A porta pode estar aberta ou fechada.
+Lógico
+E) O número de avaliações é 4.
+Inteiro
+
+
+2}Faça a declaração as variáveis definidas no exercício anterior. Faça também a atribuição dos seus valores.
+
+Algoritmo DeclaracaoVariaveis
+
+
+DECLARAÇÃO DE CONSTANTES
+
+	numero_avaliacoes=4;
+
+DECLARAÇÃO DE VARIÁVEIS
+	
+	real: saldo_bancario;
+	
+	inteiro: numero_irmaos;
+	
+	caractere: texto_da_prova;
+	
+	logico: porta;
+	
+INÍCIO
+	
+	saldo_bancario <- 4531.50;
+	
+	numero_irmaos <- 3;
+	
+	texto_prova <- "Use Somente Caneta";
+	
+	porta <- true; //Aberta
+	
+FIM	
+	
+	
+
+
+3) Em java
+
+final int numeroAvaliacao=4;
+
+double saldo_bancario= 4531.50;
+
+int numero_irmaos=3;
+
+String texto_prova= "Use Somente Caneta";
+
+boolean porta= true;
+
+
+
+
+4) matricula, nome, endereco, nota, sexo
+
+
+Algoritmo Aluno
+
+	DECLARACAO DE VARIAVEIS
+		inteiro:matricula;	
+		caractere:nome;
+		caractere:endereco;
+		real:nota;
+		logico:sexo;
+	
+	
+	INICIO
+		matricula= 123456;
+		
+		nome= "Sampaio";
+		
+		endereco= "Rua Oswaldo Cruz, 100";
+		
+		nota= 10;
+		
+		sexo= 'm';
+	FIM
+	
+	
+JAVA
+
+	int matricula= 123456;
+	
+	String nome= "Sampaio";
+	
+	String endereco= "Rua Oswaldo Cruz, 100";
+	
+	double nota=10;
+	
+	boolean sexo= true;
+	
+	
+

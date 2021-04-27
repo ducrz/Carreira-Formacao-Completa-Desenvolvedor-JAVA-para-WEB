@@ -1,0 +1,34 @@
+6) Escrever um programa que leia as 04 notas de um aluno e calcule a sua média.
+
+
+ALGORITMO CalculoNotas
+
+
+DECLARAÇÃO DE CONSTANTE
+	numero_avaliacoes=4;
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:nota1,nota2,nota3,nota4;
+	real: media;
+
+
+INICIO
+
+	escreva("Digite a primeira nota);
+	leia(nota1);
+	
+	escreva("Digite a segunda nota);
+	leia(nota2);
+	
+	escreva("Digite a terceira nota);
+	leia(nota3);
+	
+	escreva("Digite a quarta nota);
+	leia(nota4);
+	
+	media<= (nota1+nota2+nota3+nota4)/numero_avaliacoes;
+	
+	escreva("A Média de Notas do Aluno é ",media);
+
+FIM
+

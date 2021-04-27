@@ -1,0 +1,20 @@
+4) Escrever um programa para uma pizzaria que leia o valor total de uma conta e quantos clientes vão pagá-la. Calcule e informe o valor a ser pago por cada cliente.
+
+
+ALGORITMO Pizzaria
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:valor_jantar,valor_jantar_por_cliente;
+	inteiro:numero_clientes;
+
+INICIO
+	escreva("Favor informar o valor do jantar");
+	leia(valor_jantar);
+	escreva("Favor informar a quantidade de clientes pagantes");
+	leia(numero_clientes);
+	
+	valor_jantar_por_cliente<= valor_jantar / numero_clientes;
+	escreva("O Valor Total do Jantar é: ",valor_jantar,". O valor que deverá ser pago por cada cliente pagante é de ",valor_jantar_por_cliente);
+
+
+FIM

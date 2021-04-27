@@ -1,0 +1,29 @@
+9) Elaborar um programa para uma lanhouse, cujo custo por 15 minutos de uso seja uma constante de R$ 2,00, que leia o tempo que o cliente utilizou o computador e quanto ele deve pagar, sabendo que as frações extras de 15 minutos devem ser cobradas de forma integral.
+
+ALGORITMO LanHouse
+
+DECLARAÇÃO CONSTANTES
+	custo_por_15_minutos=2;
+	
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro: horas,minutos,total_minutos;
+	double: total_a_pagar;
+	
+	
+	escreva("Informe o número de horas de utilização do Cliente");
+	leia(horas);
+	escreva("Informe o número de minutos de utilização do Cliente");
+	leia(minutos);
+	
+	total_minutos <= (horas*60)+minutos;
+	
+	total_a_pagar<= (arrendondado(total_minutos/15))*custo_por_15_minutos;
+	
+	escreva("O Valor total a pagar é de ",total_a_pagar);
+	
+	
+
+INÍCIO
+
+
+FIM

@@ -1,0 +1,23 @@
+2) Escrever um programa que leia a duração de uma viagem em dias e horas. Calcule e informe a duração total da viagem em número de horas.
+
+
+Algoritmo Duração Viagem
+
+
+DECLARAÇÃO DE VARIÁVEIS
+
+	inteiro:dias,horas,total_viagem_horas;
+	
+INÍCIO
+	escreva("Favor informar o número de dias da viagem");
+	leia(dias);
+	
+	escreva("Favor informar o número de dias de horas");
+	leia(horas);
+	
+	total_viagem_horas <= (24*dias) + horas; 
+	
+	escreva("Duração Total da Viagem em Horas ",total_viagem_horas);
+	
+FIM
+	

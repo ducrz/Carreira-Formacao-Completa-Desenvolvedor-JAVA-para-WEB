@@ -1,0 +1,27 @@
+7) Elaborar um programa para uma videolocadora que leia o título e a duração de um filme em horas e minutos. Exibir o título do filme com a sua duração apenas em minutos.
+
+
+
+ALGORITMO Locadora
+
+DECLARAÇÃO DE VARIÁVEIS
+	caractere:titulo_filme;
+	inteiro:duracao_filme_horas,duracao_filme_minutos, nova_duracao_filme;
+
+
+INÍCIO
+	escreva("Insira o título do Filme");
+	leia(titulo_filme);
+	
+	escreva("Insira o número de horas do Filme");
+	leia(duracao_filme_horas);
+	
+	escreva("Insira o número de minutos do Filme");
+	leia(duracao_filme_minutos);
+	
+	nova_duracao_filme<= duracao_filme_horas * 60+duracao_filme_minutos;
+	
+	escreva("O Filme ",titulo_filme," têm duração de ",nova_duracao_filme," minutos.");	
+
+FIM
+

@@ -1,0 +1,23 @@
+8) Escrever um programa para uma revenda de veículos. O programa deve ler o modelo e o preço do veículo. Apresentar como resposta o valor de entrada(50%) e o saldo restante em 12x sem juros.
+
+Algoritmo RevendaVeiculos
+
+DECLARAÇÃO DE VARIÁVEIS
+	caracter:modelo;
+	real:preco_carro,valor_entrada, saldo_restante;
+
+INÍCIO
+	escreva("Qual o Modelo do Carro?");
+	leia(modelo);
+	
+	escreva("Qual é o Preço do Carro?");
+	leia(preco_carro);
+	
+	valor_entrada<= preco_carro/2;
+	saldo_restante<= (preco_carro - valor_entrada)/12;
+	
+	escreva("O Valor de entrada é de ",valor_entrada," . O saldo restante pode ser pago em 12x de ",saldo_restante);
+	
+	
+
+FIM
