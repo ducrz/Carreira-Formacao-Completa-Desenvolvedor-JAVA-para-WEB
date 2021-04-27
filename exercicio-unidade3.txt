@@ -1,0 +1,4 @@
+1) Criar as classes Duas Variaveis, LeituraEscrita e CalculaDobro no ambiente Eclipse.
+
+
+2) Criar as classes Jantar, CalculoHoras, Numero, JantarPizza, OpcoesPagamento, MediaAritmetica, Locadora, RevendaVeiculos e LanHouse.
