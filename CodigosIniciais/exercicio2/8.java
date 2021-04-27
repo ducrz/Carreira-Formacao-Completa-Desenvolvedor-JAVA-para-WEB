@@ -17,5 +17,5 @@ double saldo_restante= (preco_carro - valor_entrada) /12;
 
 System.out.println("O Valor da Entrada é de "+valor_entrada+". O Saldo Restante pode ser pago em 12 parcelas de "+saldo_restante);
 
-JOptionPane.ShowMessageDialog(null,"O Valor da Entrada é de "+valor_entrada+". O Saldo Restante pode ser pago em 12 parcelas de "+saldo_restante);
+JOptionPane.showMessageDialog(null,"O Valor da Entrada é de "+valor_entrada+". O Saldo Restante pode ser pago em 12 parcelas de "+saldo_restante);
 

@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-double taxa_garcom=0.1;
+final double taxa_garcom=0.1;
 
 Scanner teclado = new  Scanner(System.in);
 

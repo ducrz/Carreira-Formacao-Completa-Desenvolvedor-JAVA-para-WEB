@@ -4,7 +4,7 @@ Scanner teclado = new Scanner(System.in);
 
 int quantidade_parcelas=3;
 
-System.out.println("Informa o Preço do Produto");
+System.out.println("Informe o Preço do Produto");
 double preco_produto= teclado.nextDouble();
 
 
