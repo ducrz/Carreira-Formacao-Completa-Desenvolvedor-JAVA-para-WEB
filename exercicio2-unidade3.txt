@@ -1,0 +1,85 @@
+1) Implementar as Classes Aluno e Numero
+
+
+Algoritmo Aluno
+
+DECLARAÇÃO DE VARIAVEIS
+real n1,n2,n3,n4,media;
+
+INÍCIO
+	media <= (n1+n2+n3+n4)/4;
+	
+	se (media <5)
+		escreva("Aluno Reprovado!");
+
+FIM
+
+
+Algoritmo Numero
+
+DECLARAÇÃO DE VARIÁVEIS
+real numero;
+
+INÍCIO
+	se (numero%2 == 0)
+		escreva("Este número é Par!");
+	
+FIM
+
+
+2) Escrever um programa para calcular as raízes de uma equação do 2º grau.
+
+
+Algoritmo Equacao2Grau
+
+DECLARAÇÃO DE VARIÁVEIS
+
+	inteiro: a,b,c;
+	real: delta,x1,x2;
+INÍCIO
+	escreva("Informe o primeiro número");
+	leia(a);
+	escreva("Informe o segundo número");
+	leia(b);
+	escreva("Informe o terceiro número");
+	leia(c);
+	
+	delta<= (b*b)-4*a*c;
+	
+	se (delta >=0)
+		INÍCIO
+			x1<= (-b -sqrt(delta))/2*a;
+			x2<= (-b +sqrt(delta))/2*a;
+			escreva(x1);
+			escreva(x2);
+		
+		FIM
+
+
+FIM
+
+
+
+3) Elaborar um programa que leia um número e calcule a sua raiz quadrada.
+
+
+Algoritmo RaizExata
+
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:numero;
+	real:raiz_exata,maior_valor;
+	
+
+INÍCIO
+	escreva("Digite um número");
+	leia(numero);
+	raiz_exata <= sqrt(numero);
+	maior_valor<= Math.round(raiz_exata);
+	se(raiz_exata == maior_valor)
+		escreva("Existe raiz exata para o número ",numero);
+	senao
+		escreva("Não existe raiz exata para o número ",numero);
+
+
+FIM

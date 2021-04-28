@@ -1,0 +1,40 @@
+1) Refatorar as classes Aluno e Numero. No caso da classe Aluno, acrescentar que o aluno para ser aprovado também terá que ter frequência superior a 75&.
+
+
+2) Refatorar o programa para calcular as raízes de uma equação do 2º grau. Caso delta seja menor do que zero, exibir a mensagem "Não existem raízes reais".
+
+
+3} Refatorar o programa que lê um número e calcula a sua raiz quadrada. Caso ela seja exata, informar o valor, caso contrário, exibir a mensagem "Não há raiz exata".
+
+
+4) Elaborar um programa que leia a altura e o sexo de uma pessoa e informe qual é o seu peso ideal. Utilizar as seguintes fórmulas:
+
+Peso ideal para homens: (72.7*h)-58;
+Peso ideal para mulheres: (62.1* h)- 44.7;
+
+
+Algoritmo PesoIdeal
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:altura,peso_ideal_homem,peso_ideal_mulher;
+	caracter:sexo;
+
+
+INÍCIO
+	escreva("Informe a altura");
+	leia(altura);
+	escreva("Informe o sexo");
+	leia(sexo);
+	se(sexo == "M")
+		INICIO
+			peso_ideal_homem <= altura*(72.7)-58;
+			escreva("O Peso Ideal é: ",peso_ideal_homem);
+		FIM
+	senao
+		INÍCIO
+			peso_ideal_mulher <= altura*(62.1)-44.7;
+			escreva("O Peso Ideal é: ",peso_ideal_mulher);
+		FIM
+	
+
+FIM

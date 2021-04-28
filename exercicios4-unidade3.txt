@@ -1,0 +1,185 @@
+1) Dado o algoritmo a seguir, responda o que se pede:
+
+INÍCIO
+	logico:a,b,c;
+	
+	se(a)
+		c1;
+	senão
+		Início
+		se (b)
+			Início
+				se(c)
+					c2;
+				senão
+				Início
+					c3;
+					c4;
+				Fim
+			Fim
+		C5;
+	Fim;
+	c6;
+FIM
+
+
+A) se A= Verdade, B= Verdade, C=Falso, quais comandos serão executados?
+C1; C6;
+
+B) Se A=Falso, B=Verdade, C=Falso, quais comandos serão executados?
+C3; C4; C5; C6;
+
+C) Se A=Falso, B=Verdade, C=Verdade, quais comandos serão executados?
+C2; C5; C6;
+
+
+D) Quais são os valores de A,B,C para que somente C5 e C6 sejam executados?
+A=FALSO, B= FALSO, C=FALSO;
+
+
+2) Escreva um programa que leia uma nota (0 a 100) e escreva um conceito associado.
+[90,100] "Excelente"
+[70,90[ "Bom"
+[50,70[ "Regular"
+[0,50[ "Insuficiente"
+
+
+Algoritmo AvaliacaoNota
+
+DECLARAÇÃO DE VARIÁVEIS
+
+	inteiro:nota;
+	
+INÍCIO
+	escreva("Digite a Nota: 0 à 100 ");
+	leia(nota);
+	se (nota >= 0) E (nota <= 100)
+	INÍCIO
+		se(nota >= 90)
+			escreva("Conceito Excelente!")
+		senão se (nota >= 70)
+			escreva("Conceito Bom!");
+		senão se (nota >= 50)
+			escreva("Conceito Regular!");
+		else
+			escreva("Conceito Insuficiente");
+	
+	FIM
+	senão
+		escreva("Nota Inválida!");
+
+FIM
+
+
+3) Escreva uma programa que leia a idade de um nadador e classifique-o em uma das seguintes categorias:
+Até 5 anos [Infantil A];
+De 6 a 8 anos [Infantil B];
+De 9 até 11 [Infantil C];
+De 12 até 13 anos [Juvenil A];
+De 14 até 17 anos [Juvenil B];
+Acima de 18 anos [Adulto]
+
+
+Algoritmo IdadeNadador
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:idade;
+	
+
+INÍCIO
+	escreva("Digite a Idade do Nadador! ");
+	leia(idade;
+	se (idade <= 5)
+		escreva("Categoria Infantil A");
+	senao se (idade <=8)
+		escreva("Categoria Infantil B");
+	senao se (idade <=11)
+		escreva("Categoria Infantil C");
+	senao se (idade <=11)
+		escreva("Categoria Juvenil A");
+	senao se (idade <=17)
+		escreva("Categoria Juvenil B");
+	senao se (idade > 18)
+		escreva("Categoria Adulto");
+	senao
+		escreva("Idade Inválida");
+		
+		
+	
+	
+FIM
+
+
+4) Escreva um programa que leia 03 valores(A,B,C) e verifique se esses valores podem ser lados de um triângulo. Em caso afirmativo, informar qual é o tipo de triângulo(escaleno, equilátero e isósceles).
+
+ALGORITMO Triangulo
+	inteiro:a,b,c;
+INÍCIO
+	escreva("Digite o valor do lado A");
+	leia(a);
+	escreva("Digite o valor do lado B");
+	leia(b);
+	escreva("Digite o valor do lado C");
+	leia(c);
+	
+	se((a< b + c) E (b<a+c) E (c < a +b))
+	INÍCIO
+		se (a == b) E (b == c)
+			escreva("Triângulo Equilátero!");
+		senao
+		INÍCIO
+			se (a == b) OU (b == c) OU (c == a)
+				escreva("Triângulo Isósceles!");
+			
+			senao
+				escreva("Triângulo Escaleno!")
+		
+		FIM
+	
+	
+	FIM
+	senao
+		escreva("Os lados informados não formam um triângulo!")
+
+
+FIM
+
+5) Escreva um programa CaixaEletronico que leia o valor de saque solicitado pelo cliente e informe o número mínimo de notas de R$ 100,00, R$ 50,00 e R$ 10,00 necessárias para concluir este saque.
+
+ALGORITMO CaixaEletronico
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:saque,notas100,notas50,notas10;
+	inteiro:resto;
+	
+INÍCIO
+	escreva("Digite o valor do saque:");
+	leia(saque);
+	
+	se (saque%10 == 0)
+	INÍCIO
+		notas100 <= Math.floor(saque/100);
+		resto <= saque%100;
+		
+		notas50 <= Math.floor(resto/50);
+		resto <= resto%50;
+		
+		notas10 <= Math.floor(resto/10);
+		
+		se(notas100 > 0)
+			escreva("O Número de notas de Cem ",notas100);
+				
+		se(notas50 > 0)
+			escreva("O Número de notas de Cinquenta ",notas50);
+				
+		se(notas10 > 0)
+			escreva("O Número de notas de Dez ",notas10);
+		
+	FIM
+	
+	senao
+		escreva("Valor informado do saque é inválido!");
+
+FIM
+
+
