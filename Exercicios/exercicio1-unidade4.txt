@@ -1,0 +1,265 @@
+Algoritmo Aprovados
+
+Declaração de Variáveis
+	inteiro:alunos_aprovados, alunos_reprovados;
+	
+INÍCIO
+	alunos_aprovados <= 0
+	alunos_reprovados <= 0
+	
+	se (media < 5)
+		alunos_reprovados <= alunos_reprovados+1;
+	senao
+		alunos_aprovados <= alunos_aprovados+1;
+
+
+FIM
+------
+
+Algoritmo AprovadosAcumuladores
+
+Declaração de Variáveis
+	inteiro:alunos_aprovados, alunos_reprovados;
+	real:media_alunos_aprovados, media_alunos_reprovados;
+	
+INÍCIO
+	alunos_aprovados <= 0
+	alunos_reprovados <= 0
+	
+	se (media < 5)
+		alunos_reprovados <= alunos_reprovados+1;
+		media_alunos_reprovados <= (media_alunos_aprovados+ media_aluno)/alunos_reprovados;
+	senao
+		alunos_aprovados <= alunos_aprovados+1;
+		media_alunos_aprovados <= (media_alunos_aprovados+ media_aluno)/alunos_aprovados;
+FIM
+
+
+------------
+
+Estrutura PARA
+
+É utilizada para repetir um conjunto de instruções um determinado número de vezes.
+
+
+Para cont de 1 até N
+
+Início
+	Passo(1);
+	Passo(2);
+	Passo(3);
+	...
+	Passo(N);
+	cont <= cont +1;
+
+
+FIM
+
+
+
+Algoritmo MostraTabuada
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro: i, numero, total;
+
+INÍCIO
+	leia(numero);
+	para i de 1 até 10
+	INÍCIO
+		total= numero * i;
+		escreva(numero,"x",i,"=",total);
+		i <= i+1;		
+	FIM
+
+FIM
+
+
+---
+Algoritmo NumeroDecrescente
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:numero;
+
+INÍCIO
+	leia(numero);
+	
+	para i de numero até 1
+	INÍCIO
+		escreva(numero);
+		numero <= numero -1;
+	FIM
+FIM
+
+-------
+
+Algoritmo CalculaMedia50Alunos
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro: i;
+	real: n1,n2,n3,n4,media,media50alunos;
+INÍCIO
+	media50alunos <= 0;
+	para i de 1 até 50
+	INÍCIO
+		leia(n1); leia(n2); leia(n3); leia(n4);
+		media <= (n1+n2+n3+n4) / 4;
+		media50alunos <= media50alunos+media;
+	FIM
+	media50alunos <= media50alunos/i;
+
+FIM
+
+
+--
+
+
+FOR
+
+
+for( inicialização; expressões booleanas; passo da repetição){
+	instruções;
+}
+
+
+for(int x=0; x<10; x++){
+
+System.out.println("Valor do X: " +x);
+
+}
+
+
+
+----
+1) Implementar as classes MostraTabuada, NumeroDecrescente e CalculaMedia50Alunos.
+
+2) Escrever um programa para ler um conjunto de 10 números inteiros e mostrar qual foi o menor e qual o maior número fornecido.
+
+
+ALGORITMO MenorMaior
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro: numero,menor,maior,i;
+
+INÍCIO
+	leia(numero);
+	menor <= menor;
+	maior <= maior;
+	
+	para i de 2 até 10
+	INÍCIO
+		escreva("Digite um Número:");
+		leia(numero);
+		if(numero < menor)
+			menor <= numero;
+		senao se(numero > maior)
+			maior <= numero;			
+	FIM
+	escreva(menor);
+	escreva(maior);
+	
+	
+
+FIM
+
+3)Escrever um programa para resolver o PROBLEMA MATEMÁTICO Nº 1.
+
+S= 1,4,7,10,13,16,19,22.
+
+Algoritmo SequenciaS
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:s,s9,s10,s100,s10000;
+
+INÍCIO
+	s<= 1;
+	para i de 2 até 10000
+	INÍCIO
+		s<= s+3;		
+		se(i == 9)
+		s9 <= s;
+		senao se(i == 10)
+		s10 <= s;
+		senao se(i == 100)
+		s100 <= s;
+		senao se(i == 10000)
+		s10000 <= s;	
+	FIM
+	
+	escreva(s9);
+	escreva(s10);
+	escreva(s100);
+	escreva(s10000);
+
+FIM
+
+
+
+4) Escrever um programa para resolver o PROBLEMA MATEMÁTICO Nº 2. FIBONNACI
+
+ALGORITMO FIBONACCI
+
+DECLARAÇÃO DE VARIÁVEIS
+	real: f, f1, f2, f9, f10, f100, f100000;
+
+INÍCIO
+	f1<= 1; //1º Elemento
+	f2<= 1; //2º Elemento
+	
+	para i de 3 até 10000
+	INÍCIO
+		f<= f1+f2;
+		f1<= f2;
+		f2<= f;
+		
+		se(i == 9)
+		f9 <= f;
+		
+		senao se(i == 10)
+		f10 <= f;
+		
+		senao se(i == 100)
+		f100 <= f;
+		
+		senao se(i == 10000)
+		f10000 <= f;	
+	
+	FIM
+	escreva(f9);
+	escreva(f10);
+	escreva(f100);
+	escreva(f10000);
+	
+
+FIM
+
+
+
+
+5) Elaborar um programa para gerar a seguinte série abaixos para os 50 primeiros termos.
+
+e*= x¹/1 + x²/2 + x³/3 +x4 /4 + x5 /5 + ...
+
+
+Algoritmo CalculaE
+
+DECLARAÇÃO DE VARIÁVEIS
+	real: x,e;
+	inteiro: i;
+	
+	INÍCIO
+	e<= 0;
+	leia(x);
+	
+	para i de 1 até 50
+	INÍCIO
+		e<= e+(x**i)/i;
+	FIM
+	escreva(e)
+		
+	
+	FIM
+
+
+
+
+
