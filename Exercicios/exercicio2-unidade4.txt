@@ -1,0 +1,207 @@
+Estrutura Enquanto
+
+
+É utilizada pra repetir um conjunto de instruções enquanto uma determianada condição for verdadeiro.
+
+Enquanto <condicao>
+	INÍCIO
+	passo(1);
+	passo(2);
+	passo(3);
+	...
+	passo(n);
+	cont <= cont +1;
+	
+	
+	FIM
+	
+	
+Exemplo 01:
+
+Algortimo CalculaMedia
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:valor,soma_valor,cont;
+
+INÍCIO
+	leia(valor);
+	soma_valor <= 0;
+	cont <= 0;
+	
+	enquanto (valor != -1)
+	INÍCIO
+		soma_valor <= soma_valor + valor;
+		cont<= cont + 1;
+		leia(valor)
+	
+	FIM
+	escreva("Média=",soma_valor/cont);
+FIM
+
+Exemplo 02:
+
+Algoritmo CadastraAluno
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:matricula,cont<=0;
+	caracter:nome,endereco,telefone;
+
+
+INÍCIO
+	leia(matricula);
+	cont<= 0;
+	
+	enquanto (matricula != 0)
+	INÍCIO
+	leia(nome);
+	leia(endereco);
+	leia(telefone);
+	cont <= cont+1;
+	leia(matricula);
+	FIM
+
+FIM
+
+
+Exemplo 03:
+
+Algoritmo MenorValor
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:valor,menor_valor;
+
+INÍCIO
+	leia(valor);
+	menor_valor <= valor;
+	
+	enquanto(valor != 0)
+	INÍCIO
+		se(valor < menor_valor)
+			menor_valor <= valor;
+		leia(valor);
+	
+	FIM
+	escreva("O Menor Valor é: ",menor_valor);
+
+FIM
+
+
+--
+ENQUANTO EM JAVA = WHILE
+
+WHILE
+
+
+while (expressão booleana){
+
+instruções;
+}
+
+
+
+int cont=0;
+
+while(cont < 100){
+	System.out.println("Contando "+cont);
+	cont++;
+
+}
+
+
+Exercícios
+
+
+1) Implementar as classes CalculaMedia, CadastraAluno e MenorValor.
+
+2) Escrever um programa para calcular o fatorial de um dado número: Exemplo 5!= 5x4x3x2x1 = 120.
+
+
+ALGORITMO Fatorial
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:fatorial;
+	inteiro: numero;
+
+INÍCIO
+
+	escreva("Digite um Número: ");
+	leia(numero);
+		
+	fatorial <= 1;
+	
+	enquanto(numero >= 1)
+	INÍCIO
+		fatorial<= fatorial * numero;
+		numero<= numero-1;
+	
+	FIM 
+	escreva(fatorial);
+FIM
+
+3) Elaborar um programa para calcular o imposto de renda de um grupo de 10 contribuintes, considerando que o nome, o número do CPF, o número de dependentes e a renda mensal são fornecidos pelo usuário.
+
+Observações:
+
+- base de cálculo do IRPF= renda_mensal - (numero_dependentes * 189,59)-11%(INSS);
+- rendimentos mensais até R$ 1.903,98 =>Isento
+- rendimentos mensais de R$ 1903,99 até R$ 2826,65 => 7.5% com dedução de R$ 142,80
+- rendimentos mensais de R$ 2826,66 até R$ 3751,05 => 15% com dedução de R$ 354,80
+- rendimentos mensais de R$ 3751,06 até R$ 4664,68 => 22.5% com dedução de R$ 636,13
+- rendimentos mensais acima de R$ 4664,68 => 27.5% com dedução de R$ 869,36
+
+
+
+ALGORITMO IRPF
+
+DECLARAÇÃO DE VARIÁVEIS
+	real:irpf,renda_mensal,salario_liquido;
+	inteiro:numero_contribuintes=1, numero_dependentes;
+	caracter:nome,cpf;
+
+INÍCIO
+	enquanto(numero_contribuintes <= 10)
+	INÍCIO
+		leia(nome);
+		leia(cpf);
+		leia(numero_dependentes);
+		leia(renda_mensal);
+		
+		salario_liquido<= renda_mensal-(numero_dependentes * 189,59)-(0,11*renda_mensal);
+		
+		se(salario_liquido <= 1903,98)
+		INÍCIO
+			irpf<=0;
+			escreva("Contribuinte ",nome," é isento!");
+		FIM
+		
+		senao se(salario_liquido >= 1903,99 E salario_liquido <= 2826,65)
+		INÍCIO
+			irpf<= 0,075 * salario_liquido - 142,80;
+			escreva("O IRPF do Contribuinte ",nome," é de ",irpf);
+		FIM
+		
+		senao se(salario_liquido >= 2826,66 E salario_liquido <= 3751,05)
+		INÍCIO
+			irpf<= 0,15 * salario_liquido - 354,80;
+			escreva("O IRPF do Contribuinte ",nome," é de ",irpf);
+		FIM
+		senao se(salario_liquido >= 3751,06 E salario_liquido <= 4664,68)
+		INÍCIO
+			irpf<= 0,225 * salario_liquido - 636,13;
+			escreva("O IRPF do Contribuinte ",nome," é de ",irpf);
+		FIM
+		senao
+		INÍCIO
+			irpf<= 0,275 * salario_liquido - 869,36;
+			escreva("O IRPF do Contribuinte ",nome," é de ",irpf);
+		FIM
+		numero_contribuintes++;
+	FIM
+
+FIM
+
+
+
+
+
+

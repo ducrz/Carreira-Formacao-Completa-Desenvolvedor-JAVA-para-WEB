@@ -1,0 +1,114 @@
+ESTRUTURA REPITA
+
+É utilizada para repetir um conjunto de instruções até que uma determinada condição for verdadeira.
+
+
+DO WHILE
+
+	do{
+		instruções
+	
+	}while(expressão booleana);
+	
+	
+int cont=0;
+
+do{
+
+	System.out.println("Contando "+cont);
+	cont++
+}while(cont < 100);
+
+
+REPITA
+Início
+	passo(1);
+	passo(2);
+	passo(3);
+	...
+	passo(n);
+	
+	cont<= cont +1;
+FIM
+Até <condição>
+
+
+
+---
+
+Exemplo 01
+
+Algoritmo CalculaMediav2
+INÍCIO
+	soma_valor <= 0; cont <= 0;
+	
+	Repita
+	INÍCIO
+		leia(valor);
+		
+		se(valor != -1)
+		INÍCIO
+			soma_valor <= soma_valor + valor;
+			cont <= cont +1;
+		FIM
+	
+	
+	FIM
+	até (valor != -1);
+	escreva("Média= ",soma_valor/cont);
+
+
+FIM
+
+
+Exemplo 02: 
+
+ALGORITMO CadastraAlunov2
+
+INÍCIO
+	cont <= 0;
+	
+	repita
+	INÍCIO
+		leia(matricula);
+		se(matricula != 0)
+		INÍCIO
+			leia(nome);
+			leia(endereco);
+			leia(telefone);
+			cont<= cont+1;
+		FIM
+	FIM
+	Até(matricula != 0)
+
+FIM
+
+
+Exemplo 03:
+
+ALGORITMO MenorValor
+
+DECLARAÇÃO DE VARIÁVEIS
+
+INÍCIO
+	menor_valor <= valor;
+	
+	repita
+	INÍCIO
+		leia(valor);
+		se(menor_valor < valor)
+		menor_valor <= valor;
+	FIM
+	até (valor != 0)
+
+
+FIM
+
+
+Exercícios
+
+
+1) Refatorar as classes CalculaMedia, CadastraAluno e MenorValor;
+
+2) Refatorar o programa para calcular o fatorial de um dado número. Exemplo:5!= 5x4x3x2x1=120.
+	
