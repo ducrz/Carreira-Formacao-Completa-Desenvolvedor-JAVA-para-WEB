@@ -1,0 +1,24 @@
+Detecção de Erros
+
+ERROS DE SINTAXE
+Em programação, depuração de programas é o processo de detectar e remover erros no código. Existem dois tipos de erros em um programa: ERROS DE SINTAXE e ERROS DE LÓGICA.
+
+Os ERROS DE SINTAXE são aqueles gerados pela digitação incorreta de um comando, nome de variável, a não digitação de uma chave de abertura ou fechamento de laço.
+
+O próprio editor de código, Eclipse, destaca em vermelho os ERROS DE SINTAXE.
+
+ERROS DE LÓGICA
+
+Os ERROS DE LÓGICA são aqueles gerados quando o programa é executado e o resultado gerado é bem diferente do esperado.
+
+DEPURAÇÃO NO ECLIPSE
+
+O ECLIPSE oferece dois importantes recursos de depuração: os brakpoints (pontos de parada) e a janela watch (observador);
+
+
+EXERCÍCIOS
+
+1) Analisar o programa SequenciaS.java.
+
+
+2) Analisar o programa Fibonacci.java.
