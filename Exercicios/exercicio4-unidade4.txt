@@ -1,0 +1,203 @@
+Break e Continue
+As linguagens de programação dispôem de dois comandos especiais para ser utilizados nas estruturas de repetição: break e continue.
+O Break sai do loop de repetição, enquanto que o continue retorna ao início do laço.
+
+
+while (!terminado){
+	passePagina();
+	if(alguemChamou == true){	
+	break; //saia deste loop	
+	}
+	if(paginaDePropaganda == true){
+	continue; //pula esta iteração	
+	}
+	leia();
+
+}
+restoDoPrograma():
+
+REPITA
+INÍCIO
+	escreva("Digite 0 para sair");
+	leia(numero);
+	se (numero == 0)
+	INÍCIO
+	
+		escreva("Confirma a saída?");
+		leia(saida); //tipo boleano
+		se (saida)
+			break; //sai do laço
+		senao
+			continue; //volta ao início do laço	
+	FIM
+FIM
+
+
+Laços combinados e aninhados
+
+As várias estruturas de seleção e repetição também são utilizadas em conjunto.
+
+--------
+enquanto (valor != 0)
+INÍCIO
+	se (menor_valor < valor)
+		menor_valor <= valor;
+	leia(valor);
+FIM
+
+-------
+
+para i de 1 até 50
+INÍCIO
+	para j de 1 até 50
+	INÍCIO
+		...
+	FIM
+
+FIM
+
+-----
+
+
+Exercícios
+
+1)Elaborar um programa que leia dois números inteiros A e B (tal que A e B >0) e encontre todos os números pares existentes entre A e B.
+
+
+Algoritmo NumerosPares
+DECLARAÇÃO DE VARIAVEIS
+	inteiro: a,b,i;
+
+INÍCIO
+	escreva("Digite um Número");
+	leia(a);
+	escreva("Digite um Número");
+	leia(b);
+	
+	para i de a até b
+	INÍCIO
+		se(i%2 == 0)
+		escreva("O número ",i," é par.");		
+
+	FIM
+	
+
+
+
+FIM
+
+
+2)Dado um país A com 5.000.000 de habitantes e uma taxa de natalidade de 3% ao ano, e um outro pais B, com 7.000.000 de habitantes e uma taxa de natalidade de 2% ao ano. Escrever um programa que calcule quanto tempo é necessário para que a população do país A ultrapasse a população do pais B.
+
+
+Algoritmo PopulacaoAB
+DECLARAÇÃO DE CONSTANTES
+	inteiro: habitantesA=5000000,habitantesB=7000000
+	real: taxaA=0.03, taxaB= 0.02;
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro: tempo;
+	real:populacaoA,populacaoB;
+INÍCIO
+	tempo <= 0;
+	populacaoA <= habitantesA;
+	populacaoB <= habitantesB;
+	
+	enquanto(populacaoB >= populacaoA)
+	INÍCIO
+		populacaoB <= populacaoB + taxaB * populacaoB;		
+		populacaoA <= populacaoA + taxaA * populacaoB;	
+		tempo++;	
+	FIM
+	
+	escreva("Serão Necessários ",tempo," anos" para que a População A supere a População de B!);
+
+FIM
+
+3)Dado uma sequência de números reais, elaborar um programa que:
+- calcule o menor e o maior valor;
+- calcule a média aritmética;
+
+
+4) Escrever um programa que faz a leitura de contas que devem ser pagas pelo usuário. As contas são exibidas e no final do programa uma listagem com o número de contas e a soma dos seus valores é apresentada.
+
+
+ALGORITMO Contas
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:numero_contas=0;
+	real: valor,valor_total=0;
+	caracter:descricao_conta;
+INÍCIO
+	leia(descricao_conta);
+	leia(valor); // 0 é o finalizador
+	
+	enquanto (valor >0)
+		INÍCIO
+			escreva(descricao_conta);
+			escreva(valor);
+			numero_contas++;
+			valor_total <= valor_total + valor;
+						
+			leia(descricao_conta);
+			leia(valor); // 0 é o finalizador
+		
+		FIM
+		escreva(numero_contas);
+		escreva(valor_total);
+FIM
+
+
+
+5} Elaborar um programa que leia um número e informe se ele é ou não primo(divisível por 1 e por ele mesmo, 2 divisores).
+
+ALGORITMO NumeroPrimo
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:numero,i,numero_divisores=0;
+
+INÍCIO
+	leia(numero);
+	para i de 1 até numero
+	INÍCIO
+		se(numero%i == 0)
+			numero_divisores++;		
+	FIM
+	se (numero_divisores == 2)
+		escreva("O Número ",numero," é Primo!")
+	senão
+		escreva("O Número ",numero," não é Primo!")
+
+FIM
+
+
+
+6) Escrever um programa que leia um número e exiba estrelas na página, em linhas diferentes. A cada nova linha, o número de estrelas deve ser incrementado.
+
+
+Algoritmo NumeroEstrelas
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:i, numero_linhas;
+	character:estrela <= '*';
+
+INÍCIO
+	leia(numero_linhas);
+	
+	para i de 1 até numero_linhas
+	ÍNICIO
+		escreva(estrela);
+		estrela<= estrela + '*';
+	FIM
+
+
+FIM
+
+
+
+
+
+-
+
+
+
