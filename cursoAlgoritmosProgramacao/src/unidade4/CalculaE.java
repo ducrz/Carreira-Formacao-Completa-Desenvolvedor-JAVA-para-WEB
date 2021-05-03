@@ -12,7 +12,7 @@ public class CalculaE {
 		
 		e= 0;
 		System.out.println("Digite o X: ");
-		x = teclado.nextInt();
+		x = teclado.nextDouble();
 		
 		for(i=1; i <= 50; i++) {//Inicio FOR
 			

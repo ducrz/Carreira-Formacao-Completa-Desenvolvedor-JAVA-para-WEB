@@ -1,0 +1,93 @@
+Estrutura de dados Heterogêneas - Registros e Arquivos
+
+Registro é uma estrutura composta por um conjunto de variáveis de tipos diferentes(campos) que estão relacionados e são referenciados por um mesmo indicador que é o nome do registro
+
+
+Um campo é a menor unidade destinada ao armazenamento de valores existentes em um registro.
+
+Cada campo contém um tipo de dado.
+
+DECLARAÇÃO DE TIPOS
+reg= REGISTRO
+	nome:caracter;
+	fone:inteiro;
+	cidade:caracter;
+DECLARAÇÃO DE VARIÁVEIS
+	reg:contato;
+	
+
+Para fazer a leitura de um campo de um registro, basta indicar o nome do registro seguido pelo nome do campo.
+leia(contato.nome);
+leia(contato.fone);
+leia(contato.cidade);
+
+
+Arquivos
+
+Um Arquivo é um conjunto de registros do mesmo tipo (possuem o mesmo formato padrão, layout). Os arquivos no formato texto geralmente são encontrados com nomes com a extensão padrão TXT(abreviação de TEXT- texto em inglês).
+Arquivos de texto são considerados universais. pois podem ser facilmente lidos por quaisquer programas.
+
+
+DECLARAÇÃO DE TIPOS
+reg=REGISTRO
+	nome:caracter;
+	fone:caracter;
+	cidade:caracter;
+	arq=ARQUIVO DE reg;
+DECLARAÇÃO DE VARIÁVEIS
+	arq:contato;
+	
+	
+Para fazer a leitura de um campo de um registro de um arquivo, basta indicar o nome do arquivo, o nome do registro seguido pelo nome do campo.
+
+leia(contatos.reg.nome);
+
+
+Arquivos em JAVA
+
+Toda operação de entrada e saída em uma aplicação Java faz uso de um objeto que identifica um fluxo(stream) de informações;
+
+Um stream é uma sequência de dados transmitidos de uma fonte de entrada para um destino de saída e vice-versa.
+
+
+Programas Java implementam o processamento de arquivos utilizando as classes do pacote java.io.
+
+A hierarquia de classes oferecida por este pacote oferece mais de 50 classes distintas para o processamento de entrada e saída em arquivos baseados em bytes, caracteres e arquivos de acesso aleatório.
+
+As principais classes/interfaces são:
+FileInputStream: para entrada baseado em bytes de um arquivo.
+FileOutputStream: para a saída baseada em bytes para um arquivo.
+RandomAcessFile: para entrada e saída baseada em bytes de e para um arquivo.
+FileReader: para entrada baseada em caracteres de um arquivo.
+FileWrite: para a saída baseada em caracteres para um arquivo.
+
+
+Arquivos em JAVA
+
+String[] nomes={"Elízio","Breno", "Hélio"};
+String[] fones={"1111-2222","8888-3333","8887-5746"};
+String[] cidades={"Mossoró","Apodi","Assu"};
+
+FileWriter arq= new FileWriter("contatos.txt");
+PrintWriter gravaarq = new PrintWriter(arq);
+
+gravaarq.println("==============================");
+gravarq.println("Nomes || Telefones || Cidades");
+for(int i=0; i<nomes.length; i++){
+	gravaarq.println("==============================");
+	gravaarq.print(nomes[i]+" || ");
+	gravaarq.print(fones[i]+" || ");
+	gravaarq.println(cidades[i]);
+}
+
+gravaarq.println("==============================");
+arq.close();
+gravaarq.close();
+
+
+
+Exercícios
+
+1)Elaborar um programa que crie o arquivo contato.txt com os 03 registros.
+
+2)Refatorar o programa MatrizIdentidade I=3 para crirar um arquivo matroz.txt com os seus valores.

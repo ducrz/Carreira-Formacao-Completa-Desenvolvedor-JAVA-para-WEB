@@ -1,0 +1,150 @@
+MATRIZES
+
+
+Uma malha, uma tabela, linhas e colunas.
+
+As Matrizes (ou arrays multidimensionais) são estruturas que permitem armazenar daddos em uma tabela na memória principal do computador. São muito úteis para inserir, consultar ou remover itens de uma tabela.
+
+Dois índices números(linha e coluna) identificam cada um dos elementos da tabela.
+
+MATRIZ[LINHAS,COLUNAS]
+
+DECLARAÇÃO DE TIPOS
+mat = VETOR[1... 50, 1... 4] de real;
+
+DECLARAÇÃO DE VARIÁVEIS
+mat: notas_dos_alunos;
+
+
+Para referenciarmos um item da matriz, devemos indicar o seu nome, seguido por dois índices (linha e coluna) entre colchetes e o seu conteúdo.
+
+notas_dos_alunos[1][1]
+notas_dos_alunos[1][2]
+notas_dos_alunos[1][3]
+notas_dos_alunos[1][4]
+
+
+No Java as Matrizes são tratadas como uma área de memória fixa e sequencial dividida em partes iguais que são indexadas a partir de 0.
+
+double notas_dos_alunos[][]; //Declaração
+notas_dos_alunos[][]= new double [50][4]; //Criação
+notas_dos_alunos[0][0]= 9.5; //Atribuição
+notas_dos_alunos[0][1]= 10; //Atribuição
+notas_dos_alunos[0][2]= 8; //Atribuição
+notas_dos_alunos[0][3]= 7.5; //Atribuição
+
+A capacidade de uma matriz em Java é fixa (neste exemplo, 50x3)  e deve ser informada no momento de criação do vetor;
+
+É importante ressaltar que não é possível redimensionar uma matriz em Java.
+
+Os elementos de uma matriz são obtidos pelo código abaixo:
+
+
+for(int i=0; i<50; i++){ //Linhas
+
+	for(int j=0; j<4; j++){//Colunas
+	System.out.println(notas_dos_alunos[i][j]);
+	
+	}
+
+}
+
+
+Exercícios
+
+1) Refatorar o programa que faz o cadastro de 05 alunos para também ler as suas 04 notas, calcular a sua média e informar, em outro vetor lógico, se o aluno foi aprovado ou reprovado. O nmero de alunos aprovados e o número de alunos reprovados deverão ser informados.
+
+Algoritmo NotasAlunos
+DECLARAÇÃO DE TIPOS
+	vet=vetor[1...5] de caracter; //nomes dos alunos
+	mat=VETOR[1 ... 5][1 ... 4] de real; //matriz de notas dos alunos
+	vet2= VETOR[1... 5] de logico; //informa os alunos aprovados e reprovados
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:i,j,aprovados=0,reprovados=0; //Um índice para linha e outro para coluna
+	caracter:nome;
+	vet:lista_alunos;
+	vet2:situacao_alunos;
+	mat:notas_alunos;
+	real:nota,soma=0,media=0;
+	
+INÍCIO
+	//Leitura de um vetor
+	para i de 1 até 5
+	INÍCIO
+		leia(nome);
+		lista_alunos[i] <= nome;
+		
+		para j de 1 até 4 //Ler as 4 notas do aluno
+		INÍCIO
+			leia(nota);
+			notas_alunos[i][j]<=nota;
+			soma<= soma+nota;		
+		FIM
+		media<= soma/4;
+		se(media <5)
+			situacao_alunos[i]<= F;
+		senao
+			situacao_alunos[i]<= V
+
+		soma<= 0;					
+	FIM
+	para i de 1 até 5
+	INÍCIO
+		se(situacao_alunos[i])
+			aprovados++;
+		senao
+			reprovados++;
+	FIM
+	escreva(aprovados);
+	escreva(reprovados);
+	
+FIM
+
+
+
+2) Construa uma matriz identidade I=3 (apenas os valores diagonais são =1).
+Todos os outros são 0.
+
+
+I3= ( 1     0     0)
+    ( 0     1     0)
+    ( 0     0     1)
+    matriz identidade de ordem 3
+    
+    
+    
+Os elementos de uma matriz são obtidos pelo código abaixo:
+
+for(int i=0; i<50; i++){ //Linhas
+	for(int j=0; j<4; j++){ //Colunas
+		System.out.println(notas_dos_alunos[i][j]);	
+	}
+}
+
+
+
+Algoritmo MatrizIdentidade
+
+DECLARAÇÃO DE TIPOS
+	mat=VETOR[1 ... 3][1 .. 3] de inteiro; //matriz identidade
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:i,j;
+	mat:matrizI;
+	
+INÍCIO
+
+	//Leitura de uma matriz
+	para i de 1 até 3
+		para j de 1 até 3
+		INÍCIO
+		se (i == j)
+			matrizI[i][j] <= 1;
+		senao
+			matrizI[i][j] <= 0;		
+		FIM
+
+
+FIM
+

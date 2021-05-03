@@ -1,0 +1,128 @@
+Vetores e Matrizes
+
+Vetores e Matrizes são estruturas de dados muito simples que podem ajudar muito quando se têm muitas variáveis do mesmo tipo em um algoritmo. Imagine a seguinte situação: é necessário criar um algoritmo que lê o nome e as 4 notas e 50 alunos, calcular a média de cada aluno e informar quais foram aprovadas e quais foram reprovados.
+
+Sem o uso de Vetores e Matrizes, serão necessários criar:
+
+50 Variáveis para armazenar os nomes dos alunos;
+(4*50) 200 variáveis para armazenar as 4 notas de cada aluno;
+50 variáveis para armazenar as médias de cada aluno;
+300 variáveis no total serão criadas, sem contar a quantidade de linhas de código necessárias para ler todos os dados do usuário, calcular as médias e apresentar os seus resultados.
+
+
+A BOA NOTÍCIA é que o uso de Vetores e Matrizes (também conhecidos como ARRAYs) simplifica em muito essse trabalho.
+
+
+VETORES
+
+Os vetores (ou arrays unidimensionais) são estruturas que permitem armazenar uma lista de dados (do mesmo tipo) na memória principal do computador.
+
+
+São muito úteis para inserir, consultar ou remover itens da lista.
+
+
+Um índice númerico identifica cada elemento da lista.
+
+
+A estrutura vetor tem uma alocação contígua de memória indexada a partir de 1. A sua capacidade é fixa e deve ser informada no momento de sua declaração.
+
+
+DECLARAÇÃO DE TIPOS
+
+vet = VETOR[1 ... 50] de caracter;
+
+DECLARAÇÃO DE VARIÁVEIS
+vet: lista_alunos;
+
+Para referenciarmos um item do vetor, devemos indicar o seu nome, seguido por um número entre colchetes (indice) e o seu conteúdo.
+
+lista_alunos[1] <= "João";
+lista_alunos[2]<= "Pedro";
+lista_alunos[3]<= "Carlos"
+
+
+No Java os vetores são tratados como uma área de memória fixa e squencial dividida em partes iguais que são indexadas a partir de 0.
+
+String lista_alunos[ ]; //Declaração
+lista_alunos = new String[50]; //Criação
+lista_alunos[0]="João";//ATribuição
+lista_alunos[1]="Pedro";//Atribuição
+lista_alunos[2]="Carlos"; //Atribuição
+
+
+A capacidade de um vetor em Java é fixa (neste exemplo, 10) e deve ser informada no momento de criação do vetor.
+
+
+É importante ressaltar que não é possível redimensionar um vetor em Java.
+
+O tamanho de um vetor pode ser obtido pela propriedade length.
+
+Os elementos de um vetor são obtidos pelo código abaixo:
+
+for(int i=0; i < lista_alunos.length; i++){
+System.out.println(lista_alunos[i]);
+
+
+}
+
+EXERCÍCIOS
+
+1) Elaborar um programa que faça o cadastro do nome de 05 alunos e, ao final desta etapa gere uma listagem desses nomes.
+
+ALGORITMO Alunos
+
+DECLARAÇÃO DE TIPOS
+	vet=vetor[1...5] de caracter;
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:i;
+	caracter:nome;
+	vet:lista_alunos;
+	
+INÍCIO
+	//Leitura de um vetor
+	para i de 1 até 5
+	INÍCIO
+		leia(nome);
+		lista_alunos[i] <= nome;		
+	FIM
+	para i de 1 até 5
+	INÍCIO
+		escreva(lista_alunos[i]);		
+	FIM
+FIM
+
+
+2) Escreva um programa que leia um vetor A de 10 elementos, construa e imprima outro vetor B da seguinte forma: 
+- Os elementos de ordem par são correspondentes a (2*A);
+- Os elementos de ordem ímpar são correspondentes a (A/2).
+
+ALGORITMO CalculaVetor
+
+DECLARAÇÃO DE TIPOS
+	vet= VETOR[1 ... 10] de real;
+	
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:i;
+	vet: A,B;
+
+INÍCIO
+	//Leitura do vetor A
+	para i de 1 até 10
+	INÍCIO
+		leia(A[i]);
+		se(i%2 == 0) //É par
+			B[i]<= 2 * A[i];
+		senao
+			B[i]<= A[i]/2;	
+	FIM
+	
+
+FIM
+
+
+
+
+
+
+
