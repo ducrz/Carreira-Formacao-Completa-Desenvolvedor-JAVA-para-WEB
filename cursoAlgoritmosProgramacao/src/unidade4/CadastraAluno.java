@@ -28,7 +28,8 @@ public class CadastraAluno {
 		}
 		
 		
-		
+		teclado.close();
+
 	}
 
 }

@@ -18,9 +18,10 @@ public class NumeroEstrelas {
 			System.out.println(estrela);
 			estrela= estrela + "*";
 			
-			
+			teclado.close();
+
 		} //Fim For
-		
+
 	}
 
 }

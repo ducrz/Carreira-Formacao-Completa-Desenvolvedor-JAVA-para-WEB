@@ -1,6 +1,5 @@
 package unidade2;
 
-import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 

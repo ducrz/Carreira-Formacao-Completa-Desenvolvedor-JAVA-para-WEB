@@ -46,6 +46,9 @@ public class Aluno {
 
 		}
 		
+		teclado.close();
+
+		
 	}
 
 }

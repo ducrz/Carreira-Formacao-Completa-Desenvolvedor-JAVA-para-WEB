@@ -24,12 +24,15 @@ public class CalculaVetor {
 			}
 			
 		}//Fim For
+
 		for(double valor:A)
 			System.out.print("A= "+valor+" ");
 			System.out.println(" ********** ");
 		
 		for(double valor:B) 
 			System.out.print("B= "+valor+" ");
+
+		
 		
 		/* Exemplo da Aula
 		for(i=0; i<5; i++) {
@@ -43,7 +46,8 @@ public class CalculaVetor {
 		
 
 		
-		
-	}
+
+	}	
+
 
 }

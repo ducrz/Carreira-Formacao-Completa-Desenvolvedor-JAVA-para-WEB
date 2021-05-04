@@ -29,8 +29,10 @@ public class MenorValorv2 {
 		
 		System.out.println("O Menor Valor é: "+menor_valor);
 		System.out.println("O Maior Valor é: "+maior_valor);
+		teclado.close();
 
 		
 	}
+
 
 }

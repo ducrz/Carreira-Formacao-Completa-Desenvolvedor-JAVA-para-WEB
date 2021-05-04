@@ -29,7 +29,8 @@ public class CadastraAlunov2 {
 			
 		}	while (matricula != 0);		
 		
-		
+		teclado.close();
+
 	}
 
 }

@@ -20,7 +20,9 @@ public class CalculaE {
 			
 		}//FIM FOR
 		System.out.println("O Valor de E^"+x+"="+e);
-		
+		teclado.close();
+
 	}
+
 
 }

@@ -1,0 +1,25 @@
+ALGORITMO COM QUALIDADE
+
+"Qualquer tolo consegue escrever código para um computador entender. Bons programadores escrevem código que humanos consigam entender." 
+Martin Fowler
+
+
+MÁXIMAS DE PROGRAMAÇÃO
+
+Segundo os professores Guimarães e Lages, são 10 as regras básicas que devem ser seguidas para a elaboração de algoritmos com qualidade:
+
+1) Algoritmos devem ser feitos para ser lidos por seres humanos;
+2) Escreva os comentários no momento em que estiver escrevendo o algoritmo;
+3) Os comentários deverão acrescentar alguma coisa;
+4) Use comentários no prólogo;
+5) Utilize espaços em branco para melhorar a legibilidade;
+6) Escolha nomes representativos para suas variáveis;
+7) Um comando por linha é suficiente;
+8) Utilize parênteses para aumentar a legibilidade e prevenir-se contra erros;
+9) Utilize identação para mostrar a estrutura lógica do algoritmo.
+10) Lembre-se: toda vez que for feita uma modificação no algoritmo, os comentários associdados devem ser alterados, e não apenas os comandos.
+
+EXERCÍCIO
+
+1) Analise os mais de 50 programas Java criados ao longo deste curso e verifique se as 10 regras básicas para a construção de algoritmos com qualidade são seguidas;
+

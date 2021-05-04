@@ -1,0 +1,142 @@
+Modularização
+
+
+Modularização significa separa o código em pequenos trechos reutilizáveis(procedimentos), de tal forma que seja fácil tanto reaproveitar estes trechos do código, bem como fazer a sua manutenção sem impactar diretamente os outros trechos do código.
+
+Com o uso do recurso da modularização, a programação torna-se mais inteligente e menos suscetível a erros.
+
+Um procedimento é um bloco que contém um conjunto de instruções. Possui um nome e pode receber parâmetros e retornar valores.
+
+DECLARAÇÃO DE VARIÁVEIS
+	inteiro:numero
+
+DECLARAÇÃO DE PROCEDIMENTOS
+	Procedimento <nome>(<parâmetro?>)
+		INÍCIO
+		
+		DECLARAÇÃO DE VARIÁVEIS
+		
+		FIM
+		
+INÍCIO CÓDIGO PRINCIPAL
+	procedimento();
+FIM
+
+
+
+--
+
+DECLARAÇÃO DE VARIÁVEIS
+	int:numero;
+	
+DECLARAÇÃO DE PROCEDIMENTOS
+	procedimento tabuada(n:inteiro)
+	INÍCIO
+		DECLARAÇÃO DE VARIÁVEIS
+		inteiro:i,total;
+		for(i=1; i<=10; i++){
+			total=n*1;
+			System.out.println("Numero:"+numero+"x"+i+"="+total);			
+		}
+	
+	FIM
+	
+	
+	
+Há quatro formas de modularizar em Java:
+(1) métodos
+(2) classes
+(3) pacotes
+(4) modules (novidades do Java 9).
+
+
+1- MÉTODOS
+
+Os métodos são serviços implementados na forma de um conjunto de instruções em Java que realizam alguma tarefa específica e podem, como resultado, retornar um valor.
+
+boolean metodo(){
+	if(condicao){
+		instrucao;
+		return true;	
+	}
+	resto do metodo
+		return false;
+
+}
+
+A palavra chave RETURN especifica o que será retornado após a chamada de um método. Se o método for VOID, não haverá o uso do return.
+
+
+public static void tabuada(int n){
+	int i,total;
+	
+	for(i=1; i<=10; i++){
+		total=n*i;
+		System.out.println("Número: "+numero+" x "+i+" = "+total);	
+	}
+}
+
+2- CLASSES
+
+
+Uma classe é um modelo ou protótipo que define as propriedades e os métodos(comportamentos) comuns a um conjunto de objetos;
+
+
+Classes são "moldes" que definem as variáveis e os métodos comuns a todos os objetos de um determinado tipo.
+
+
+Classe- Você tem um molde e a partir deste molde gera vários objetos!
+
+
+
+public class Matematica{
+	public static void tabuada(int n){
+		int i,total;
+		for(i=1; i<=10; i++){
+			total=n*1;
+			System.out.println("Número: "+numero+"x"+i+"="+total);		
+		}	
+	}
+	public static void main(String args[]){
+		//leia numero
+		tabuada(numero);	
+	}
+
+}
+
+
+3- PACOTES
+
+São um conjunto de classes e interfaces relacionadas e outros pacotes que provêm acesso protegido e gerenciamento de espaços de nomes(namespaces).
+
+
+
+package unidade5;
+public class Matematica{
+	public static void tabuada(int n){
+	
+		...
+	}
+	public static void main(String args[]){
+		//leia numero;
+		tabuada(numero);
+	}
+}
+
+
+4- MODULES
+
+O Java Platform Module System especifica um formato(jar) de distribuição para coleções de códigos java e recursos associados e um arquivo module-info.java.
+
+O arquivo module-info.java declara:
+- o nome exclusivo do nosso módulo;
+- quais outros módulos o nosso módulo depende;
+- quais pacotes devem ser exportados para ser usados por outros módulos.
+
+
+EXERCÍCIOS
+
+1) Elaborar o programa unidade5.Matematica com a função tabuada(int n).
+
+2) Refatorar o programa unidade4.Fibonnacci com a função fibonacci(int n).
+

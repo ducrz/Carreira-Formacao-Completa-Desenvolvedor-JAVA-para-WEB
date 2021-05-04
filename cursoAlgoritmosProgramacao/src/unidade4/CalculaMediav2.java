@@ -27,7 +27,8 @@ public class CalculaMediav2 {
 			System.out.println("Média="+soma_valor/cont);
 
 		}
-		
+		teclado.close();
+
 		
 	}
 

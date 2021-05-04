@@ -34,7 +34,8 @@ public class MenorMaiorMedia {
 		System.out.println("O Menor Valor é: "+menor_valor);
 		System.out.println("O Maior Valor é: "+maior_valor);
 		System.out.println("A Média é: "+media);
-		
+		teclado.close();
+
 	}
 
 }

@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 public class RevendaVeiculos {
 
 	public static void main(String[] args) {
-		
 		var modelo= JOptionPane.showInputDialog("Qual o Modelo do Carro?");
 		
 		double preco_carro= Double.parseDouble(JOptionPane.showInputDialog("Qual é o Preço do Carro?"));

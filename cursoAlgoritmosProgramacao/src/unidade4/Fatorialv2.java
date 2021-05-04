@@ -22,6 +22,9 @@ public class Fatorialv2 {
 		}while(numero >= 1);
 		System.out.println("A fatorial de "+numero_digitado+" é "+fatorial);
 		
+		teclado.close();
+
+		
 	}
 
 }

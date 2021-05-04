@@ -15,10 +15,11 @@ public class MostraTabuada {
 		for(i=1; i <= 10; i++) {
 			total = numero * i;
 			System.out.println("Número: "+numero+"X"+i+"="+total);
-			
+			teclado.close();
+
 			
 		}
-		
+
 	}
 
 }

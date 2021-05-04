@@ -40,6 +40,8 @@ public class IdadeNadador {
 			 IdadeNadador.main(null);
 
 		}
+		teclado.close();
+
 			
 	}
 

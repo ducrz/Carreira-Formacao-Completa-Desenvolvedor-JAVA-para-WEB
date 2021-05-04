@@ -28,7 +28,8 @@ public class MenorMaior {
 		}
 		System.out.println("O Maior Número é: "+maior);
 		System.out.println("O Menor Número é: "+menor);		
-		
+		teclado.close();
+
 	}
 
 

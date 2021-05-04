@@ -33,6 +33,8 @@ public class MediaAritmetica {
 
 		System.out.println("A Média de Notas do Aluno é "+media);
 		
+		teclado.close();
+		
 		
 	}
 

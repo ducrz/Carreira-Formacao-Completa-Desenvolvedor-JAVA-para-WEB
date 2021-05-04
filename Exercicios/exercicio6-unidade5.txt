@@ -1,0 +1,52 @@
+Orientação a Objetos
+
+
+O Mundo é Composto por Objetos!
+
+
+O que é um Objeto?
+
+DEFINIÇÕES
+Uma Abstração;
+Alguma coisa que faz sentido no domínio da aplicação.
+
+
+UTILIDADES
+Facilita a compreensão;
+Oferece base real para implementação no computador. 
+
+
+Um objeto é representado por um conjunto de atributos (também conhecidos como propriedades) e por um conjunto de métodos (que definem o comportamento de um dado objeto):
+
+
+ATRIBUTOS - SUBSTANTIVOS
+Motor
+Cor
+Potência
+Fabricante
+
+
+MÉTODOS - VERBOS
+Acelerar
+Retroceder
+Parar
+Abastecer
+
+
+DEFINIÇÃO
+
+O grupo de objetos que possuem os mesmos atributos e métodos diz-se que pertencem à mesma classe.
+
+
+
+EXERCÍCIOS
+
+1)Identificar as classes do programa unidade4.IRPF;
+
+
+IRPF, CONTRIBUINTE, RENDIMENTOS
+
+
+2) Para criar um sistema de informação que gerencie o aluguel de uma frota de carros, quais são as classes necessárias?
+
+APP - CARROS - ALUGUEL - CLIENTES
