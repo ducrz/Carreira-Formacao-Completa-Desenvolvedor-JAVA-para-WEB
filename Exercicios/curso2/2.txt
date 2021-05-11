@@ -1,0 +1,266 @@
+Unidade 2
+
+
+Comentários
+
+/* Texto */ - Mais de uma linha
+// Texto -Uma Linha
+/*** Primeiro Programa Java ***/
+
+
+Classe
+
+É a unidade básica para uma linguagem Orientada a Objetos como o Java.
+
+class é a palavra reservada que marca o início de declaração de uma classe.
+
+class NomeDaClasse {
+
+}
+
+
+Bloco
+
+Um bloco está sempre entre chaves {}
+Em Java as instruções terminam em ponto e vírgula;
+
+
+Método MAIN
+
+Toda aplicação Java SE deve possuir um método main.
+O método main indica o início de excecução de qualquer programa Java.
+
+
+public static void main (String args[]){
+	//Instruções
+}
+
+
+
+- Um programa fonte Java deve sempre ter a extensão '.java';
+- Um programa Java compilado deve sempre ter a extensão '.class';
+- A linguagem é case-sensitive;
+- Cada programa é uma classe;
+- Nome da classe no programa tem que ser igual ao nome do arquivo físico '.java';
+- Sintaxe similar a linguagem C/C++;
+- As classes podem estar agrupadas em package;
+- Package é um subdiretório. Exemplo: java.awt, java.math;
+- As classes podem ser compactadas (zip ou jar);
+
+
+Exercícios
+
+1) Escreva um programa Java que imprima na tela várias mensagens de texto.
+
+
+2) Adapte o mesmo programa para mostrar as mensagens com uma janela gráfica.
+
+
+
+
+IDENTIFICADORES
+
+Nomeiam variáveis, funções, classes e objetos;
+Podem conter letras, digítos, _ e $;
+Não podem ser iniciados por dígito;
+Não podem ser palavras reservadas;
+Não tem tamanho máximo.
+
+
+VARIÁVEIS
+
+Variáveis são usdas em linguagens em geral para armazenar valores;
+Valores são passados para variáveis através de operações de atribuição;
+Sintaxe Padrão no Java:
+
+<TIPO_VARIAVEL> nomeVariavel;
+
+Exemplo:
+
+	int anoNascimento;
+	
+	
+	
+Nomes Válidos:
+
+Nome   NumDepen
+total_geral NOME
+
+
+Nomes Inválidos:
+
+1prova
+total geral
+class
+
+
+Palavras-chave - Compôe a sintaxe do Java
+
+abstract
+boolean
+break
+byte
+case
+catch
+char
+class
+continue
+default
+do
+double
+else
+extends
+false
+final
+finally
+float
+for
+if
+implements
+import
+instanceof
+int
+interface
+long
+native
+new
+null
+package
+private
+protected
+public
+return
+short
+static
+super
+switch
+syncronized
+this
+throw
+throws
+transient
+true
+try
+void
+volatile
+while
+const *
+goto *
+
+
+
+* goto e const são palavras-chave, mas não são usadas em Java.
+
+
+TIPOS DE VARIÁVEIS
+
+
+            TIPO       MEMÓRIA   FAIXA
+Lógico      boolean    1 bit     true ou false
+
+Texto       char       2 bytes   \u0000 a \uFFFF
+            String     Variável  \u0000 a \uFFFF em cada localização
+            
+Integral    byte        1 byte   -128 a 127
+	    short       2 bytes  -32,768 a 32,767
+	    int         4 bytes  -2,147,483,648 a 2,147,483,647
+	    long        8 bytes  -9,223,372,036,854,775,808L a 9,223,372,036,854,775,807l
+	    
+Ponto       float       4 bytes   aproximadamente +/- 3.40282347E+38F 
+Flutuante   			  (7 dígitos decimais significantes)
+	    double      8 bytes   aproximadamente +/-
+	    			  1.79769313486231570E+308 (15 dígitos decimais significantes)
+	    			  
+ATRIBUIÇÕES
+
+A atribuição é realizada com o operador '='
+
+= serve apenas para atribuição, não pode ser usado em comparações (que usa ==);
+Copia  valor da variável ou constante do lado direito para a variável do lado esquedo.
+
+Ex: y= 13; // copia a constante inteira 13 para y
+
+
+INICIALIZAÇÃO PADRÃO JAVA
+
+Variáveis númericas com 0;
+Variáveis booleanas com false;
+Outras variáveis com null.
+
+
+DECLARAÇÕES E ATRIBUIÇÕES DAS VARIÁVEIS
+
+As declarações podem ser exibidas em qualquer posição do código fonte.
+
+int x,y;
+float z= 3.144f;
+double w= 3.1415;
+boolean verdade = true;
+char c,d;
+c= 'A';
+d= '\u0013';
+x= 6;
+y= 1000;
+
+
+LÓGICO
+
+	boolean terminou;
+	terminou = true;
+	terminou= false;
+	
+TEXTO
+char: representa um caracter Unicode de 16 bits (exemplos: 'a','M','\t','\u02B1');
+
+String: representa uma sequência de caracteres.
+
+	char opcao;
+	opcao = 's';
+	opcao= 'n';
+	
+	String frase;
+	frase="Ordem e Progesso";
+	
+	
+TIPO INTEGRAL (INTEIRO)
+
+	byte 8 bits
+	short 16 bits
+	int 32 bits
+	long 64 bits
+
+Representações: 2 (decimal) / 077(octal) / 0xBA (hexadecimal)
+
+
+INTEIRO
+	byte index= 50;
+	short soma= 2000;
+	int num_carros = 5;
+	long valor = 0XDADAL;
+	
+TIPOS PONTO FLUTUANTE (REAL)
+
+	float 32 bits
+	double 64 bits
+	
+Representações: 3.14 / 6.02E23 / 2.718F / 123.4E+306D
+
+	float pi= 3.1415f;
+	double pi= 3.1415;
+	
+TIPO NUMÉRICO COM UNDERSCORE
+
+int newBillion = 1_000_000_000;
+
+
+
+EXERCÍCIOS
+
+
+1) Escreva um programa que calcule o faturamento trimestral de uma empresa de software. Sabendo que, em Janeiro, as vendas foram de R$ 15.000,00, em Fevereiro, R$ 23.000 e em Março, R$ 17.000,00. O Valor final deverá ser impresso na tela.
+
+
+2) Adapte o programa acima para que as leituras das vendas mensais serja informada pelo usuário final.
+	
+
+	
