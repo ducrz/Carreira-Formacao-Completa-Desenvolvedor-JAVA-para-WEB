@@ -1,0 +1,53 @@
+Primeiro Programa Java
+
+Crie o programa "HelloWorldApp.java"
+
+
+
+/*** Primeiro Programa Java ***/
+
+package unidade 1;
+
+class HelloWorldApp{
+
+	public static void main(String arg[]){
+		
+		System.out.println("Hello World!");
+	
+	}
+
+
+
+}
+
+
+$ javac HelloWorldApp.java
+$ java HelloWorldApp
+
+
+----
+
+https://docs.oracle.com/javase/8/docs/api/
+
+
+--
+
+Java é uma plataforma tecnológica para a criação de um Software.
+
+
+Java EE- Enterprise/Software/Servers
+
+JAVA SE- Applications/Desktop/Software
+
+JAVA ME & Card- Client/Deployed/Services
+
+
+JVM
+
+A JVM é uma especificação e não um software. Assim sendo, é possível escolher a JVM de um determinado fabricante, caso algum detalhe da Oracle JVM(padrão do SDK) não estiver atendendo a alguma necessidade em particular.
+
+
+As linguagens de programação LISP, Erlang, OCaml, Scala, Python/Djang e Ruby on Rails podem rodar sobre a JVM (Máquina Virtual Java).
+
+
+JRuby é uma implementação 100% em puro java da linguagem de programação Ruby, possibilitando que os scripts Ruby sejam executados na JVM.
