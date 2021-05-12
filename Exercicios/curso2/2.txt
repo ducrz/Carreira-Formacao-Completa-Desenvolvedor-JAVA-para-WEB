@@ -264,3 +264,108 @@ EXERCÍCIOS
 	
 
 	
+OPERADORES
+
+
+Um operador produz um novo valor a partir de um ou mais argumentos.
+
+Os operadores em Java são praticamente os mesmos encontrados em outras linguagens.
+
++,-,/,*,=,==,<,>,>=,&&, ||, etc
+
+
+A maior parte dos operadores só trabalha com valores de tipos primitivos.
+
+Exceções:
+
++ e += são usados para concatenação de Strings
+!=,= e == são usados também com objetos.
+
+
+LISTA DE OPERADORES JAVA
+
+OPERADOR    FUNÇÃO
++           Adição
+-           Subtração
+*           Multiplicação
+/           Divisão
+%           Resto
+++          Incremento
+--          Decremento
+>           Maior que
+>=          Maior ou igual
+<           Menor que
+<=          Menor ou igual
+==          Igual
+!=          Não igual
+!           Não lógico
+&&          E lógico
+||          OU lógico
+&           AND
+^           XOR
+|           OR
+~           Complemento
+<<          Deslocamento à esquerda
+>>          Deslocamento à direita
+>>>         Deslocamento à direita com zeros
+=           Atribuição
++=          Atribuição com adição
+-=          Atribuição com subtração
+*=          Atribuição com multiplicação
+/=          Atribuição com divisão
+%=          Atribuição com resto
+&=          Atribuição com AND
+|=          Atribuição com OR
+^⁼               Atribuição com XOR
+<<=         Atribuição com deslocamento esquerdo
+>>=         Atribuição com deslocamento direito
+>>>=        Atribuição com deslocamento à direita com zeros
+? :         Operador ternário
+(tipo)      Conversão de tipos (cast)
+instanceof  Comparação de tipos
+
+
+EXERCÍCIOS
+
+1) Escreva um programa Java que leia o valor de dois números inteiros e calcule as operações aritméticas abaixo.
+
+
+
++ adição
+- subtração
+/ divisão
+* multiplicação
+
+
+2) Adapte o programa acima para fazer uso dos Operadores Relacionais e Lógicos listados abaixo.
+
+< menor
+> maior
+>= maior ou igual
+
+&& E
+|| OU
+
+
+
+
+ESTRUTURAS DE SELEÇÃO
+
+
+O controle de fluxo de execução em Java utiliza os mesmos comandos existentes em outras liguagens.
+
+SELEÇÃO:
+if-else, switch-case
+
+REPETIÇÃO:
+for, while, do-while
+
+Desvios (somente em estruturas de repetição): continue e break.
+
+Não existe o comando goto.
+
+
+
+
+
+
