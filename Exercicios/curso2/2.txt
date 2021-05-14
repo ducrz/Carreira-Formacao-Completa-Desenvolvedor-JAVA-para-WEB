@@ -364,8 +364,333 @@ Desvios (somente em estruturas de repetição): continue e break.
 
 Não existe o comando goto.
 
+IF-ELSE
+
+if (expressao booleana)
+	instrucao_simples;
+	
+if (expressao booleana){
+
+	instrucoes
+
+}
+
+if (expressao booleana){
+	instrucoes
+} else if(expressao booleana){
+	instrucoes
+} else{
+	instrucoes
+}
+
+if (cont == 0){
+	System.out.println("Cont = 0");
+} else if (cont == 1){
+	System.out.println("Cont = 1");
+} else{
+	System.out.println("Cont = Erro");
+
+}
+
+
+SWITCH-CASE
+
+switch(seletor_inteiro) {
+
+	case valor_inteiro_1 : //Uma constante inteira (incluir char)
+		instrucoes;
+		break;
+	case valor_inteiro_2 :
+		instrucoes;
+		break;
+		
+	default:
+		instrucoes;
+}
+
+switch (letra){
+	case 'A' :
+		System.out.println("A");
+		break;
+	case 'B' :
+		System.out.println("B");
+		break;
+	default:
+		System.out.println("?");
+
+}
+
+
+char cor = '';
+
+switch (cor){
+	case 0:
+		setBackground(Color.black);
+		break;
+	case 2:
+		setBackground(Color.red);
+		break;
+	default:
+		setBackground(Color.white);
+		break;
+}
+
+BREAK E DEFAULT
+
+A instrução break (opcional) impede que o fluxo de execução continue pelas opções seguintes;
+
+A instrução default (opcional) é chamada quando nenhuma cláusula 'case' for executada.
+
+
+
+SWITCH- CASE COM STRING - À PARTIR DO JAVA 7
+
+
+String cor= "";
+switch(cor){
+	case "azul":
+		setBackground(Color.black);
+		break;
+	case "vermelho":
+		setBackground(Color.red);
+		break;
+	default:
+		setBackground(Color.white);
+		break;
+}
+
+EXERCÍCIO
+
+1) Escreva um programa que leia uma nota (0 a 100) e escreva o conceito associdado.
+
+[90,100] "Excelente"
+[70,90[ "Bom"
+[50,70[ "Regular"
+[0,50[ "Insuficiente"
+
+
+
+WHILE E DO-WHILE
+
+while (expressao booleana){
+
+	instrucoes;
+}
+
+do {
+	instrucoes;
+} while (expressao booleana);
+
+WHILE
+
+int cont =0;
+
+while (cont < 100){
+	System.out.println("contando "+cont);
+	cont++
+}
+
+DO WHILE
+
+int cont =0;
+do{
+	System.out.println("contando "+cont);
+	cont++;
+} while (cont <100);
+
+
+
+CONTINUE
+
+A instrução continue (opcional) interrompe o fluxo de execução de um bloco de repetiçaõ.
+
+
+while (!terminado){
+
+	passePagina();
+	if(alguemChamou == true){
+		break;	//saia deste laco
+	}
+	if(paginaDePropaganda == true){
+		continue; //pule esta iteracao
+	}
+	leia();
+}
+restoDoPrograma();
+
+FOR - Usado para quando sabe-se a quantidade exata de repetições necessárias
+
+for (inicializacao; expressoes booleanas; passo da repeticao){
+
+	instrucoes;
+
+}
+
+for ( inicializacao; expressoes booleanas; passo da repeticao) 
+	instrucao simples;
+	
+for (int x=0; x < 10; x++){
+	System.out.println("Valor do X : "+x);
+
+}
+
+
+
+FOR EACH - For extendido, usado em coleções e API stream
+
+for (var:Collection framework)
+	{bloco de comandos}
+	
+int nums[]={1,2,3,4,5,6,7,8,9,10};
+int sum = 0;
+
+for(int x:nums){
+	sum= sum + x;
+}
+
+
+
+EXERCÍCIOS
+
+
+1) Escreva um programa para calcular a média aritmética, maior e menor valores de um conjunto de valores inteiros positivos.
+
+- Observação: considere o valor (-1) como finalizador.
+
+
+
+2) Escreva um programa para gerar a seguinte série abaixo para os 50 primeiros termos.
 
 
 
 
+3) Escreva um programa para gerar os 20 primeiros termos da série de Fobonacci, sendo que F()n= F(n-1)+F(n-2) e F(1)=F(2)=1. Também calcule a sua média
+
+	F(n)=1,1,2,3,5...
+	
+	
+	
+VETORES E MATRIZES -
+Estrutura de dados onde dados estão armazenados de maneira contígua, lado a lado, onde podem ser manipulados.
+
+
+Vetores (Arrays)
+
+DECLARAÇÃO
+
+Podem ser declarados arrays de quaisquer dos tipos através dos símbolos "[" e "]".
+
+A declaração não cria o array, isto é, não aloca memória. Isso é feito pela instrução new (arrays são objetos em java);
+
+
+char s[]; //declaracao
+
+s= new char[3]; //criacao
+
+s[0]='A'; //atribuicao
+s[1]= 'B';
+s[2]= 'C'; 
+
+
+Os colchetes podem ser usados antes ou depois da vairável.
+Exemplo: char s[] ou char []s;
+
+
+DECLARANDO, CRIANDO E INICIALIZANDO
+
+char s[]= a{'A', 'B', 'C'};
+//Declaracao, criacao e inicializacao
+
+
+Quando um array é criado, todos os seus elementos são inicializados:
+
+
+null, para objetos;
+0, para int, long, short, byte, float, double;
+Unicode 0, para char;
+false, para boolean.
+
+
+
+Point p[] = new Point[5];
+p[0] = new Point();
+p[1]= new Point();
+
+
+
+Arrays não podem ser dimensionados na definição>
+
+	int vector[5]; //ERRADO!
+	
+Arrays não podem ser utilizados sem a criação:
+	int vector[];
+	vector[0]=4; //Errado!
+	
+
+LENGTH
+
+Todo vetor em Java possui a propriedade length que informa o número de elementos que possui.
+
+length é uma propriedade read-only e já foi extremamente útil em blocos de repetição antes do JAVA 5.
+
+ANTES DO JAVA 5
+
+int lista[]= new int[10];
+
+for(int j =0; j < lista.length; j++){
+	System.out.println(lista[j]);
+}
+
+APÓS O JAVA 5
+
+int lista[]= new int[10];
+
+for(int j : lista)
+	System.out.println(j);
+	
+	
+	
+	
+VETORES MULTIDIMENSIONAIS
+
+
+int matriz[][]= new int [4][4];
+matriz[0][0] = 300;
+matriz[1][3]= 600;
+
+0   1    2      3      4
+----------------------------
+300
+----------------------------
+                       600
+----------------------------
+
+----------------------------
+
+
+
+//MATRIZ NULA
+
+for()x=0; x <4; x++)
+	matriz[x][y]=0;
+
+
+
+EXERCÍCIOS
+
+
+
+1) Escreva um programa que leia um vetor A de 50 elementos, construa e imprima outro vetor B da seguinte forma:
+
+-Os elementos de ordem par são correspondentes a (2*A);
+-Os elementos de ordem ímpar são correspondentes a (A/2).
+
+
+2) Construa uma matriz identidade I=3 (apenas os valores diagonais são =1). Todos os outtros são 0.
+
+
+
+I3= (1  0   0 )
+    (0  1   0 )
+    (0  0   1 )
 
