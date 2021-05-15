@@ -1,0 +1,394 @@
+UNIDADE 3- ORIENTAÇÃO A OBJETOS
+
+É um dos principais paradigmas da análise, projeto  e construção de software.
+Surgiu na década de 60 e foi adotado por várias linguagens de programação, tais como: Java, C++, Objective-C, Smaltalk, Delphi, Javascript, C+, Perl, Python, Ruby, PHP, entre ouras.
+
+
+A Análise orientada a Objetos
+
+Determina o que o sistema deve fazer: Quais os atores envolvidos? Quais as atividades que serão realizadas?
+
+Decompõe o sistema em objetos: Quais são? Quais tarefas cada objeto terá que fazer?
+
+
+O Projeto Orientado a Objetos:
+Define como o sistema será implementado;
+Modela os relacionamento entre os objetos e atores(utiliza-se a linguagem de modelagem UML).
+Utiliza e reutiliza abstrações como: classes, objetos, atributos, métodos, interfaces, heranças, polimorfismo, frameworks, etc.
+
+ANÁLISE O.O (1) X Análise Procedural
+
+
+(1) Trabalha no espaço dos problemas (casos de uso simplificados em objetos).
+Abstrações mais simples e mais próximas do mundo real.
+
+(2) Trabalha no espaço da solução (casos de uso decompostos em procedimentos algoritmicos
+-Abstrações mais próximas do mundo do computador
+
+
+VANTAGENS DA ANÁLISE O.O
+
+A orientação a objetos ajuda a melhor organizar e escrever menos código, além de concentrar as responsabilidades nos pontos certos, flexibilizando a aplicação e encapsulando a lógica de negócios;
+
+Em resumo, os principais benefícios da Orientação a Objetos:
+1- Facilidade em projetar o software desejado, visto a utilização de abstração (classes x objetos) de alto nível.
+2- Facilidade na manutenção do software, visto a simplicidade em testar, manter e depurar o código escrito.
+3- Facilidade em reutilizar o software, visto que as classes criadas podem ser reaproveitadas em novos códigos.
+
+
+O Mundo é Composto por Objetos!
+
+
+
+O Que é um Objeto?
+
+Definições
+
+Uma abstração.
+Alguma coisa que faz sentido no domínio da aplicação.
+
+Exemplo: CARRO
+
+Utilidades
+Facilita a compreensão.
+Oferece base real para implementação no computador.
+
+
+Um objeto é representado por um conjunto de atributos (também conhecidos como propriedades) e por um conjunto de métodos (que definem o comportamento de um dado objeto):
+
+ATRIBUTOS (substantivos)
+Motor
+Cor
+Potência
+Fabricante
+
+MÉTODOS (Verbos)
+Acelerar
+Retroceder
+Parar
+Abastecer
+
+
+Exemplo de um Objeto
+
+Atributos
+
+Motor: V12
+Cor: Azul
+Potência: 600 cv
+Fabricante: Ferrari
+
+Métodos (Comportamento)
+
+Acelerar
+Retroceder
+Parar
+Abastecer
+
+CLASSE DE OBJETOS
+
+DEFINIÇÃO
+
+O grupo de objetos que possuem os mesmos atributos e métodos diz-se que pertencem à mesma classe.
+
+Exemplo: Classe Carro
+
+
+À partir de um classe, são gerados objetos.
+Classes são moldes, que geram objetos.
+
+
+Uma classe é um modelo ou protótipo que define as propriedades e métodos(comportamento) comuns a um conjunto de objetos;
+
+Classes são "moldes" que definem as variáveis e os métodos comuns a todos os objetos de um determinado tipo;
+
+
+No mundo real existem vários objetos do mesmo tipo. Por exemplo, o seu carro é um dos milhôes que existem no mundo.
+
+Usando a terminologia de orientação a objetos, o objeto seu carro é uma instância da classe de objetos carro.
+
+
+EXERCÍCIOS
+
+1) Uma casa está para uma planta arquitetônica assim, com um objeto está para:
+(a) método
+(b) uma propriedade
+(c) uma classe V
+(d) um atributo
+(e) uma herança
+
+2) Para criar um sistema de informação que gerencie o aluguel de uma frota de carros, quais são as classes de objetos necessárias?
+Carro, Cliente, Locacao.
+
+
+Orientação a Objetos em Java
+
+Programas em Java provavelmente irão criar diversos objetos de diversos tipos de classes.
+
+
+Os objetos interagem entre si através da troca de mensagens.
+
+Após o objeto ter realizado o trabalho proposto, o mesmo é eliminado através da "coleta automática de lixo".
+
+Para a construção de softwares em Java, faz-se uso:
+
+Das classes já existentes no Java:
+String(java.lang)
+List, Iterator, etc. (Collections API)
+Frame (java.awt)
+Outras
+
+Das novas classes criadas pelo engenheiro de software.
+
+
+A classe String está definida no pacote java.lang e representa uma sequência de caracteres;
+
+A criação de um objeto do tipo String pode ser realizado com ou sem a palavra reservada new;
+
+
+//construcao implicita (String literal)
+String str1 = "Java é show!";
+
+//construcao explicita(String object)
+String nome = new String("Antonio");
+
+As String literais são armazenadas em uma área comum (common poll), isso facilita o compartilhamento de armazenamento para Strings com o mesmo conteúdo. Já as Strings "objetos" são armazenadas em uma área específica de memória (heap), sem qualquer tipo de compartilhamento.
+
+
+String s1="Hello"; //String literal
+String s2= "Hello"; //String literal
+String s3= s1; //Same reference
+String s4 = new String("Hello"); //String object
+String s5 = new String("Hello"); //String object
+
+
+s1 == s1; //true, same pointer
+s1 == s2; //true, s1 and s1 share storage in common pool
+s1 == s3; //true, s3 is assigned same pointer as s1
+s1.equals(s3); //true, same contents
+s1 == s4; //false, different pointers
+s1.equals(s4); //true, same contents
+s4== s5; //false, different pointers in heap
+s4.equals(s5); //true same contents
+
+
+Operações com Strings
+
+int length(). boolean equals(String another)
+int indexOf(String search), char charAt(int index)
+String substring(int fromIndex)
+String toLowerCase(), String toUpperCase()
+String trim(), String replace(char oldChar, char newChar)
+boolean matches(String regexe)
+static String format(String formattingString, object... args)
+
+
+
+Operações com String
+
+//Criacao
+String alo="Alo Pessoal";
+
+//Concatenacao
+String nova= ali+", tudo Ok?";
+
+//Edicao
+String nova= alo+", tudo OK?";
+
+//Verificando tamanho
+int tam= alo.length(); //tamanho = 11
+
+
+//A partir do Java 5
+String.format("%.1f",1.234); //"1.2"
+System.out.printf("%.1f",1.234);
+
+
+String anotherPalindrome= "Niagara. o roar again!";
+char aChar = anotherPalindrome.chatAt(9);
+
+String anotherPalindrome = "Niagara. o roar again!";
+String roar = anotherPalindrome.substring(11,15);
+
+
+CONVERSÃO
+
+conversão String => Numero
+
+float a = (Float.valueOf(args[0])).floatValue();
+float a= Float.parseFloat(args[0]);
+
+
+Conversão Número => String
+
+String s= "" +i;
+String s= Float.toString(i);
+
+
+
+DECLARAÇÃO
+
+class Carro{
+//define os seus atributos
+String motor, cor;
+
+//define os seus métodos
+void acelerar()
+
+}
+
+Representação em UML
+
+---------
+CARRO             CLASSE
+--------
++motor:String     ATRIBUTOS
++cor:String
+----------
++acelerar():void   MÉTODO
+
+
+
+NOVO OBJETO EM JAVA
+
+Um objeto de uma classe é criado utilizando-se a palavra new.
+
+Carro carl;
+//Cria apenas a referência
+
+Carro carl = new Carro();
+//aloca memória e atribui endereço a referência 
+
+
+
+class Aplicacao{
+public static void main(String args[]){
+	Carro car1,car2,car3;
+	car1= new Carro(); //Objeto Carro: instancia1
+	car2= new Carro(); //Objeto Carro: instancia2
+	car3= new Carro(); //Objeto Carro: instancia3
+	
+	if(car1.TemGasolina()){
+		car1.ligar();
+	}
+	if(car2.TemGasolina()){
+		car2.ligar();
+	}
+}
+}
+
+
+EXERCÍCIOS
+
+1) Escreva as classes (Cliente, Locacao e Carro) do sistema de informação que gerencie o aluguel (sisalucar) de uma frota de carros.
+
+2) Na classe principal do sisalucar (SisalucarApp) crie dois objetos do tipo Cliente e dois objetos do tipo Carro.
+
+
+
+ATRIBUTOS E MÉTODOS
+
+
+As propriedades dos objetos podem ser manipuladas diretamente pelo operador de ponto(1).
+
+Carro car1= new Carro();
+car1.cor = "azul";
+car1.fabricante = "ferrari";
+
+
+Sistem.out.println("Cor carro: "+car1.cor); //azul
+System.out.println("Fabricante carro: "+car1.fabricante);
+
+Os valores das propriedades podem ser obtidos facilmente pelo operador de ponto(.)
+
+
+
+MÉTODOS
+
+Definem o comportamento da classe;
+
+Possuem sintaxe semelhante a sintaxe de definição das funções de um programa procedural;
+Determinam o comportamento da classe e a troca de mensagens com outras classes.
+
+
+class Carro{
+	String fabricante, cor;
+	int capacidadeTanque;
+	float consumo;
+	
+	public float autonomia(){
+		return capacidadeTanque * consumo;
+	}
+}
+
+
+ASSINATURA
+
+float              autonomia      ()
+tipo de retorno    nome           argumento
+
+A PALAVRA -CHAVE RETURN
+
+A palavra-chave return especifica o que será retornado após a chamada a um método. Se o método foi void, não haverá o uso do return.
+
+boolean metodo(){
+	if(condicao){
+		instrucao;
+		return true;
+	}
+	resto do metodo
+	return false;
+}
+
+
+CHAMADAS DE MÉTODOS
+
+A troca de mensagens entre os objetos é realizada atrvés da chamada de métodos.
+
+EXEMPLO
+
+class Aplicacao{
+	public static void main(String args[]){
+		Carro car1 = new Carro();
+		
+		System.out.println(car1.autonomia());	
+	}
+}
+
+
+MÉTODO MAIN()
+
+O método main() é chamado (automaticamente) pelo interpretador Java.
+
+
+Sempre deve possuir a seguinte assinatura:
+
+
+public static - modificadores
+
+void - tipo de dados retornados
+
+main - nome
+
+(String[] - tipo de dados aceitos como argumento
+
+ args) - Variável local ao método que contém o valor passado na chamada
+ 
+ 
+ 
+ EXERCÍCIOS
+ 
+1) No sisalucar criar os atributos e os métodos das classes listadas abaixo:
+ 
+Carro(idCarro, placa, fabricante, modelo, ano, cor, valorDiaria)
+Cliente(idCliente, cpf, nome, cnh)
+Locacao(idLocacao, idCarro, idCliente, valorLocado, dataInicio, dataFim)
+
+
+
+2) Na classe principal do sisalucar (SisalucarApp) crie um objeto do tipo Cliente e um objeto do tipo Carro, com os seus respectivos atributos.
+
+3) Na classe principal do sisalucar (SisalucarApp) criar um objeto do tipo Locacao que faz a associação do objeto do tipo Cliente com o objeto do tipo Carro, criado no exercício anterior. Esta associação é feita via método realizarLocacao.
+
+
+ 
