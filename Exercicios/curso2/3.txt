@@ -391,4 +391,464 @@ Locacao(idLocacao, idCarro, idCliente, valorLocado, dataInicio, dataFim)
 3) Na classe principal do sisalucar (SisalucarApp) criar um objeto do tipo Locacao que faz a associação do objeto do tipo Cliente com o objeto do tipo Carro, criado no exercício anterior. Esta associação é feita via método realizarLocacao.
 
 
+
+VARIÁVEIS LOCAIS E VARARGS
+
+Variável dentro de um bloco de execução.
+
+
+Além das propriedades de um objeto, podem ser definidas variáveis, locais a um método ou a um bloco de operações.
+
+Essas variáveis existirão enquanto o procedimento (método, bloco de controle de execução) a que estiver associadas for executado;
+
+Não  podem ser usadas foram do procedimento onde foram criadas;
+
+Não pode ter modificadores de acesso (private, public, package).
+
+
+public class Circulo{
+	private int radio; //Variáveis visiveis dentro
+	private int x,y;   //da classe apenas
+	
+	public double area(){
+		return Math.PI * raio * raio;
+	}
+	
+	public void mudaRadio(int novoRaio){
+	//novoRaio é variável local ao método mudaRaio
+	
+		int maxRaio = 50;
+		//maxRaio é variável local ao método mudaRaio
+		
+		if (novoRadio > maxRadio){
+			raio = maxRaio;
+			//raio é variável de instância
+		}
+		if(novoRadio > 0){
+			int inutil =0;
+			
+			//inutil é variável local ao bloco if
+			radio = novoRaio;		
+		}	
+	}
+}
+
+
+As variáveis podem ser declaradas por um tipo primitivo (int, float, char, etc) ou por um tipo de Classe(própria ou do Java);
+
+No primeiro caso (tipo primitivo), o espaço em memória é alocado como parte da operação. No segundo caso (tipo Classe), não há prévia alocação de memória, somente quando o objeto da classe for criado pela chamada da instrução new.
+
+
+EXERCÍCIO
+
+1) Na classe SisalucarApp criar o método gerarRelatorioLocacao que mostre todas as locações realizadas nos últimos cinco dias. Crie pelo menos uma variável local para calcular o total faturado nesse período.
+
+
+VARARGS
+
+ASSINATURA TRADICIONAL DE MÉTODO
+
+
+public static void somar (double n1, double n2){
+
+	double soma= n1+n2;
+	System.out.println(soma);
+}
+
+No exemplo do método somar, se houver necessidade de inlcuir mais um número, por exemplo quatro, o mesmo método deverá ser alterado.
+
+
+public static void somar (double n1, double n2, double n3, double n4){
+
+	double soma = n1 + n2 + n3+ n4;
+	System.out.println(soma);
+}
  
+Com o recurso de VARARGS (variable-Length Arguments) é possível declarar um método sem especificar a quantidade de parâmetros exata, trazendo maior flexibilidade ao desenvolvedor.
+
+
+public static void somar (double ... numeros){
+	double soma = 0;
+	for(double numero : numeros)
+		soma = soma + numero;
+	System.out.println(soma);
+}
+
+Com esta nova assinatura, o método somar pode receber de 0 a N prâmetros (neste caso, número do tipo double).
+
+
+SINTAXE
+
+Não é possível declarar novos parâmetros após o uso de varargs.
+
+EXEMPLO INVÁLIDO
+
+void doIt(int a, int b, int ... v, int c){
+	//instruções
+}
+
+EXEMPLO VÁLIDO
+
+void doIt(int a, int b, int ... v){ //Como último elemento o VARARGS
+	//instruções
+}
+
+
+TIPOS DE ARGUMENTOS
+
+
+Objetos(Passagem por Referência) - As referências originais são sujeitas a alterações dentro do método;
+
+Tipos Primitivos (Passagem por Valor) - As referências originais não são sujeitas a alterações dentro do método.
+
+
+class conta{
+	int cpf, numero;
+	float saldo;
+	public boolean transfere (Conta conta, float valor){ //Conta é Objeto, float é tipo
+		boolean resultado = true;	
+	}
+}
+
+
+EXERCÍCIOS
+
+1) Altere o método gerarRelatorioLocacao para fazer o uso de Varargs.
+
+
+2) Crie a classe Conta conforme o diagrama abaixo:
+
+
+
+---------------------------------------------------
+	CONTA
+---------------------------------------------------
+	+numero: int
+	+saldo: double
+	+limite: double
+	+nome: String
+----------------------------------------------------
+	+saca(valor: double): boolean
+	+deposita(valor: double)
+	+transfere(destino: Conta, valor: double)
+-----------------------------------------------------
+
+
+
+3) Posteriormente, implemente o método transfere conforme o trecho de código abaixo:
+
+conta1.transfere(conta2, 50);
+A leitura deste código seria "Conta1 transfere para conta2 50 reais".
+
+
+
+
+
+CONSTRUTORES
+
+Utilizam-se construtores para inicializar o estado inicial dos objetos de uma determinada classe, isto é, atribuir valores aos seus atributos no momento de criação do objeto pela instrução new;
+
+Os construtores possuem o mesmo nome da classe e não têm tipo de retorno;
+Uma classe pode ter N construtores;
+
+class Carro{
+	float consumo;
+	
+	Carro(float consumo){
+	this.consumo = consumo;	//Construtor
+	}
+	Carro (){ ... //Construtor vazio
+	
+	}
+}
+
+PALAVRA RESERVADA 'THIS'
+
+Ás vezes é necessário que o objeto se auto-referencie;
+
+Existe uma palavra reservada this que significa uma referência ao próprio objeto.
+
+Um dos principais usos do this é para resolver uma ambiguidade.
+
+class Carro{
+	float consumo;
+	void acelerar(float consumo){
+		this.consumo= consumo;
+	}
+
+}
+
+CONSTRUTORES
+
+Toda classe Java define(implicitamente) um construtor padrão "vazio", isto é, não há atribuição de valores aos atributos de um determinado Objeto;
+
+class Carro{
+	float consumo;
+	
+	Carro(){
+	
+	}
+}
+
+Carro car1 = new Carro();
+//é chamado o construtor vazio
+
+Quando cria-se um novo construtor em uma determinada classe, o construtor padrão (vazio) deixa de existir e é substituído pelo novo criado pelo desenvolvedor;
+
+class Carro{
+
+	Carro(float consumo){
+		...
+	}
+}
+
+Carro car1 = new Carro(500);
+//é chamado o novo construtor
+
+Carro car1 = new Carro(); //ERRO
+
+
+No Java é possível criar uma classe com vários construtores;
+
+class Carro{
+	float consumo;
+	
+	Carro(float consumo){
+		this.consumo = consumo;	
+	}
+	Carro(){ ...
+	
+	}
+}
+
+A escolha de qual construtor será chamado vai depender dos argumentos que serão passados (ou não) no momento da criação do Objeto.
+
+EXEMPLO
+
+	Carro car1 = new Carro();
+	//é chamado o construtor vazio
+	
+	Carro car2 = new Carro(500);
+	//é chamado o construtor que recebe parâmetro
+	
+	
+	
+EXERCÍCIO
+
+1) No sisalucar criar pelo menos um construtor para as classes listadas abaixo:
+
+Carro(idCarro, placa, fabricante, modelo, ano, cor, valorDiaria)
+Cliente (idCliente, cpf, nome, cnh)
+Locacao(idLocacao, idCarro, idCliente, valorLocado, dataInicio, dataFim)
+
+
+MEMBROS DE CLASSE
+
+São atributos e métodos da classe
+
+Como já foi visto, uma classe é composta de atributos e métodos (também conhecidos como seus membros);
+
+No Java, é possível que esses membros sejam de objeto (é o comum, já estuado até aqui) e que também sejam de classe.
+
+Os Membros de Classe ou "Estáticos" são aqueles utilizados para fazer referência a uma determinada classe, sem haver qualquer relação com os objetos que serão criados da mesma. Neste caso, não se replicam quando novos objetos são criados.
+
+Todo membro de classe (atributo e método) deve usar o qualificador static.
+
+QUANDO UTILIZAR?
+
+Considere o trecho de código abaixo. Pergunta-se: é possível saber o total de contas criadas pela classe "Contas"?
+
+class Conta{
+	private int totalDeContas;
+	
+	Conta(){
+		this.totalDeContas = this.totalDeContas +1;	
+	}
+}
+
+
+Com o código acima, o valor de 'totalDeContas' será sempre 1. Por quê?
+Como o referido atributo é 'de objeto', toda vez que o objeto 'Conta' for criado, o valor de sua variável 'totalDeContas' será 1. Qual a solução? 
+Adicionar a palavra static na definição do referido atributo.
+
+SOLUÇÃO
+class Conta{
+	private static int totalDeContas;
+	
+	Conta(){
+		this.totalDeContas = this.totalDeContas +1;	
+	}
+}
+
+Com o código acima, o atributo 'totalDeContas' passa a ser único e o seu conteúdo é único para a classe 'Conta';
+
+Para ter acesso a um atributo estático, utiliza-se a sintaxe: <<Classe.membro_estático>>
+
+Exemplo: Conta.totalDeContas
+
+
+PROCEDIMENTOS DE INICIALIZAÇÃO
+
+Usados para inicializar objetos ou classes.
+
+class Example{
+	...
+	static{
+		...
+	}
+}
+
+MEMBROS DE CLASSE - RESUMO
+
+public class Casa{
+
+	private Porta porta; //Atributos de instância: cada Objeto
+	private int numero; //poderá armazenar valores diferentes nessas variáveis.
+	public java.awt.Color cor;
+	
+	public Casa(){ //Procedimentos de inicialização de objetos (Construtor): código
+		porta = new Porta();//é executado após a criação de cada novo objeto.
+		numero = ++contagem * 10;//Cada objeto terá um número diferente
+	}
+	public void abrePorta(){//Método de instância: só é possível chamá-lo se for
+	        porta.abre();   //através de um objeto
+	}
+	public static String arquiteto = "Zé"; //Atributos estáticos: não é preciso criar
+	private static int contagem = 0;//objetos para usá-los. Todos os objetos os compartilham
+	
+	static { //Procedimento de inicialização estático: código é executado uma única vez.
+		if (condicao){ //quando a classe é carregada. O arquiteto será um só para todas
+			arquiteto = "Og"; //as casas: ou Zé ou Og.
+		}
+	
+	}
+}
+
+EXERCÍCIO
+
+1) Na classe principal do sisalucar (SisaluccarApp) criar o atributo de classe frotaCarros. Alterar também o método gerarRelatorioLocacao para um membro de classe.
+
+
+
+ATRIBUTOS CONSTANTES, ENUMERAÇÕES E MÉTODOS CONSTANTES
+
+
+São variáveis cujo valor só pode ser definido uma única vez. São declarados com o uso da palavra reservada final.
+
+
+class Teste{
+	//atributos constantes
+	final int ESQUERDA = 0;
+	final int DIREITA =0;	
+}
+
+Utilizados para determinar valores que não podem ser alterados.
+
+class Teste{
+	//Atributos constantes
+	public static final int INVERNO=0;
+	public static final int PRIMAVERA = 1;
+	public static final int VERAO= 2;
+	public static final int OUTONO= 3;
+}
+As constantes geralmente são utilizadas em métodos.
+
+setEstacao(int estacao){ ... }
+
+DESVANTAGENS
+
+(1) Não é typesafe: como a constante estacao é um inteiro, o seguinte código é possível:
+	setEstacao(4); //estação não existente
+(2) Não tem namespace: mistura-se com outras constantes existente na classe;
+(3) Requer recompilação do código se novas constantes forem adicionadas.
+
+
+SOLUÇÃO: ENUMERATIONS
+
+São classes Java que definem constantes;
+
+Não podem ser instanciadas usando a palavra new.
+
+public enum Conceito{
+	RUIM, REGULAR, BOM, EXCELENTE;
+}
+
+Os únicos valores aceitos por um tipo enum são os valores previamente definidos.
+
+Conceito c= Conceito.Excelente;
+if(c == Conceito.REGULAR)
+
+switch(c){
+	case RUIM:
+	//...
+}
+
+Essas classes podem possuir construtores, métodos e atributos de instância.
+
+public enum Estacao{
+	INVERNO, PRIMAVERA, VERAO, OUTONO;
+}
+
+public class TesteEstacao{
+	public static void main(String[] args){
+	
+		for(Estacao estacao: Estacao.value())
+			System.out.println(estacao);	
+	}
+}
+
+
+
+Definindo valores às Constantes:
+
+
+public enum Estacao{
+	INVERNO(1), PRIMAVERA(2), VERAO(3), OUTONO(4);
+	private int valor;
+	
+	Estacao(int valor){
+		this.valor = valor;	
+	}
+	public int getValor(){
+		return this.valor;	
+	}
+}
+
+As constantes são sempre declaradas no início.
+
+MÉTODOS CONSTANTES
+
+São aqueles que não podem ser modificados no processo de herança;
+
+
+class Teste{
+	//Método constante
+	private final static void main(String args[]){
+	
+	}
+}
+
+
+EXERCÍCIO
+
+1) Na classe Carro criar um atributo de classe Revendedor do tipo enumeration com as seguintes propriedades de um revendedor de carros(cnpj, endereco, fabricante);
+
+
+RESUMO
+
+
+BOAS PRÁTICAS AO ESCREVER CLASSES
+
+
+Use e abuse dos espaços.
+
+A ordem dos membros não é importante, mas seguir converções melhora a legibilidade do código:
+
+Mantenha os membros do mesmo tipo juntos (não misture métodos estáticos com métodos de instância);
+Declare as variáveis antes ou depois dos métodos(não misture métodos, construtores e variáveis);
+Mantenha os seus construtores juntos, de preferência bem no início.
+
+
+Se for necessário definir blogos static, defina apenas um, e coloque-o no início ou no final da classe.
+
+
