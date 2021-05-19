@@ -1,0 +1,991 @@
+UNIDADE 4
+
+Encapsulamento e os Modificadores de Acesso
+
+PILARES DA ORIENTAÇÃO A OBJETOS
+
+São três os "pilares" da Orientação a OBJETOS:
+
+-ENCAPSULAMENTO
+-HERANÇA
+-POLIMORFISMO
+
+
+O ENCAPSULAMENTO serve para controlar o acesso aos atributos e métodos de uma classe, tendo por objetivo criar um software mais flexível, fácil de modificar e de criar novas implementações.
+
+A HERANÇA permite a criação de novas classes (subclasses) com as mesmas características (atributos) e os mesmos comportamentos (métodos) de uma classe já existente (superclasse).
+
+O POLIMORFISMO é o princípio pelo qual um objeto pode ser referenciado de várias formas.
+
+
+ENCAPSULAMENTO
+
+O encapsulamento permite a visualização de uma entidade de software (neste caso, uma classe) como uma caixa preta. Neste caso, sabe-se o que a classe faz, sem ter acesso ao seu
+comportamento interno, possibilitando esconder os detalhes da implementação realizada.
+
+Quem acessa as funcionalidades não precisa saber como ela foi construída. O que importa é o que ela oferece.
+
+- O acesso às funcionalidades dessas classes é feito via troca de mensagens, isto é, a chamada aos seus métodos.
+
+- O encapsulamento é fundamental para garantir que as mudanças em uma determinada classe, não afete o funcionamento das outras classes que se relacionam com ela, visto que as regras de negócios ficam definidas em apenas um único lugar.
+
+- Simplifica o acesso a um determinado objeto, expondo apenas a sua interface essencial.
+
+- Por definição, os atributos de uma classe devem ser de acesso restrito, e os seus métodos devem ser de acesso público.
+
+Modificadores de Acesso
+
+- Os tipos de acesso aos atributos e métodos de uma classe são definidos pelo uso adequado dos seus Modificadores de Acesso.
+
+No Java são quatro os Modificadores de Acesso:
+
+PUBLIC (+ em UML)
+PRIVATE (- em UML)
+PACKAGE (~ em UML)
+PROTECTED (# em UML)
+
+PUBLIC (+) - ATRIBUIR MÉTODOS COMO PUBLIC
+É acessível por todo mundo!
+- Acessível na própria classe, nas subclasses, nas classes do mesmo pacote e por todas as outras classes.
+
+- Deve ser utilizado preferencialmente para construtores e métodos que fazem parte da interface do objeto.
+
+- Evite usar em construtores, métodos de uso restrito e campos de dados de objetos.
+
+
+PRIVATE (-) - DEFINIR ATRIBUTOS COMO PRIVATE
+- Acessível apenas na própria classe!
+- Use para métodos que não fazem parte da interface do objeto e para campos de dados de objetos.
+
+EXEMPLO
+
+class Pessoa {
+	private String nome; private int idade;
+	public String obs;
+	Pessoa (String nome, int idade) {
+	this.nome = nome;
+	}
+
+	public void imprimeNome() {
+		System.out.println("Nome: " + nome);
+	}
+}
+
+
+Pessoa p1 = new Pessoa("Joao",10);
+p1.nome = "Raul"”;//ERRO DE COMPILAÇÃO, POIS É PRIVATE!
+p1.obs = "bom garoto"; //OK, COMO É PUBLIC FUNCIONA!
+p1.imprimeNome(); //Nome: Joao, OK É PUBLIC
+
+
+
+PROTECTED (#) - SIGA UMA HIERARQUIA DE CLASSE
+- Acessível na própria classe, nas subclasses e nas classes do mesmo pacote.
+- Use para métodos que devem ser sobrepostos.
+- Evite usar em métodos com restrição à sobreposição e em campos de dados de objetos.
+
+
+PACKAGE (~) - SOMENTE NAQUELE PACOTE
+- Acessível na própria classe, nas subclasses e nas classes do mesmo
+pacote.
+- Se não houver outro modificador de acesso, o acesso é desse tipo.
+- Use para construtores e métodos que só devem ser chamados pelas classes e subclasses do pacote.
+- Evite usar em campos de dados de objetos.
+
+
+RESUMO
+
+------------------------------------------------------------
+MODIFICADOR        CLASS      PACKAGE   SUBCLASS     WORLD
+------------------------------------------------------------
+public              V          V           V           V
+protected           V          V           V           X
+sem modificador     V          V           X           X
+private             V          X           X           X
+
+
+MÉTODOS GETTERS E SETTERS - DEFINIR VALORES(SET) E OBTER VALORES(GET)
+
+Para permitir o acesso aos atributos restritos (private) de uma forma controlada, utilizam-se dois métodos: 
+o primeiro para recuperar o valor do atributo (get) 
+e o segundo para atribuir o valor do atributo (set).
+
+- A convenção para esses métodos é de colocar a palavra get ou set antes do nome do atributo.
+
+public double getSaldo(){
+	return this.saldo;
+}
+
+public void setSaldo(double saldo){
+	this.saldo = saldo;
+}
+
+É importante ressaltar que é uma má prática criar uma classe e, logo em seguida, criar getters e setters para todos seus atributos. Métodos getters e setters só se EXISTIR NECESSIDADE.
+
+
+JAVA BEAN - COMPONENTE JAVA
+
+Quando cria-SE uma classe com todos os seus atributos privados, todos os seus métodos get e set e um construtor vazio (padrão), na verdade está construindo um componente Java (Java Bean).
+
+public class MyBean implements Serializable{
+	private int margin;
+	
+	public MyBean(){ }
+	public int getMargin() { return margin; }
+	public void setMargin(int margin) { this.margin = margin; }
+}
+
+
+Um Java Bean não é um EJB (Enterprise Java Beans - tecnologia de objetos distribuídos em Java).
+
+@Stateless
+public class CustomerService{
+
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	public void addCustomer(Customer customer){
+		entityManager.persist(customer);	
+	}
+}
+
+
+EXERCÍCIOS
+
+1) Transforme as classes (Cliente, Locacao e Carro) do sistema de informação que gerencie o aluguel (sisalucar) de uma frota de carros em Java Beans. Faça as correções necessárias na classe SisalucarApp.
+
+• 2) Transforme a classe Conta em um Java Bean. Implemente todos os seus três métodos, considerando a seguinte Regra de Negócio:
+- RN01 – Só é possível sacar até saldo+limite.
+
+
+---------------------------------------
+	CONTA
+---------------------------------------
++numero: int
++saldo: double
++limite: double
++nome: String
+-----------------------------------------
++saca(valor: double): boolean
++deposita(valor: double)
++transfere(destino: Conta.valor: double)
+------------------------------------------	
+	
+
+3) Responda se era necessário criar todos os métodos get e set da classe Conta.
+
+Não era necessário ter os métodos get e set.
+
+
+-------------
+
+REUSO
+
+Reutilização de software é um processo de criação de sistemas de software a partir de softwares existentes, ao invés de construí-los do zero.
+
+
+Para entregar software de qualidade em menos tempo, é preciso reutilizar.
+
+- O Reuso veio para agilizar o processo de desenvolvimento de software, aumentando a sua confiabilidade e diminuindo o seu custo, de uma forma simples e contemplando as boas práticas de engenharia de software.
+
+Reuso é uma das principais vantagens anunciadas pela Orientação a Objetos.
+
+São 04 as principais formas de reuso:
+
+COMPOSIÇÃO: a "é parte essencial de" b 
+
+AGRAGAÇÃO: a "é parte de" b
+ASSOCIAÇÃO: a "é usado por" b
+HERANÇA: b "é" a (substituição pura)
+	ou b "é um tipo de" a (substituição útil, extensão)
+
+
+COMPOSIÇÃO
+Criação de uma nova classe usando classes existentes como atributos.
+
+um trem é formado por locomotiva e vagões.
+
+TREM - 1 -> 1 LOCOMOTIVA
+       1 -> N VAGÃO
+
+
+
+import java.util.*;
+class Trem{
+	Locomotiva locomotiva = new Locomotiva();
+	Collection<Vagao> vagao = new ArrayList<Vagao>();
+}
+
+
+AGREGAÇÃO
+
+Criação de uma nova classe usando classes existentes como atributos.
+
+uma locomotiva tem um farol (mais não vai deixar de ser uma locomotiva se não o tiver).
+
+Locomotiva 1 -> N Farol
+
+import java.util.*;
+class Locomotiva {
+	Collection<Farol> farol = new ArrayList<Farol>();
+}
+
+
+ASSOCIAÇÃO
+
+Criação de uma nova classe fazendo uso de outras usando classes (acoplamento menor).
+
+um trem usa uma estrada de ferro (não faz parte do trem, mas dele depende dela).
+
+
+Trem  ----.---> EstradaDeFero
+
+class Trem {	
+	EstradaDeFerro estrada = new EstradaDeFerro();
+}
+
+EXERCÍCIOS
+
+1) Utilize a técnica de Reuso mais adequada para representar o relacionamento das classes Conta e Cliente.
+
+CONTA                                                  Cliente
+-------------------                                  ------------
++numero: int                                         +nome: String
++saldo: double                                       +endereco: String
++limite: double                                      +cpf: String
++nome: Cliente                                --------------------
+----------------------
++saca(valor: double): boolean
++deposita(valor: double)
++transfere:(destino: Conta, valor: double)
+
+----------------------------------------------------
+
+
+2) Qual é a alteração do código necessária para refletir a imagem abaixo:
+
+CONTA                                                     CLIENTE
+---------------                                          -------------
++numero: int                  1 ---> 5                    +nome: String
++saldo: double                                            +endereco: String
++limite: double                                           +cpf: String
++nome: Cliente                                      -------------
+----------------------
++saca(valor: double): boolean
++deposita(valor:double)
++transfere(destino: Conta, valor: double)
+
+
+REUSO
+
+HERANÇA
+
+
+Criação de novas classes estendendo classes existentes. O relacionamento "é um [subtipo de]".
+
+Um carro é um veículo.
+
+VEÍCULO
+  ^
+  |
+CARRO
+
+Representação UML de veículo
+VEÍCULO
+-------------------
+getVelocidade():float
+getPassageiros():int
+acelera()
+freia()
+
+
+class Veiculo { //Superclasse
+
+}
+class Carro extends Veiculo{ //Carro é filho de veículo, subclasse de veículo
+
+}
+
+
+- Herança é um mecanismo que permite a uma classe herdar todos os métodos e os atributos de outra classe.
+- Uma classe que herda de outra classe é chamada subclasse(no exemplo carro) e a classe que fornece a herança é chamada superclasse(no exemplo veículo).
+
+EXEMPLO DE HIERARQUIA DE CLASSES:
+
+				CLASSE A (A é superclasse de B)
+				   |					
+				CLASSE B (B é subclasse de A
+				   |     (B é superclasse de C, D e E)
+		___|_______________|_____________|____
+		CLASSE C        CLASSE D      CLASSE E  (C, D e E são subclasses de B)
+		
+		
+- As superclasses definem atributos e métodos genéricos que serão herdados pelas classes derivadas.
+- Um método herdado de uma superclasse pode ser redefinido pela classe derivada, mantendo o mesmo nome mas agindo de forma diferente.
+- Normalmente, os atributos de um objeto só podem ser consultados ou modificados através dos seus métodos (getters e setters).
+
+EXERCÍCIOS
+
+1) [ESAF - 2008 - CGU] Na linguagem de programação Java, pode-se definir a visibilidade dos métodos e atributos. Com relação a essa característica, é correto afirmar que:
+
+a) métodos declarados como public em uma superclasse, quando herdados, precisam ser protected em todas as subclasses dessa classe. (FALSO)
+Ao herdar a visibilidade deve ser a mesma ou maior, nunca menor.
+
+b) métodos declarados como protected em uma superclasse, quando herdados, precisam ser protected ou public nas subclasses dessa classe.(VERDADEIRO)
+Correto, se é protegido, pode manter protected ou ampliar para public por exemplo.
+
+c) o nível de acesso protected é mais restritivo do que o nível de acesso default.(FALSO)
+O nível de acesso default é package, que é mais restritivo que o protected.
+
+d) métodos declarados como public só podem ser acessados a partir dos métodos da própria classe ou de classes derivadas. (FALSO)
+Public é acessado por todos.
+e) métodos declarados como default só podem ser acessados a partir dos métodos da própria classe. (FALSO)
+Quem faz isto é o nível de acesso packsage, por toda a hierarquia determinada em package.
+
+
+
+
+
+HERANÇA EM JAVA
+
+Java adota o modelo de árvore, cuja classe Object é a raiz dessa hierarquia de classes.
+
+Uma classe Java só pode estender uma outra classe (herança simples) com o uso da palavra reservada extends.
+
+class Veiculo{
+
+}
+
+class Carro extends Veiculo{
+
+}
+
+Quando uma classe não declara nada, esta (implicitamente) estende Object.
+
+Os construtores das subclasses não herdam os construtores das superclasses. Portanto, a chamada a eles deve ser feita pelo uso do comando super().
+
+				Forma
+			-------------------
+			      desenha()
+			      apaga()
+		-------------------------------------
+		Circulo       Quadrado      Triangulo
+		---------     ---------     ----------
+		desenha()     desenha()      desenha()
+		              apaga()        apaga()
+		              
+
+class Forma {...}
+class Circulo extends Forma {...}
+class Quadrado extends Forma {...}
+class Triangulo extends Forma {...}
+
+
+Como é realizada a chamada de métodos em uma hierarquia de classes.
+
+A mensagem é enviada ao objeto e percorre verticalmente uma hierarquia de classe até que
+uma definição seja encontrada.
+
+O uso de herança aumenta o acoplamento entre as classes, isto é, a dependência de uma classe em relação a outra.
+- A relação entre classe ‘pai’ e ‘ filha’ é muito forte e isso acaba fazendo com que o desenvolvedor tenha que conhecer a implementação da superclasse e das suas subclasses.
+
+- O forte acoplamento(uma relação entre classes de forte dependência, porém dificulta a manutenção do código) da Herança dificulta a mudança pontual no sistema.
+
+
+- Mesmo depois de reescrever um método da superclasse, a subclasse ainda pode acessar o método da superclasse.
+
+Sintaxe padrão: super.método().
+
+
+DIFERENÇAS ENTRE super e super()
+
+- A palavra reservada super é utilizada para fazer referência aos membros (atributos e métodos) da superclasse.
+
+- O comando super() é utilizado para chamar construtores da superclasse.
+
+- Por definição, o super() é chamado (implicitamente) pelo construtor da subclasse. Se houver necessidade de chamá-lo explicitamente, os seus argumentos deverão ser informados.
+
+- Por fim, toda a chamada a super() deverá ser feita na primeira instrução do
+construtor da subclasse.
+
+class Circulo extends Forma {
+	public float raio;
+	Circulo(float raio){
+	super(raio);
+
+	}
+public void apaga() ){
+	super.apaga();
+
+}
+}
+
+EXERCÍCIOS
+
+Modifique a classe Carro do sisalucar conforme.
+
+
+VEÍCULO                   Veículo
+   ^                   ----------------------------
+   |                   getVelocidade():float
+CARRO                  getPassageiros():int
+                       acelera()
+                       freia()
+                       -------
+                       Representação em UML detalhada de Veículo
+                       
+2) Altere a aplicação sisalucar para permitir a locação de outros veículos, tais
+como: motos e ônibus.
+
+3) Crie duas subclasses de Conta: ContaCorrente e ContaPoupanca.
+
+
+
+
+SOBRECARGA E ANULAÇÃO
+
+MANIPULAÇÃO DE MÉTODOS NAS SUBCLASSES
+
+Sobrecarga (overloading)
+- Ocorre quando uma subclasse define um método com o mesmo nome do método herdado da superclasse, contudo com a sua assinatura diferente.
+
+
+Anulação ou Sobreposição (overriding)
+
+- Ocorre quando uma subclasse define um método com o mesmo nome e a mesma assinatura do método herdado da superclasse.
+- Métodos constantes (final) não podem ser sobrepostos.
+
+
+Extensão
+- Ocorre quando uma subclasse define novos métodos, sem qualquer
+relação com os métodos herdados da superclasse.
+
+
+Exemplo de Sobrecarga - Argumento passado diferente
+
+public void print(int i)   ---> print(76);
+public void print(float f) ---> print(3.14);
+public void print(String s) --> print("Hi!");
+
+- Uma boa prática é usar a sobrecarga, somente, nos métodos que possuam a
+mesma funcionalidade.
+
+- A sobrecarga pode ser feita igualmente nos métodos construtores.
+
+Sobrecarga (overloading)
+
+void mover(int dx, int dy){ //SUPERCLASSE
+	x +=dx;
+	x += dy;
+}
+void mover(int raio, float ang){ //SUBCLASSE
+	x += raio*Math.cos(ang);
+	y += raio.Math.sen(ang);
+}
+
+Exemplo usando VARARGS
+void doIt(int ... v){
+	//instrucoes
+}
+void doIt(boolean .. v){
+	//instruções
+}
+
+EXEMPLO - CONSTRUTOR
+
+class Ponto {
+	int x,y;
+	Ponto () {}
+	
+	Ponto (int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}
+
+A sobrecarga de construtores visa definir diferentes formas de criar um objeto.
+
+Exemplo:
+
+Ponto p1 = new Ponto(); //p1 está em (0,0)
+Ponto p2 = new Ponto(1,2); //p2 está em (1,2)
+
+
+ENCADEAMENTO DE CONSTRUTOR
+
+O "encadeamento de construtor" ocorre quando um construtor faz referência a
+outro. Isto é feito pelo uso do comando this().
+
+
+Ponto (){
+	this(0,0);
+}
+Ponto (int x, int y){
+	this.x = x;
+	this.y = y;
+}
+Essa chamada deverá ser feita na primeira linha do construtor!
+
+DIFERENÇAS this e this()
+
+A palavra reservada this é utilizada para informar que a variável manipulada é
+um atributo da classe, e não uma simples variável.
+
+No exemplo anterior, os atributos x e y de Ponto recebem os valores passados
+pelas variáveis x e y.
+
+O comando this() é utilizado para chamar construtores.
+
+
+DIFERENÇAS this e super
+- Usados quando for necessário referenciar explicitamente a instância (this) ou a superclasse (super).
+
+Não confundir this e super com this() e super(). Estes últimos são usados apenas em chamadas de construtores!
+
+Anulação (overriding)
+
+Quando uma subclasse define um método com a mesma assinatura da superclasse.
+
+Funcionamento quando uma subclasse define um método que possui a mesma assinatura do método herdado da superclasse.
+
+A mensagem é enviada ao objeto e percorre verticalmente uma hierarquia de classe até que uma definição seja encontrada
+
+Exemplo:
+
+void mover (int dx, int dy){
+	x += dx;
+	y += dy;
+}
+void mover (int dx, int dy){
+	x += dx -dy;
+	y += dy - dx;
+}
+
+
+Extensão
+
+
+Novos métodos são criados na subclasse.
+
+MÉTODOS CONSTANTES
+- São os métodos que não podem ser anulados pelas subclasses.
+
+- Deve ser utilizado a palavra reservada final.
+
+
+final void mover (){
+	x += dx;
+	y += dy;
+}
+
+final void mover (){ //NÃO PODE ANULAR MÉTODO DA SUPERCLASSE
+	x += dx;
+	y += dy;
+}
+
+CLASSES CONSTANTES
+
+São as classes que não podem ser estendidas (não podem ser superclasses).
+
+public final class A{
+
+}
+
+Todos os métodos dessa classe são finais. Muito útil em classes que contém funções utilitárias e constantes.
+
+Exemplo: java.lang.Math
+
+public final class Math
+extends Object
+
+
+
+EXERCÍCIOS
+
+
+1) Altere os métodos herdados pelas subclasses Carro, Moto e Onibus da
+aplicação sisalucar, fazendo uso das técnicas de sobrecarga e anulação.
+
+2) Crie novos métodos (extensão) na subclasse Carro.
+
+	CARRO
+	--------
+	abastece()
+	fechaPorta()
+	abrePorta()
+	
+3) Adicione um método na classe Conta, que atualiza essa conta de acordo com uma taxa percentual fornecida. Posteriormente, realize a anulação desse método nas subclasses ContaCorrente e ContaPoupanca: a primeira deve atualizar-se com o dobro da taxa e a segunda com o triplo da taxa.
+
+
+
+POLIMORFISMO
+
+
+- Polimorfismo é conhecido como o terceiro pilar da programação orientada a objeto, após o encapsulamento e a herança.
+
+- Polimorfismo é uma palavra grega que significa "muitas formas" e é a capacidade de um objeto poder ser referenciado de várias formas.
+
+Por meio do Polimorfismo é possível:
+1. Trazer clareza ao código;
+2. Diminuir as linhas de programação;
+3. Desenvolver aplicações flexíveis.
+
+
+Considere a hierarquia de classes abaixo:
+
+			Funcionario
+			-----------
+			    ^ 
+			    |
+	____________________|________________________________
+	|Diretor|	|Professor|         |Administrativo|
+        --------        ---------           ----------------
+ 
+- No exemplo acima, é possível perceber que um objeto do tipo Funcionário também pode ser um objeto do tipo Diretor, Professor ou Administrativo.
+
+- Poder adquirir formas mais especializadas de Funcionário em tempo de execução é uma das principais vantagens do polimorfismo.
+
+
+EXEMPLO
+
+public class Funcionario{}
+public class Professor extends Funcionario{}
+public class Diretor extends Funcionario{}
+
+//Codigo Principal
+	Funcionario jose = new Professor();
+//Promocao
+	jose = new Diretor();
+
+No exemplo acima, o objeto jose (do tipo Funcionario) pode assumir formas "mais especializadas", como Professor e, posteriormente, Diretor.
+
+
+EXEMPLO
+
+public class Funcionario{}
+public class Diretor extends Funcionario{ 
+	String departamento;
+	}
+//Codigo
+Funcionario jose = new Diretor();
+jose.dapartamento = "Financeiro"; //Erro
+
+- No exemplo acima, o atributo "departamento" é visível apenas na classe Diretor, sendo que o objeto jose é do tipo Funcionario.
+
+- A correção se dá com Casting de Objetos.
+
+
+Polimorfismo
+
+Polimorfismo é o nome formal para o fato de que, quando se precisa de um objeto de determinado tipo, pode-se utilizar uma versão mais especializada dele.
+
+Ao se estender ou especializar uma classe, não se perde a compatibilidade com a superclasse.
+
+
+OPERADOR instanceof
+
+- É utilizado para identificar se um determinado objeto pertence a uma hierarquia de classes.
+
+
+Sintaxe Padrão:
+
+	if(objeto instanceof Funcionario){ //Se pertence aquela hierarquia de classe
+	
+	}
+
+O resultado da condição será true se objeto for do tipo Funcionario ou das suas subclasses (Diretor, Professor e Administrador). Caso contrário, o resultado será false.
+
+OPERADOR instanceof
+
+void verificarTipoFuncionario(Funcionario objeto) {
+	if (objeto instanceof Diretor)
+	System.out.println("Objeto Diretor");
+	else if (objeto instanceof Professor)
+	System.out.println("Objeto Professor");
+	else
+	System.out.println("Objeto Administrador");
+}
+
+
+Exercícios
+
+1) Criar a hierarquia de classes de Funcionário e implementar o método verificarTipoFuncionario(...).
+
+2) [FCC - 2010 – MPE] Uma operação pode ter implementações diferentes em diversos pontos da hierarquia de classes, desde que mantenham a mesma assinatura. Na orientação a objetos, este é o conceito que embasa:
+a) a multiplicidade
+b) o encapsulamento
+c) o protótipo
+d) o polimorfismo (CORRETO)
+e) o estereótipo.
+
+
+CASTING, CONVERSÃO DE OBJETOS E TIPOS PRIMITIVOS
+
+ Java é uma linguagem fortemente tipada pois exige a declaração de um tipo.
+
+Quando se definem argumentos em métodos ou variáveis em expressões, a utilização dos mesmos com os tipos de dados corretos é obrigatório!
+
+
+EXEMPLO:
+
+void realizarConversao(int valor){
+
+}
+//Execucao
+Objeto.realizarConversao("antonio");
+//Erro de compilacao => tipo requerido é 'int'.
+
+Muitas vezes, haverá uma definição na classe, no método, no atributo ou na variável cujo tipo não é o ideal em determinada situação.
+ 
+Pode ser a classe errada ou o tipos de dados errados, como por exemplo um float quando se precisa de um int.
+ 
+Nesta situação, utiliza-se o Casting para converter o valor de um tipo para outro.
+
+O uso de Casting no Java é dividido em três partes:
+- Casting entre tipos primitivos;
+- Casting de Objetos;
+- Casting de tipos primitivos para objetos e vice-versa.
+
+
+Casting de Tipos Primitivos
+
+O Casting entre tipos primitivos permite converter o valor de um tipo para outro.
+
+int a; byte b;
+
+b= (byte) a; //Downcasting
+
+O Java converterá automaticamente um tipo de dados em outro (Upcasting) sempre que houver garantia de não haver perda de informação.
+
+Conversões automáticas do menor capacidade para o maior, isto é automático.
+
+Casting de Objetos
+
+O Casting de Objetos ocorre quando se deseja associar um objeto da classe Filho a uma declaração da classe Pai.
+
+Pai objeto = new Filho();
+
+Esta conversão é automática desde que a classe Pai seja uma superclasse (direta ou indireta) de Filho ou seja uma interface implementada por Pai.
+
+Casting de Objetos
+
+class Carro extends Veiculo{}
+class Veiculo implements Dirigivel {}
+class Porsche extends Carro {}
+
+Algumas conversões:
+Carro c = new Carro();
+Veiculo v = new Carro();
+Object o = new Carro();
+Dirigivel d = new Carro();
+Carro p = new Porsche();
+
+Pode-se utilizar uma versão mais especializada quando se precisa de um objeto de certo tipo. Neste caso, a conversão é automática.
+
+Veiculo v = new Carro();
+
+
+No sentido inverso, quando for necessário fazer a conversão de volta ao tipo mais especializado, a conversão deverá ser explícita!
+
+Carro c = (Carro)v;
+
+Funcionario jose = new Diretor();
+jose.departamento = "Financeiro"; //Erro
+((Diretor)jose).departamento = "Financeiro";
+
+
+Casting de Tipos Primitivos para Objetos e Vice-versa
+
+No Java os tipos primitivos e os objetos são muito diferentes entre si. Portanto, para que haja uma conversão adequada entre eles, deve-se utilizar as classes Java conhecidas como Wrappers(envelopadoras).
+
+Estas classes são utilizadas para encapsular tipos primitivos em objetos Java.
+
+AUTOBOXING e AUTOUNBOXING
+
+- O Autoboxing é o processo que transforma automaticamente um tipo primitivo em seu Objeto equivalente.
+
+- O Autounboxing é o processo inverso que transforma automaticamente um Objeto no seu tipo primitivo.
+
+//ANTES                               //ANTES
+Integer iob = new Integer(100);       int i = iob.intValue();
+
+//COM AUTOBOXING                       //COM AUTOUNBOXING
+Integer iob = 100;                     int i = iob;
+
+A principal vantagem do recurso de AUTOBOXING e UNBOXING é simplificar o código e prevenir erros de conversão.
+
+OBSERVAÇÃO: Não se deve abandonar o uso de tipos primitivos para utilizar apenas objetos! É pouco eficiente!
+
+
+EXERCÍCIOS
+
+1) Qual é o Casting de tipos necessários para permitir a atribuição dos valores abaixo?
+char a = 'a'; int b = 'b'; float c = 100;
+                            
+int d = 5.1987; 
+	int d= (int)5.1987
+	cast para int 
+
+float e = 5.0;
+	cast de float
+	float e = (float)5.0
+
+int f = (a + 5); 
+
+char g = 110.5;
+	char g=(char)110.5
+	cast de char.
+
+2) Qual são as opções corretas?
+
+interface Pet{}
+class Dog implements Pet{}
+class Beagle extends Dog{}
+
+a) Pet a = new Dog(); //CORRETO
+b) Pet b = new Pet(); //ERRADO
+c) Dog f = new Pet(); //ERRADO
+d) Dog d = new Beagle(); //CORRETO
+e) Pet e = new Beagle(); //CORRETO
+f) Beagle c = new Dog(); //ERRADO
+
+
+
+CLASSES ABSTRATAS
+
+Ao se criar uma classe para ser estendida, é muito comum não se ter idéia de como codificar os seus métodos, isto é, somente as suas subclasses saberão implementá-los.
+
+Uma classe deste tipo não pode ser instanciada pois sua funcionalidade está incompleta. Tal classe é dita abstrata.
+
+No exemplo em questão, não faz sentido criar objetos do tipo Funcionário, mas sim objetos do tipo Diretor, Professor ou Administrador.
+ 
+Nesta caso, especificando Funcionario como classe abstrata, economiza-se código e ganha-se o poliformismo para a criação de métodos genéricos que servirão a diversos objetos.
+
+ Java suporta o conceito de classes abstratas. Pode-se declarar uma classe abstrata usando o modificador abstract.
+ 
+Métodos também podem ser declarados abstratos com o modificador abstract. As suas implementações serão feitas nas subclasses.
+
+As classes abstratas podem ter métodos concretos, campos de dados e construtores. Os objetos das suas subclasses poderão fazer uso deles.
+
+abstract class Funcionario {
+	public abstract double getbonificacao();
+}
+
+public class Professor extends Funcionario{
+	public double getBonificacao() {
+		return this.salario * 1,4;
+	}
+}
+
+Exercícios
+
+1) Altere a superclasse Funcionário para classe abstrata. Defina o método getBonificacao(...) como abstrato. Realize a sua implementação nas subclasses de Funcionário.
+
+2) [FUNRIO – 2009 - FURNAS] Na orientação a objetos, classes que NÃO geram instâncias diretas (objetos) são denominadas classes:
+a) abstratas (CORRETO)
+b) primárias
+c) virtuais
+d) básicas
+e) derivadoras.
+
+
+
+
+INTERFACES
+
+ Todos os métodos públicos (public) de uma classe podem ser acessados por objetos de outras classes. Este conjunto de métodos define a interface de acesso a uma classe.
+ 
+No Java existe o conceito de interface que define uma série de métodos, sem conter as suas implementações. A interface só expõe o que o objeto deve fazer, e não como ele faz, nem o que ele tem. Como ele faz vai ser definido em uma implementação dessa interface.
+
+
+interface Autenticavel {
+	boolean autentica(int senha);
+}
+
+Para implementar uma interface em uma classe utiliza-se a palavra reservada implements.
+
+interface Autenticavel {
+	boolean autentica(int senha);
+}
+public class Professor extends Funcionario
+	implements Autenticavel {
+	boolean autentica(int senha){
+
+	}
+}
+
+Em Java, uma classe pode estender uma outra classe e implementar zero ou mais interfaces.
+
+
+public class Professor extends Funcionario;
+
+implements Autenticavel,Contribuinte,Cidadao
+{ ... }
+//Código
+Autenticavel a = new Professor();
+
+
+O Java não permite herança múltipla com herança de código, porém torna possível herdar múltiplas interfaces.
+
+ Uma vez que uma interface não possui implementação, deve-se notar que:
+- seus campos devem ser públicos, estáticos e constantes;
+- seus métodos devem ser públicos e abstratos.
+
+Como esses qualificadores são fixos, não é necessário a sua declaração.
+
+OBSERVAÇÃO: No Java 8 já é possível definir implementações de métodos em interfaces.
+Recurso este conhecido como métodos default.
+
+
+HIERARQUIA DE INTERFACES NO JAVA API
+
+O framework Collections é todo baseado em interfaces.
+
+Interfaces Java servem para fornecer polimorfismo sem herança!
+
+Deve ser utilizado interfaces sempre que possível, pois o código fica mais
+flexível.
+
+CONCLUSÃO
+
+É mais fácil evoluir classes concretas que interfaces.
+
+Não é fácil acrescentar métodos a uma interface depois que ela já estiver em
+uso, visto a necessidade de alteração de todas as classes que fazem uso da
+mesma.
+
+Quando a evolução for mais importante que a flexibilidade oferecida pelas
+interfaces, deve-se utilizar classes abstratas.
+
+Exercícios
+
+1) Implemente a estrutura abaixo:
+
+Professor -----------------> Autenticavel
+| |-------------------------> Contribuinte
+|---------------------------> Cidadao
+  
+
+obs: o modelo das interfaces Contribuinte e Cidadao está descrito abaixo.
+
+<<interface>>          <<interface>>
+Cidadao                 Contribuinte
+
+vota()                  pagaIR()
+getRG()                 getCPF()
+
+2) O que há de errado na Interface abaixo?
+
+public interface SomethingIsWrong{
+	void aMethod(int aValue){
+		System.out.println("Hi Mom");
+	}
+}
+
+3) A interface abaixo é válida?
+public interface Marker{
+
+}
+
+
+

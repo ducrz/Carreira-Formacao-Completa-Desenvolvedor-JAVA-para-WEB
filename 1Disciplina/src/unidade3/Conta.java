@@ -3,7 +3,7 @@ package unidade3;
 public class Conta {
 	
 	//atributos
-	int numerp;
+	int numero;
 	double saldo;
 	double limite;
 	String nome;
