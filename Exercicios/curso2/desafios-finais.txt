@@ -1,0 +1,29 @@
+DESAFIOS UNIDADE 4
+
+1)Pesquisar qual a importância do uso das classes abstratas e interface no framework collections (java.util).
+
+https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html
+
+2) Implementar a hierarquia de classes abaixo:
+
+
+Desenhista        <<usa>>   Figura
+---------------  -------->  --------
+geraFigura()                 desenha()
+                                ^ 
+    __________________ _________|_
+___|____       _______|____    __|___________       
+Círculo         Quadrado       Triângulo
+desenha()       desenha()      desenha()
+
+
+Desenhista.java, Figura.java, Circulo.java, Quadrado.java e Triangulo.java
+
+3) No exemplo acima, implemente a classe Figura como abstrata. 
+Resposta: Alterando para "abstract class Figura extends Desenhista {".
+
+4) Posteriormente, analise a hipótese de implementá-la como interface.
+
+Resposta: FiguraInterface.java
+
+

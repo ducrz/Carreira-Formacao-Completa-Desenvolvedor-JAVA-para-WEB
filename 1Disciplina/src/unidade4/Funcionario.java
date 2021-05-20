@@ -21,13 +21,20 @@ public abstract class Funcionario {
 		
 		Funcionario objeto;
 
-	
 		
 		objeto = new Diretor();
 		
 		((Diretor)objeto).departamento = "RH"; //Exemplo de Casting
 		
 		verificarTipoFuncionario(objeto);
+		
+		Professor prof = new Professor();
+		
+		Autenticavel aut = prof; //Interface recebendo referencia de objeto
+		
+		Cidadao cidadao = prof;
+		
+		Contribuinte contribuinte = prof;
 		
 		
 	}

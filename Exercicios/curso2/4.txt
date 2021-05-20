@@ -891,7 +891,7 @@ e) derivadoras.
 
 
 
-INTERFACES
+INTERFACES - CONJUNTO DE MÉTODOS QUE UMA OU MAIS CLASSES PODEM IMPLEMENTAR
 
  Todos os métodos públicos (public) de uma classe podem ser acessados por objetos de outras classes. Este conjunto de métodos define a interface de acesso a uma classe.
  
@@ -907,8 +907,7 @@ Para implementar uma interface em uma classe utiliza-se a palavra reservada impl
 interface Autenticavel {
 	boolean autentica(int senha);
 }
-public class Professor extends Funcionario
-	implements Autenticavel {
+public class Professor extends Funcionario implements Autenticavel {
 	boolean autentica(int senha){
 
 	}
@@ -917,10 +916,9 @@ public class Professor extends Funcionario
 Em Java, uma classe pode estender uma outra classe e implementar zero ou mais interfaces.
 
 
-public class Professor extends Funcionario;
-
-implements Autenticavel,Contribuinte,Cidadao
-{ ... }
+public class Professor extends Funcionario implements Autenticavel,Contribuinte,Cidadao{ 
+... 
+}
 //Código
 Autenticavel a = new Professor();
 
@@ -981,11 +979,15 @@ public interface SomethingIsWrong{
 		System.out.println("Hi Mom");
 	}
 }
+Resposta: Como tem implementação está errada.
 
 3) A interface abaixo é válida?
 public interface Marker{
 
 }
+Resposta: Sim, embora vazio é correto.
 
+
+UNIDADE 4 RESUMO
 
 
