@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"cursoAlgoritmosProgramacao","l":"unidade2"},{"m":"cursoAlgoritmosProgramacao","l":"unidade3"},{"m":"cursoAlgoritmosProgramacao","l":"unidade4"},{"m":"cursoAlgoritmosProgramacao","l":"unidade5"}]
