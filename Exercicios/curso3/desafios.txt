@@ -1,0 +1,18 @@
+ATIVIDADES PARA SE APROFUNDAR
+1) Fazer o download das classes Client, Server e Utilities do site abaixo:
+http://docs.oracle.com/javase/tutorial/java/package/QandE/packages-
+questions.html.
+Adaptá-las para a seguinte estrutura de pacotes:
+
+
+PACKAGE NAME    CLASS NAME
+mygame.server   Server
+mygame.shared   Utilities
+mygame.client  Client
+
+2) Faça um estudo das classes Socket e ServerSocket pertencentes ao pacote java.net.
+
+3) Faça um estudo da classe Thread pertencente ao pacote java.lang.
+
+4) Alterar a classe Client para acessar o servidor "127.0.0.1" na porta '4444'.
+
