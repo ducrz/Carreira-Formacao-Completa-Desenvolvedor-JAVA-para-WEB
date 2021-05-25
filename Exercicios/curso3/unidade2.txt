@@ -1,0 +1,723 @@
+APPLETS, ANOTAÇÕES E ENTRADA/SAÍDA
+
+Applets Java
+
+Um Applet é:
+
+Uma aplicação gráfica Java que é executada em um browser.
+
+Uma aplicação gráfica Java que não declara o método public static void main(....).
+
+A grande popularidade inicial da linguagem Java deve-se, em grande parte, ao surgimento dos Applets no início da Web.
+
+Por meio deles, é possível escrever aplicações em Java armazenados em servidores Web que são transferidos pela Internet para os browsers dos usuários.
+
+Arquitetura
+
+Os applets podem ser construídos utilizando os componentes gráficos AWT (Abstract Window Toolkit), Swing (mais avançados que o AWT) ou a combinação de ambos (a partir do Java 6 atualização 12).
+
+
+javax.swing.JApplet
++init()
++getParameter(String).String
+
+
+   ^
+   | Herança
+   
+HelloJavaApplet
++init()
+
+
+   
+Todo applet Java construído com Swing (mais comum), é subclasse de java.applet.Applet e javax.swing.JApplet
+
+
+Primeiro Applet
+
+package unidade2;
+import java.awt.Graphics;
+import javax.swing.JApplet;
+
+	public class AloMundo extends JApplet {
+		public void paint(Graphics g){
+			g.drawRect(0,0,150,150);
+			g.setColor(Color.CYAN);
+			g.setFont(new Font("Times New Roman", Font.BOLD, 16));
+			g.drawString("Alo mundo",20,20);
+		}
+}
+
+É possível testá-lo no Eclipse sem criar uma página HTML.
+
+O Applet em questão deverá ser incluído em uma página HTML.
+
+Página AloMundo.html
+
+<html>
+<body>
+
+<applet code="unidade2.AloMundo.class" width="150" height="150">
+Texto mostrado - browser incompatível
+</applet>
+
+</body>
+</html>
+O Applet em questão deverá ser incluído em uma página HTML.
+
+
+Applet em Funcionamento
+ Quando o browser interpreta uma página HTML e verifica a existência da tag <applet>, imediatamente ele solicita ao servidor Web o envio do applet correspondente. Neste exemplo, o bytecode "AloMundo.class".
+ 
+ 
+Anatomia do Applet
+
+Importando as Classes
+
+import java.awt.Graphics;
+import javax.swing.JApplet;
+
+- java.awt.Graphics é uma classe abstrata que define um conjunto de métodos para desenho de objetos gráficos;
+
+- javax.swing.JApplet é a classe utilizada para construir applets que suportam componentes gráficos JFC/Swing.
+
+
+Criação da Classe do tipo Applet
+
+class AloMundo extends JApplet
+
+- Todo applet Java deve ser subclasse de Applet (componentes AWT) ou JApplet (componentes Swing) para poder responder a requisições do browser.
+
+
+Implementando um Método Principal
+
+public void paint(Graphics g){
+	g.drawRect(0,0,150,150);
+	g.setColor(Color.CYAN);
+	g.setFont(new Font("Times New Roman", Font.BOLD, 16));
+	g.drawString("Alo mundo",20,20);
+}
+- O método public void paint(...) desenha na tela um objeto do tipo Graphics. 
+
+O método drawRect(...) define que o objeto gráfico será um Retângulo.
+
+Os métodos setColor(...) e setFont(...) definem a cor e o tipo da fonte do texto que será escrito neste objeto gráfico via o método drawString(...).
+
+
+
+- Ao invés do método public static void main(...), applets herdam da superclasse Applet os seguintes métodos:
+
+init() - inicialização dos componentes do applet
+start() - o que fazer quando applet iniciar
+stop() - o que fazer antes do applet parar
+destroy() - o que fazer quando o applet terminar
+paint() - o que desenhar no contexto gráfico
+
+
+Pelo menos um deverá ser anulado para que o applet possa ser executado em um browser.
+
+
+Passagem de Parâmetros
+
+Um Applet Java pode receber parâmetros informados na sua página HTML.
+
+Sintaxe
+<applet code="Sound.class" height=50 width=50>
+<param name="sound" value="sound.au">
+</applet>
+
+Essa mesma informação é obtida pelo applet em qualquer dos seus métodos
+da seguinte forma:
+String sound = getParameter("sound");
+
+Futuro da Tecnologia Applet
+
+Os Web Browsers Google Chrome, MS Edge e Mozilla Firefox não mais oferecem suporte a Applets Java.
+
+De acordo com o blog da Oracle, a partir do Java 9 a tecnologia Java Applet deixará de ser suportada, isto é, esta API será considerada obsoleta.
+
+Exercícios
+1) Escrever o Applet AloMundo e implementar os métodos do seu Ciclo de Vida.
+AloMundoExercicio1.java
+
+2) Escrever o Applet Avaliacao que lê uma nota (0 a 100) e imprime o conceito associado.
+[90,100] "Excelente"
+[70,90[ "Bom"
+[50, 70[ "Regular
+[0,50[ "Insuficiente"
+
+Avaliacao.java
+
+3) Escrever o Applet Identidade que representa uma matriz Identidade I=3 (apenas os valores diagonais são = 1). Todos os outros são 0.
+
+
+I3= (1 0 0)
+    (0 1 0)
+    (0 0 1)
+    
+    
+Identidade.java
+
+
+
+Gráficos, Fontes/Textos e Cores
+
+
+Para desenhar no Java é necessário um contexto gráfico. Um objeto da classe Graphics controla o modo como a informação é desenhada, pois contêm métodos para desenhar, manipular fontes e cores.
+
+Um objeto da classe Graphics é passado pelo sistema ao método paint(...) como argumento, quando uma operação paint ocorre.
+
+Quando um applet é inicialmente executado, o método paint(...) é automaticamente chamado (depois da chamada dos métodos init() e start()).
+
+Para que paint(...) volte novamente a ser chamado é necessário que ocorra um evento tal como um redimensionamento ("resizing") do applet.
+
+Se o programador necessitar chamar um método que efetue o painting, deve chamar o método repaint() (public void repaint()) que efetua um "clear"” seguido de um "paint".
+
+
+java.awt.Graphics
+
+Representa o contexto gráfico de cada componente de um applet.
+
+A classe Graphics possui um conjunto de métodos para desenhar: 1. Linhas, 2. Retângulos, 3. Retângulos arredondados, 4. Polígonos, 5. Ovais e 6.
+
+Arcos.
+
+1. Desenho de Linhas
+
+public void drawLine( int x1, int y1, int x2, int y2)
+=> desenha uma linha entre os pontos [x1, y1] e [x2, y2].
+
+2. Desenho de Retângulos
+
+public void drawRect( int x, int y, int width, int height)
+public void fillRect( int x, int y, int width, int height)
+public void clearRect( int x, int y, int width, int height)
+
+=> Estes métodos desenham um retângulo com o canto superior esquerdo nas
+coordenadas [x, y] e de largura "width" e altura "height".
+
+3. Desenho de Retângulos Arredondados
+
+public void drawRoundRect(int x, int y, int width, int height, int arcW, int arcH)
+public void fillRoundRect( int x, int y, int width, int height, int arcW, int arcH)
+
+=> Estes métodos desenham um retângulo com cantos arredondados, situado dentro de um retângulo com o canto superior esquerdo nas coordenadas [x, y] e de largura "width" e altura "height". As ovais que formam os cantos do retângulo têm largura "arcWidth" e altura “arcHeight”.
+
+4. Desenho de Polígonos
+
+public void drawPolygon( int xPoints[], int yPoints[], int points)
+public void fillPolygon( int xPoints[], int yPoints[], int points)
+
+=> Estes métodos desenham um polígono na cor corrente com o número de pontos "points", em que a coordenada x de cada ponto está especificada no vetor "xPoints[]" e a coordenada y no correspondente elemento do vetor "yPoints[]".
+
+
+5. Desenho de Ovais: elipses ou círculos
+
+public void drawOval( int x, int y, int width, int height )
+public void fillOval( int x, int y, int width, int height)
+
+=> Estes métodos desenham uma oval (elipse ou círculo) na cor corrente situada dentro de um retângulo com o canto superior esquerdo no ponto [x, y] e de largura "width" e altura "height".
+
+6. Desenho de Arcos
+
+public void drawArc( int x, int y, int width, int height, int startAngle, int arcA)
+public void fillArc( int x, int y, int width, int height, int startAngle, int arcA)
+
+=> Estes métodos desenham um arco na cor corrente que é parte de uma oval situada dentro de um retângulo com o canto superior esquerdo no ponto [x, y] e de largura "width" e altura "height". O arco começa no ângulo "startAngle" e estende-se "arcAngle" ângulos.
+
+
+java.awt.Font
+
+Pode-se imprimir texto no applet usando a classe Graphics em conjunto com a classe Font.
+
+Para desenhar texto o primeiro é necessário criar uma instância da classe Font.
+
+Font f = new Font ("TimesRoman", Font.BOLD, 14);
+
+Os objetos da classe Font representam uma fonte individual, isto é, o nome, estilo (plain, bold, italic) e tamanho em "points". Os nomes das fontes são strings representativas da família da fonte, como por exemplo "TimesRoman", "Courier", ou "Helvetica".
+
+Os estilos das fontes são constantes do tipo inteiro definidas na classe Font com as designações Font.PLAIN, Font.BOLD e Font.ITALIC.
+
+Uma cor é representada como uma combinação de vermelho, verde e azul (Red, Green and Blue – RGB). Cada componente da cor pode ter um valor entre 0 e 255. Preto é (0,0,0) e branco é (255, 255, 255).
+
+Na classe Color são definidos um conjunto atributos de classe que representam cores padrão, tais como: Color.white, Color.black, Color.red, etc.
+
+Color c = new Color(140, 140, 140);
+
+Para se desenhar um objeto ou texto numa determinada cor, é necessário primeiro criar um objeto Color e utilizar o método “setColor(...)” no objeto Graphics desejado.
+
+Para além de ser possível colocar uma cor corrente para o contexto gráfico, também é possível colocar as cores de "background" e "foreground" do próprio applet usando os métodos "setBackground()" e "setForeground()" definidos na classe java.awt.Component e que são herdados pela classe.
+
+
+Exercício
+
+
+1) Escrever no método paint() do Applet AloMundo as propriedades do computador (versão da JVM e do Sistema operacional) em que o mesmo está sendo executado.
+
+- Obs: A cor de fundo do applet deverá ser verde; a cor da fonte do texto deverá ser azul; e a fonte Times New Roman 30 Bold.
+
+- Dica: use a classe System e os métodos setBackground(...), setColor(...) e setFont(...), respectivamente.
+
+
+Java Web Start
+
+Uma alternativa aos applets é a tecnologia Java Web Start (JAWS).
+
+O JAWS é uma tecnologia que possibilita a execução de uma aplicação Java via rede (local ou Internet), sem a necessidade de um browser.
+
+Esta tecnologia foi criada no Java 2 e com o surgimento de novas versões do Java, sofreu melhorias, principalmente no requisito de segurança. A partir do Java 1.4, esta tecnologia foi incorporada ao JSE.
+
+O JAWS permite:
+
+(1) Ativar aplicações facilmente, com apenas um clique;
+(2) Oferecer a garantia de que sempre esteja sendo executada a versão mais recente da aplicação;
+(3) Eliminar procedimentos complexos de instalação ou atualização.
+
+O JAWS pode ser executado de três formas:
+
+(1) Via browser
+(2) Via gerenciador de aplicações JAWS
+(3) Via ícone na área de trabalho do S.O
+
+Criando a Primeira Aplicação
+
+1º Passo: Criar a aplicação Java (Jaws.java)
+
+package unidade2;
+import javax.swing.JFrame;
+public class Jaws {
+public static void main(String[] args) {
+	JFrame frame = new JFrame("Java WS");
+	frame.setSize(350,250);
+	frame.setVisible(true);
+}
+}
+2º Passo: Criar o arquivo de manifesto (manifest.mf) no subdiretório (Meta-inf)
+
+Manifest-Version: 1.0
+Created-By: 1.8 (ABC Treinamentos)
+Permissions: sandbox
+Main-Class: unidade2.Jaws
+
+
+3 º Passo: Compactar os dois arquivos anteriores em um .JAR (jaws.jar)
+
+
+4 º Passo: Criar uma chave-pública pelo Windows
+
+keytool -genkey -dname "cn=Teste, ou=Tecnologia o=B, l=F, s=C" -alias key -keystore c:\temp\mykeystore -storepass 123456 -validity 450
+
+
+5 º Passo: Assinar o arquivo .JAR (jaws.jar) com a chave-pública criada anteriormente
+jarsigner -keystore c:\temp\mykeystore -storepass 123456 -signedjar c:\temp\jaw.jar c:\temp\jaws.jar key
+
+6 º Passo: Criar o arquivo .JNLP (jaws.jnlp) que é o protocolo padrão (Java Network Launching Protocol) para executar aplicações JAWS.
+
+
+Arquivo jaws.jnlp
+
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="." href="jaws.jnlp">
+<information>
+<title>Exemplo Jaws</title>
+<vendor>ME</vendor>
+<description>Exemplo</description>
+</information>
+<security><all-permissions /></security>
+<resources>
+<j2se version="1.7+" />
+<jar href="jaw.jar" />
+</resources>
+<application-desc main-class="unidade2.Jaws" />
+</jnlp>
+
+
+Segurança do JAWS
+Necessário adicionar o caminho do arquivo jaws.jnlp na Lista de Exceções
+
+Execução do JAWS
+
+Dar um duplo clique no arquivo jaws.jnlp.
+
+
+Anotações
+
+É o recurso que possibilita escrever metadados (dados sobre outros dados) no código fonte de uma aplicação Java. Essas anotações não afetam o funcionamento do código onde foram declaradas, pois são ignoradas pelo compilador.
+
+Podem aparecer em qualquer lugar do código e podem ser simples marcadores ou conter elementos que podem receber valores.
+
+A sua principal utilidade consiste no fato de que as anotações poderão ser utilizadas para criar diretivas de configuração, controle de versão, validações, testes unitários, tabelas em banco de dados, etc.
+
+Sintaxe
+@anotação("parâmetro")
+
+Toda palavra em Java que começa com o símbolo @ é uma anotação.
+
+Qualquer tipo de declaração pode possuir uma anotação associada.
+Por exemplo, classes, métodos, atributos, constantes enum, podem possuir anotações.
+
+Exemplos
+
+@Author(
+name = "Antonio Benedito",
+date = "04/07/2016"
+)
+class MyClass() { ... }
+@SuppressWarnings("unchecked")
+void myMethod() { ... }
+
+Categorias de Anotações
+
+
+São três as categorias de anotações:
+
+Anotações marcadoras – são aquelas que não possuem membros.
+
+Anotações de valor único - são aquelas que possuem um único membro.
+
+Anotações completas - são aquelas que possuem múltiplos membros.
+
+@Test //marcadora
+@MinhaAnotacao("valor") //valor único
+@Version(major=1,minor=0) //completa
+
+
+Tipos de Anotações
+•
+São dois os tipos de anotações que podem ser utilizados no Java:
+
+(1) Anotações Simples
+
+
+Utilizadas para acrescentar significado ao código. Cinco anotações, denominadas ‘anotação padrão’, são parte do pacote java.lang. 
+
+São elas: @Override, @Suppresswarnings, @Deprecated, @SafeVarargs (novidade Java 7) e @FunctionalInterface (novidade Java 8).
+
+(2) Meta-Anotações
+
+Utilizadas para a criação de anotações. São as anotações das anotações. Pertencem também ao pacote java.lang.annotation. São elas: @Retention, @Documented, @Target, @Inherited e
+@Repeatable (novidade Java 8).
+
+
+Anotações Simples
+
+@Override
+
+É uma anotação marcadora que deve ser usada apenas com métodos.
+
+Serve para indicar que o método anotado está sobrescrevendo um método da superclasse.
+
+public class Funcionario {
+protected double salario;
+public double getSalarioTotal(double bonus)
+{...}
+@Override public String toString()
+{...}
+}
+
+@Deprecated
+
+Assim como @Override, é também uma anotação marcadora. Esta anotação é utilizada quando é necessário indicar que um método não deveria mais ser usado, ou seja, informa que o método está obsoleto.
+
+Diferente de @Override , @Deprecated deve ser colocada na assinatura do método.
+
+public class Funcionario {
+protected double salario;
+@Deprecated
+public double getSalarioTotal(double bonus)
+{...}
+@Override public String toString()
+{...}
+}
+
+@Suppresswarnings
+
+Aplicações criadas antes do advento do Java 5 podem ter algum código que gera alertas (warnings) durante a compilação com esta versão ou posteriores.
+
+A resposta está no uso da anotação @SuppressWarnings, que permite desligar os alertas de uma parte do código da aplicação – classe, método ou inicialização de variável ou campo – e os warnings do restante do código permanecem inalterados.
+
+Diferente das duas anotações anteriores, @SuppressWarnings é uma anotação de valor único, onde o valor é um vetor de String.
+
+@Suppresswarnings
+
+public class Funcionario {
+@SuppressWarnings(value={"unchecked","rawtypes"})
+public static void main(String[] args)
+{...}
+}
+
+@SaveVarags
+
+A função dessa anotação é informar ao compilador que a operação de conversão forçada de arrays com tipos genéricos é segura, ou seja, que não acontecerá o heap pollution.
+
+Quando usada na declaração de um método com a sintaxe citada, essa anotação desonera as classes que chamam esses métodos da necessidade de utilizarem @SuppressWarnings.
+
+Isso é o que acontece, no JDK 7, com o método asList() da classeArrays, como é mostrado a seguir, e também com alguns outros métodos da API.
+
+@SafeVarargs
+public static <T> List<T> asList(T... a) {
+return new ArrayList<>(a);
+}
+
+@FunctionalInterface
+
+Esta anotação é utilizada para informar que uma interface é explicitamente funcional, isto é, que ela possui apenas um método abstrato.
+
+Interfaces funcionais são o coração do recurso de Lambda. O Lambda por si só não existe, e sim expressões lambda, quando atribuídas/inferidas a uma interface funcional.
+
+@FunctionalInterface
+interface Validador<T> {
+boolean valida(T t);
+}
+
+As interfaces funcionais definidas no Java 8 fazem parte do pacote java.util.function.
+
+
+Meta-Anotações
+
+@Retention
+
+As anotações podem estar presentes apenas no código fonte ou no binário de classes ou interfaces. @Retention é usada para escolher entre essas possibilidades.
+
+Ela suporta três valores: SOURCE, para indicar que as anotações marcadas não estarão no código binário; CLASS, para gravar as anotações no arquivo .class, mas que não estarão disponíveis em
+tempo de execução; e RUNTIME, para indicar que as anotações estarão disponíveis em tempo de execução;
+
+@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.RUNTIME)
+
+@Target
+
+Esse tipo de anotação é utilizado para determinar quais são os elementos da classe que poderão ser anotados.
+
+As possibilidades são:
+
+ElementType.ANNOTATION_TYPE (Uma
+Meta Anotação)
+ElementType.CONSTRUCTOR
+ElementType.FIELD
+ElementType.LOCAL_VARIABLE
+ElementType.METHOD
+ElementType.PACKAGE
+ElementType.PARAMETER
+ElementType.TYPE (Enums, Classes ou Interfaces)
+
+
+@Documented
+
+É uma anotação marcadora utilizada para indicar ao JavaDoc a sua inclusão na documentação a ser produzida.
+
+@Inherited
+É uma anotação marcadora utilizada para especificar que as subclasses que estenderem sua classe anotada também serão anotadas.
+
+Criação de Novas Anotações
+
+É possível a criação das suas próprias anotações, criando uma nova interface com o símbolo @.
+
+É recurso muito útil ao desenvolvedor que estiver criando uma nova ferramenta ou framework.
+
+package anotacoes;
+import java.lang.annotation.*;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE )
+
+public @interface ITabela {
+	String[] colunas();
+}
+
+Esta interface é uma Anotação que possui um atributo que define as colunas de uma tabela.
+
+Uso de Novas Anotações
+
+A nova anotação criada é utilizada pela classe Cliente.
+
+package anotacoes;
+@ITabela(colunas = {
+"nome",
+"endereco",
+"cpf"
+})
+public class Cliente
+{
+	private String nome;
+	private String endereco;
+	private String cpf;
+}
+
+Tecnologias Java com as suas próprias Anotações
+
+Hibernate
+EJB
+JPA
+Spring
+JUnit
+CDI
+JSF
+JBoss Seam
+Etc.
+
+Exercícios
+
+
+1) Dada a interface abaixo, quais são as alternativas para eliminar os problemas encontrados?
+
+public interface Internet{
+	/* conectar @deprecated
+	* usar conectarSSL.*/
+	@Deprecated
+	public void conectar();
+	public void conectarSSL();
+}
+public class InternetApp
+	implements Internet
+{
+public void conectar(){}
+public void conectarSSL(){}
+}
+
+2) Criar a Anotação Copyright composta por três elementos: autor, data e versao. Aplicar essa anotação à classe InternetApp.
+
+
+Streams de Entrada e Saída
+
+Toda operação de entrada e saída em uma aplicação Java faz uso de um objeto que identifica um fluxo (stream) de informações.
+
+Um stream é uma sequência de dados transmitidos de uma fonte de entrada para um destino de saída e vice-versa.
+
+Entrada e Saída
+
+Um Stream de Entrada é utilizado para ler os dados a partir de uma fonte, um item de cada vez. Um Stream de Saída é utilizado para gravar dados para um destino, um item por vez.
+
+InputStream e OutputStream são as classes abstratas definidas no pacote java.io que representam um Stream de Entrada e um Stream de Saída, respectivamente.
+
+Os principais Streams definidos no Java são:
+Byte Stream
+Character Stream
+Buffered Stream
+Data Stream
+Object Stream
+
+Byte Stream
+É o tipo de fluxo utilizado para realizar a operação de E/S de bytes.
+
+As classes FileInputStream e FileOutputStream representam este tipo de fluxo.
+
+
+FileInputStream in = null;
+FileOutputStream out = null;
+try {
+	in = new FileInputStream("fe.txt");
+	out = new FileOutputStream("fs.txt");
+	int c;
+	while ((c = in.read()) != -1)
+	out.write(c);
+}
+
+Character Stream
+
+A plataforma Java armazena os caracteres utilizando a notação Unicode. Um Character Stream automaticamente converte o formato utilizado para o formato local, facilitando a internacionalização da aplicação.
+
+Todas as classes de Character Stream são descendentes de Reader e Writer.
+
+FileReader in = null;
+FileWriter out = null;
+try {
+in = new FileReader("fe.txt");
+out = new FileWriter("fs.txt");
+int c;
+while ((c = in.read()) != -1)
+out.write(c);
+}
+
+Buffered Stream
+Os fluxos vistos até então não fazem uso de uma memória auxiliar (buffer) para armazenar o que está sendo enviado/recebido.
+
+O Java implemente este tipo de fluxo para oferecer este tipo de operação.
+
+BufferedReader in = new BufferedReader
+(new InputStreamReader(System.in));
+String monitor="";
+System.out.println("Digite algo");
+try {
+monitor = teclado.readLine();
+}
+System.out.println("foi digitado:"+monitor);
+
+
+Data Stream
+É o tipo de fluxo que oferece suporte ao envio/recebimento de tipos de dados (boolean, char, byte, short, int, long, float, e double), bem como de Strings também.
+
+Todos os Data Streams implementam a interface DataInput ou DataOutput.
+
+static final double[] precos ={19,9,15};
+static final int[] unidades ={12,8,13};
+static final String[] descs ={"TS","pin","boné"};
+out = new DataOutputStream
+(new BufferedOutputStream(
+new FileOutputStream("fs.txt")));
+for (int i = 0; i < precos.length; i ++) {
+out.writeDouble(precos[i]);
+out.writeInt(unidades[i]);
+out.writeUTF(descs[i]);}
+
+Object Stream
+
+É o tipo de fluxo que oferece suporte ao envio/recebimento de Objetos, cuja classe implemente a interface Serializable.
+As classes Object Stream são ObjectInputStream e ObjectOutputStream.
+
+Object ob = new Object();
+//escrita
+out.writeObject(ob);
+//leitura
+Object ob2 = in.readObject();
+
+Exercícios
+
+1) Escrever a classe StreamApp que leia uma arquivo texto (dados.txt) e informe na tela o número de caracteres totais existentes nesse arquivo.
+
+StreamApp.java
+
+2) Na classe StreamApp, criar um método para contar o número de vezes que um determinado caracter (por exemplo 'a'), informado pelo usuário em tempo de execução, aparece no arquivo texto (dados.txt).
+
+
+
+Entrada e Saída de Dados com as classes Scanner e Formatter
+
+Classes Scanner e Formatter
+
+A classe Scanner implementa as operações de entrada de dados pelo teclado.
+
+A classe Formatter implementa as operações de saída dos dados gerados pela aplicação.
+
+Formatter fmt = new Formatter(System.out);
+Scanner scn = new Scanner(System.in);
+int n1 = scn.nextInt();
+fmt.format("n1: %d", n1);
+
+O método principal (format) é muito similar à função printf(...) da linguagem
+'C'.
+
+fmt.format(String fmt, Object ... args);
+
+Os principais caracteres de formatação estão apresentados abaixo:
+
+%c caractere simples
+%d decimal
+%e notação científica
+%f ponto flutuante
+%o octal
+%s cadeia de caracteres
+%u decimal sem sinal
+%x hexadecimal
+
+Para cada um dos tipos primitivos, há um método nextXxx() correspondente.
+
+int n = ler.nextInt();
+float preco = ler.nextFloat();
+double salario = ler.nextDouble();
+String palavra = ler.next();
+
+
+
+
