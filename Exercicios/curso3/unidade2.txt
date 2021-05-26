@@ -718,6 +718,43 @@ float preco = ler.nextFloat();
 double salario = ler.nextDouble();
 String palavra = ler.next();
 
+Tanto a classe Scanner como a Formatter pertencem ao pacote java.util.
+
+A classe Scanner divide em substrings (tokens) qualquer dado entrado.
+
+Estes são separados por delimitadores.
+
+Se a string não puder ser interpretada com o tipo especificado, a exceção InputMismatchException é anunciada.
+
+Há também um conjunto de métodos hasNextXxx(), como por exemplo hasNextInt(), que retornam verdadeiro ou falso, de acordo com o tipo de token passado.
+
+A classe Formatter fornece vários construtores, cada qual com um tipo de parâmetro específico.
+
+Formatter(File file)
+Formatter(OutputStream os)
+Formatter(String fileName)
+Formatter(PrintStream ps)
+
+O pacote java.nio.file fornece a classe Path para manipular o caminho em um determinado sistema de arquivos.
+
+// Sintaxe Microsoft Windows
+Path path = Paths.get("C:\\home\\joe\\foo");
+
+Também fornece a classe Files composta por vários métodos para manipulação de arquivos, tais como: criação, cópia e exclusão de arquivos.
+
+Files.createFile(file);
+Files.delete(path);
+Files.copy(source, target, REPLACE_EXISTING);
+Files.move(source, target, REPLACE_EXISTING);
+Files.createDirectory(path);
+
+Exercícios
+
+1) Escrever a classe ScannerApp que leia quatro notas, calcule a sua média aritmética e imprima na tela o seu resultado com duas casas decimais.
+
+2) Escrever a classe ScannerAppv2 que leia o arquivo numeros.txt (8.5 32767 3.14159 1000000.1) e calcule a soma dos seus valores, imprimindo o resultado na tela.
+
+3) Escrever a classe BackupApp que realiza o backup de todos os arquivos .java existentes no pacote unidade2.
 
 
 
