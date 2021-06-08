@@ -1,0 +1,366 @@
+Framework Collections
+
+Framework Collections
+Definição:
+O Framework Collections é uma arquitetura unificada para a representação e a manipulação de coleções. É composta de Interfaces (são os tipos de dados que representam as coleções),
+Implementações (dessas interfaces) e os Algoritmos (prontos para realizarem pesquisa e ordenação, entre outras funcionalidades).
+
+Os principais benefícios desse framework são:
+1. Redução do esforço de programação;
+2. Melhoria da qualidade dos programas escritos;
+3. Redução da curva de aprendizado de novas APIs;
+4. Estímulo para o reuso de software;
+5. Vários algoritmos prontos para usar.
+
+Uma Coleção é uma estrutura de dados que possibilita agrupar outros objetos, tendo por objetivo: adicionar, remover e pesquisar um determinado objeto dentro da coleção.
+
+O Framework Collections é uma arquitetura baseada na hierarquia de interfaces abaixo:
+
+
+                          Collection                           Map
+                          --------------                        ^  
+                               ^                                |
+                               |                           ----------------
+   ---------------------------------------                      SortedMap   
+  Set     List       Queue     Deque
+  ----    -----      ------    --------
+   ^       
+   |     
+  SortedSet
+
+
+As Interfaces acima listadas diferem entre si na forma de organizar os dados, nas implementações das operações de adição, remoção e pesquisa, bem como na eficiência da realização dessas operações.
+
+As Interfaces acima listadas diferem entre si na forma de organizar os dados, nas implementações das operações de adição, remoção e pesquisa, bem como na eficiência da realização dessas operações.
+
+
+Diagrama de Classes do Framework Collections.
+
+
+Interfaces
+
+public interface Collection<E>
+É o elemento raiz de toda hierarquia de coleções. Define um grupo
+de objetos conhecidos como elementos.
+
+public interface Set<E>
+Define uma coleção que não pode conter elementos duplicados.
+
+public interface SortedSet<K,V>
+Define uma coleção do tipo Set com os seus elementos ordenados.
+
+public interface List<E>
+Define uma coleção de elementos ordenados e que podem ser duplicados. Representa a estrutura de dados Lista.
+
+public interface Queue<E>
+Define uma coleção de elementos que podem ser ordenados no padrão FIFO (first-in-first-out). Representa a estrutura de dados Fila.
+
+public interface Deque<E>
+Define uma coleção de elementos ordenados no padrão FIFO (first- in-first-out). Representa a estrutura de dados Fila duplamente encadeada.
+
+public interface Map<K,V>
+Cada objeto da coleção tem uma chave (key) associada. Não permite elementos duplicados.
+
+public interface SortedMap<E>
+Define uma coleção do tipo Map cujos elementos são ordenados pela chave.
+
+
+Resumo:
+As interfaces Collection, Map, Set, List, Queue e Deque são utilizadas para armazenar um conjunto de objetos de forma não ordenada. Já as interfaces SortedSet e SortedMap são utilizadas para armazenar um conjunto de objetos de forma ordenada.
+
+
+
+Interface java.util.Collection
+
+
+É a Interface base para todos os tipos de coleções. Define os seguintes métodos para a manipulação de objetos das coleções:
+
+int size(), boolean isEmpty(), boolean contains(Object element), boolean add(E element), boolean remove(Object element) e Iterator<E> iterator().
+
+
+Além desses métodos, define os seguintes métodos para a manipulação de coleções inteiras:
+
+boolean containsAll(Collection<?> c), boolean addAll(Collection<? extends E> c), boolean removeAll(Collection<?> c), boolean retainAll(Collection<?> c) e void clear().
+
+
+Com o advento do Java 8, foram criados mais dois métodos nesta interface: Stream<E> stream() e Stream<E> parallelStream().
+
+Novos Métodos definidos no Java 8
+
+java.lang.Iterable
+
+default void forEach(Consumer<? super T> action)
+default Spliterator<T>spliterator()
+
+java.util.Collection
+
+default boolean removelf(Predicate<? super E> filter)
+default Spliterator<E>spliterator()
+default Stream<E>stream()
+default Stream<E>parallelStream()
+
+java.util.Map
+
+default V getOrDefault(Object key, V defaultValue)
+putIfAbsent(K key, V value)
+
+
+EXERCÍCIO
+
+1) [FCC - 2009 – TJ/SE] Uma lista Java é uma coleção ordenada de elementos do mesmo tipo, conhecida por sequência. Os elementos de uma lista podem ser acessados pela sua posição, isto é, seu índice e são derivados da interface:
+a) java.util.LinkedList, que estende a interface Collection.
+b) java.util.Collection, que estende a interface Set.
+c) java.util.Set, que estende a interface Collection.
+d) java.util.Collection, que estende a interface List.
+e) java.util.List, que estende a interface Collection. Correto
+
+
+Lista, Pilha e Fila
+
+Revisão de Estrutura de Dados
+LISTA
+
+É uma estrutura de dados que consiste em uma coleção de nós dispostos linearmente, onde cada elemento tem um antecessor(exceto o primeiro) e um sucessor (exceto o último).
+
+Pode ser implementada como Vetor (array) ou como Lista Simplesmente Encadeada (cada nó conhece a posição do nó seguinte) ou Lista Duplamente Encadeada (cada nó conhece a posição do nó anterior (prev) e do nó seguinte (next)).
+
+LISTA
+
+A Lista pode ser mantida ordenada ou não.
+
+As operações mais importantes de uma coleção do tipo Lista são:
+- Adicionar elementos
+- Remover elementos
+
+PRINCIPAIS IMPLEMENTAÇÕES DE LISTA EM JAVA
+
+PILHA
+- Adota a política LIFO (last-in-first-out) para manipular os elementos da Lista.
+- Realiza as operações de Adição e Remoção no início da Lista.
+- Principal implementação:
+public class Stack<E> extends Vector<E>
+
+FILA SIMPLESMENTE ENCADEADA
+
+- Adota a política FIFO (first-in-first-out) para manipular os elementos da Lista.
+- Realiza as operações de Adição no fim da Lista e de Remoção no início da Lista.
+- Principal implementação: public interface Queue<T>
+- Pesquisar elementos
+
+Exemplo de um Elemento de uma Lista Duplamente Encadeada.
+
+
+PRINCIPAIS IMPLEMENTAÇÕES DE LISTA EM JAVA
+
+FILA DUPLAMENTE ENCADEADA
+- Adota a política FIFO (first-in-first-out) para manipular os elementos da Lista.
+- Realiza as operações de Adição no fim da Lista e de Remoção no início da Lista.
+- Principal implementação:
+public interface Deque<T>
+
+
+1) [ESAF - 2012 - Receita Federal] Assinale a opção correta.
+a) Uma fila é um tipo de lista linear em que todas as categorias são inseridas em um extremo, ficando as classes restritas ao outro extremo.
+b) Uma pilha é um tipo de lista linear em que todas as operações de inserção e remoção são realizadas numa mesma extremidade. CORRETO
+c) Uma fila é um tipo de lista colinear em que inserções parametrizadas são realizadas no mesmo extremo que as remoções.
+d) Uma pilha é um tipo de lista encadeada em que todas as operações de inserção e retrieve são realizadas na extremidade mais próxima.
+e) Uma pilha é um fila linear em que todas as operações de carry e stand são realizadas numa mesma extremidade.
+
+2) [FCC - 2012 – TST] As pilhas e as filas são estruturas de dados essenciais para os sistemas computacionais. É correto afirmar que:
+a) A fila é conhecida como lista LIFO - Last In First Out.
+b) A política de atendimento aos processos por um único processador,
+implementada por fila circular, seria adequada para controlar a fila de arquivos a serem impressos em uma impressora.
+c) A pilha é conhecida como lista FIFO - First In First Out.
+d) Uma política de acesso dos processos ao processador por tempo compartilhado é implementada por uma pilha.
+e) A pilha pode ser utilizada para armazenar informações sobre as sub-rotinas (funções) ativas em um programa de computador em execução. CORRETO
+
+
+Interface Set
+
+Interface java.util.Set
+
+É a Interface que define uma coleção que não contém objetos duplicados, isto é, não é permitida a adição de um objeto idêntico a outro já existente na coleção. Também é conhecida como Conjunto!
+
+Não é garantida a ordenação dos objetos, portanto não é possível indexar os elementos por índices numéricos.
+
+Os métodos definidos em Collection são herdados por esta interface.
+
+A seguir, são apresentados exemplos de utilização de quatro métodos herdados em dois conjuntos Set (s1 e s2):
+- s1.containsAll(s2): retorna 'true' se s2 for um subconjunto de s1.
+- s1.addAll(s2): transforma s1 em uma união de s1 e s2.
+- s1.retainAll(s2): transforma s1 em uma interseção de s1 e s2.
+- s1.removeAll(s2): transforma s1 na diferença entre s1 e s2.
+
+Diagrama de Classes da Interface Set.
+
+O Java fornece três implementações da Interface Set:
+- HashSet
+- TreeSet
+- LinkedHashSet
+
+A classe HashSet utiliza uma tabela hash para guardar os seus elementos, sem garantir a ordem de iteração, nem que a mesma permanecerá constante com o tempo. Por utilizar o algoritmo de
+tabela hash, o acesso é rápido, tanto para leitura quanto para modificação.
+
+A classe LinkedHashSet é uma subclasse de Hashset que adiciona previsibilidade à ordem de iteração sobre os elementos, isto é, garante a ordem com que os elementos presentes no conjunto são recuperados.
+
+A classe TreeSet oferece um conjunto ordenado de elementos por intermédio de árvore balanceada red-black.
+
+Sintaxe Padrão
+
+Collection semDuplicacao = new HashSet(comDuplicacao);
+Collection semDuplicacao = new LinkedHashSet(comDuplicacao);
+
+Classe HashSet
+import java.util.*;
+public class HashSetApp {
+	public static void main(String args[]) {
+		HashSet<String> lista = new HashSet<>();
+		lista.add("vermelho");
+		lista.add("verde");
+		lista.add("verde");
+		lista.add("amarelo");
+		System.out.println(lista);
+	}
+}
+
+Saída: [amarelo, vermelho, verde]
+Collection semDuplicacao = new TreeSet(comDuplicacao);
+
+Classe LinkedHashSet
+import java.util.*;
+public class LinkedHashSetApp {
+	public static void main(String args[]){
+		LinkedHashSet<String> lista =
+		new LinkedHashSet<>();
+		lista.add("vermelho");
+		lista.add("verde");
+		lista.add("verde");
+		lista.add("amarelo");
+		System.out.println(lista);
+	}
+}
+Saída: [vermelho, verde, amarelo]
+
+Classe TreeSet
+import java.util.*;
+public class TreeSetApp {
+	public static void main(String args[]){
+		TreeSet<String> lista =
+		new TreeSet<>();
+		lista.add("vermelho");
+		lista.add("verde");
+		lista.add("verde");
+		lista.add("amarelo");
+		System.out.println(lista);
+	}
+}
+
+Saída: [amarelo, verde, vermelho]
+
+
+Exercícios
+
+1) Implementar as classes HashSetApp, LinkedHashSetApp e TreeSetApp. 
+
+2) Escreva uma aplicação em Java que represente o diagrama de classes abaixo:
+
+
+				PACOTE COM.ABCTREINAMENTOS
+				
+CLIENTE  <>-------------------> CURSO
+
+
+3) No exercício anterior, criar pelos menos dois objetos clientes (A e B).
+Informar quais foram os mesmos cursos feitos por A e B; quais os cursos feitos por A que B não fez; e, quais os cursos feitos por B que A não fez.
+
+Obs: um cliente possui um conjunto de cursos não repetidos.
+
+
+
+Interface List
+
+
+Interface java.util.List
+
+É a Interface que define uma coleção de elementos ordenados (que podem estar duplicados) e cujo acesso é realizado por meio de um índice numérico que representa a posição de cada elemento.
+
+Os métodos definidos em Collection são herdados por esta interface.
+
+O Java fornece duas implementações da Interface List:
+- ArrayList
+- LinkedList
+
+
+Diagrama de Classes da Interface List.
+
+Classe ArrayList
+
+A classe ArrayList utiliza internamente um vetor (array) de objetos, cujo tamanho inicial é de 10 posições. Caso não seja suficiente, um novo vetor é alocado com tamanho igual a 1.5 vezes maior e todo o conteúdo é copiado para este novo vetor.
+
+Esta implementação é preferível quando o tamanho da lista é previsível (evitando realocações) e as operações de inserção e remoção são feitas, em sua maioria, no fim da lista (evitando
+deslocamentos), ou quando a lista é mais lida do que modificada (otimizado para leitura aleatória).
+
+Classe ArrayList
+
+A classe ArrayList utiliza internamente um vetor (array) de objetos, cujo tamanho inicial é de 10 posições. Caso não seja suficiente, um novo vetor é alocado com tamanho igual a 1.5 vezes maior e todo o conteúdo é copiado para este novo vetor.
+
+Esta implementação é preferível quando o tamanho da lista é previsível (evitando realocações) e as operações de inserção e remoção são feitas, em sua maioria, no fim da lista (evitando
+deslocamentos), ou quando a lista é mais lida do que modificada (otimizado para leitura aleatória).
+
+Classe ArrayList - Ordenado
+
+import java.util.*;
+public class ArrayListApp {
+	public static void main(String args[]) {
+			ArrayList<String> lista = new ArrayList<>();
+			lista.add("vermelho");
+			lista.add("verde");
+			lista.add("verde");
+			lista.add("amarelo");
+			Collections.sort(lista);
+			System.out.println(lista);
+		}
+}
+Saída: [amarelo, verde, verde, vermelho]
+
+
+Classe LinkedList
+
+A classe LinkedList utiliza internamente uma lista duplamente encadeada e a busca pelos seus elementos é feita de forma sequencial (via padrão Iterator) ou nas extremidades, e não de forma
+aleatória (por índices).
+
+Um exemplo de uso é como um fila (FIFO), onde os elementos são retirados da lista na mesma sequência em que são adicionados.
+
+Classe LinkedList
+import java.util.*;
+public class LinkedListApp {
+	public static void main(String args[]){
+		LinkedList<String> lista = new LinkedList<>();
+		lista.add("vermelho");
+		lista.add("verde");
+		lista.add("verde");
+		lista.add("amarelo");
+		System.out.println(lista);
+		lista.removeFirst();
+		lista.removeLast();
+		System.out.println(lista);
+	}
+}
+Última Saída: [verde, verde]
+
+
+Exercícios
+
+1) Implementar as classes ArrayListApp e LinkedListApp.
+
+2) Criar uma Aplicação para representar a estrutura de dados abaixo.
+
+3) Criar uma Aplicação para inserir 10 mil elementos em um ArrayList e
+imprimir os seus valores.
+
+4) Calcular o tempo gasto para realizar a operação acima.
+
+(utilizar System.currentTimeMillis() para cronometrar o tempo gasto)
+
+
+Interfaces Queue e Dequeue
