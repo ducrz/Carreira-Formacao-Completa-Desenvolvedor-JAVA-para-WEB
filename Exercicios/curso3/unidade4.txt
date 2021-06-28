@@ -364,3 +364,277 @@ imprimir os seus valores.
 
 
 Interfaces Queue e Dequeue
+
+
+É a Interface que define uma coleção de elementos cujo acesso se dá por meio de uma Lista Duplamente Encadeada.
+
+A adição de elementos pode ser feita no início ou no fim da Fila e a remoção no início ou fim da Fila.
+
+Os métodos definidos em Collection são herdados por esta interface.
+
+A seguir, são apresentados os seus principais métodos:
+
+- addFirst(e), offerFirst(e), addLast(e) offerLast(e)
+- removeFirst(), pollFirst(), getFirst(), peekFirst()
+- removeLast(), pollLast(), getLast(), peekLast()
+
+O Java fornece a implementação desta interface com a classe ArrayDeque.
+
+Classe ArrayDeque
+
+import java.util.*;
+public class DequeApp {
+	public static void main(String args[]) {
+		Deque<String> lista = new ArrayDeque<>();
+		lista.add("vermelho");
+		lista.add("verde");
+		lista.add("verde");
+		lista.add("amarelo");
+		System.out.println(lista);
+		lista.removeFirst();
+		lista.removeLast();
+		System.out.println(lista);
+	}
+}
+Última Saída: [verde, verde]
+
+Exercícios
+1) Implementar a classe DequeApp.
+2) Aplicar os métodos addFisrt(e), addLast(e), peekFirst(), peekLast().
+
+
+Interface Map
+
+Interface java.util.Map
+ É a Interface base para todos os tipos de coleções baseados em Mapa.
+ 
+Um Mapa (também chamados de vetores associativos) é utilizado para organizar coleções de objetos, cujos índices de acesso não
+precisam necessariamente ser valores inteiros positivos seqüenciais.
+
+Acima uma implementação de Map (HashMap) baseada no uso de chaves (keys) geradas a partir de uma Tabela Hash.
+
+É a Interface base para todos os tipos de coleções baseados em Mapa.
+
+Um Mapa (também chamados de vetores associativos) é utilizado para organizar coleções de objetos, cujos índices de acesso não
+precisam necessariamente ser valores inteiros positivos seqüenciais.
+
+Um Mapa armazena pares (chave, valor) chamados itens. Chaves e valores podem ser de qualquer tipo.
+
+A chave é utilizada para achar um elemento rapidamente. Estruturas especiais (tais como Tabelas Hashs) são utilizadas para que a
+pesquisa seja rápida.
+
+O Mapa pode ser mantido ordenado ou não (com respeito às chaves).
+
+
+TABELA HASH
+
+É uma estrutura de dados especial, que associa chaves de pesquisa a valores. Seu objetivo é, a partir de uma chave
+simples, fazer uma busca rápida e obter o valor desejado.
+
+
+Os seus principais métodos são:
+- put(), get(), remove(), containsKey()
+- containsValue(), size(), empty()
+- putAll(), clear()
+- keySet(), entrySet(), values()
+
+O Java fornece três implementações da Interface Map:
+- HashMap
+- LinkedHashMap
+- TreeMap
+
+A classe HashMap utiliza internamente tabela hash para armazenar as chaves de um Mapa.
+
+O tempo de acesso aos seus elementos (leitura e escrita) é muito bom.
+Não garante a ordem dos elementos que foram adicionados à coleção.
+Permite chaves e valores nulos.
+Não é sincronizado, isto é, em um ambiente multithread a sua atualização é um problema.
+
+Classe HashMap
+import java.util.*;
+public class HashMapApp {
+	public static void main(String[] args) {
+		HashMap<Integer, String> mapa =
+		new HashMap<>();
+		mapa.put(1, "Bruno");
+		mapa.put(2, "Umberto");
+		mapa.put(3, "Fernando");
+		mapa.put(3, "Caetano");
+		mapa.put(4, "Umberto");
+		System.out.println(mapa);
+	}
+}
+{1=Bruno, 2=Umberto, 3=Caetano, 4=Umberto}
+
+Classe LinkedHashMap
+
+A classe LinkedHashMap é subclasse de HashMap e adiciona previsibilidade à ordem de iteração sobre os elementos, isto porque
+mantém ordenados os elementos por ordem de inserção.
+
+Permite chaves e valores nulos.
+Não é sincronizado.
+
+
+Classe LinkedHashMap
+
+import java.util.*;
+public class LinkedHashMapApp {
+	public static void main(String[] args) {
+		Map<Integer, String> mapa =
+		new LinkedHashMap<>();
+		mapa.put(4, "Bruno");
+		mapa.put(2, "Umberto");
+		mapa.put(3, "Fernando");
+		mapa.put(3, "Caetano");
+		mapa.put(1, "Umberto");
+		System.out.println(mapa);
+	}
+}
+{4=Bruno, 2=Umberto, 3=Caetano, 1=Umberto}
+
+Interface java.util.SortedMap
+
+É a Interface que estende Map, adicionando a semântica de ordenação natural dos seus elementos, de forma análoga à interface
+SortedSet.
+
+Esta interface herda os métodos de Map e oferece os novos métodos abaixo:
+- comparator(), subMap(K, K);
+- headMap(K), tailMap(K);
+- firstKey(), lastKey();
+•
+A classe TreeMap implementa esta interface.
+
+
+Classe TreeMap
+
+A classe TreeMap utiliza internamente uma árvore red-black (árvores binárias semibalanceadas) que garante que as chaves contidas serão
+mantidas em ordem ascendente.
+
+Deve ser utilizada quando for necessário um Mapa ordenado, mesmo após a realização de operações de inserção e remoção.
+Não permite chaves nulas e não é sincronizado.
+
+
+Classe TreeMap
+import java.util.*;
+public class TreeMapApp {
+	public static void main(String[] args) {
+		Map<Integer, String> mapa = new TreeMap<>();
+		mapa.put(4, "Bruno");
+		mapa.put(2, "Umberto");
+		mapa.put(3, "Fernando");
+		mapa.put(3, "Caetano");
+		mapa.put(1, "Umberto");
+		System.out.println(mapa);
+	}
+}
+Saída: {1=Umberto, 2=Umberto, 3=Caetano, 4=Bruno}
+
+Exercícios
+1) Implemente as classes HashMapApp, LinkedHashMapApp e
+TreeMapApp.
+2) Escreva uma aplicação em Java que represente o diagrama de classes abaixo:
+
+
+Cliente                     Curso
+cpf:String                  cdCurso:int;
+nome:String   -------->     nome:String;
+email:String                valor:float;
+______________              url:Path;
+cadastrar(...)              cadastrar(...)
+
+
+Obs: a classe LojaVirtual terá um atributo estático pagamento que irá armazenar um Mapa de valores <Cliente, List<Curso>>.
+
+
+Interfaces Auxiliares e Classes Utilitárias
+
+INTERFACES AUXILIARES
+
+O framework Collections também define uma série de interfaces auxiliares, que definem operações sobre os objetos
+retornados de uma coleção: Iterator, ListIterator, Comparable, Comparator, Enumeration e RandomAccess.
+
+CLASSES UTILITÁRIAS
+
+São aquelas que possuem apenas métodos estáticos e são utilizadas pelas classes definidas no framework Collections. Os principais exemplos são: Collections, Arrays e Properties.
+
+Classes Properties
+
+É uma classe que implementa a interface Map e muito útil para trabalhar com documentos XML.
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE properties SYSTEM
+"http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key='1'>http://www.abctreinamentos.br</entry>
+<entry key='2'>http://www.uol.com.br</entry>
+<entry key='3'>http://www.oglobo.com.br</entry>
+</properties>
+
+sites.xml
+
+public static void main(String[] args) throws Exception
+{
+Properties sites = new Properties();
+sites.loadFromXML(new FileInputStream("sites.xml"));
+System.out.println(sites.getProperty("1"));
+}
+
+Coleções x Vetores
+Vantagens de Coleções
+
+Solução flexível para armazenar objetos. A quantidade armazenada de objetos não é fixa, como ocorre com vetores;
+
+Poucas interfaces permitem maior reuso.
+
+Desvantagens de Coleções
+
+Não aceitam tipos primitivos (só empacotados). Vetores aceitam;
+
+O acesso a um elemento de um vetor é mais rápido de que o acesso a um elemento de Coleções.
+
+Exercício
+1) Criar o arquivo 'sites.xml' para ser acessado pela aplicação PropertiesApp.
+
+
+Considerações Finais
+
+
+Deve-se selecionar a implementação da classe apenas no momento de instanciação das coleções, usando variáveis do tipo de suas
+interfaces:
+
+ArrayList lista = new ArrayList();
+// não recomendado - A notação a seguir é mais flexível
+List lista = new ArrayList();
+
+Fazendo o uso do tipo da interface, ao invés do tipo concretamente empregado, impede de utilizar métodos específicos de
+implementação, permitindo que as mudanças nesta ou na eventual substituição do tipo concreto tenham impacto mínimo na aplicação
+desenvolvida.
+
+Dica: Programe voltado à interface, não à implementação!
+
+Como escolher entre Coleções?
+Sugestões retiradas do site
+http://www.dsc.ufcg.edu.br/~jacques/cursos/p2/html/ed/colecoes.htm
+
+O desenvolvedor possui as seguintes opções quando fizer uso de coleções:
+Lista (java.util.List, java.util.Queue, java.util.Dequeue),
+Conjunto (java.util.Set)
+Mapa (java.util.Map).
+Se for necessário manter elementos duplicados, usar Lista! 
+Contudo, se for necessário fazer muita pesquisa, evite o uso de Lista!
+
+Se não for necessário manter elementos duplicados e nem usar chaves, usar Conjunto!
+Contudo, se for necessário o uso de chaves, usar Mapa!
+
+
+Qual a implementação de Lista que deverá ser escolhida?
+Usar ArrayList se for necessário acessar os elementos por índice (ex. pesquisa binária);
+Usar LinkedList se for necessário inserir ou remover elementos do meio da Lista com frequência.
+
+Qual a implementação de Conjunto que deverá ser escolhida?
+Usar HashSet se não for necessário obter um conjunto ordenado;
+Usar TreeSet se for necessário obter um conjunto ordenado.
+
+Qual a implementação de Mapa que deverá ser escolhida?
+Usar HashMap se não for necessário obter um mapa ordenado;
+Usar TreeMap se for necessário obter um mapa ordenado.
