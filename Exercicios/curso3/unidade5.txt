@@ -458,3 +458,369 @@ Exercícios
 1) Implementar as classes ThreadApp e ThreadAppLambda.
 2) Quais as diferenças observadas nessas duas classes?
 Código mais limpo e elegante utilizando Lambda.
+
+
+Principais Utilizações das Expressões Lambdas
+
+
+1) Substituição das Classes Anônimas utilizadas com muita frequência para ativação de eventos em Interfaces Gráficas com Java.
+
+//Sem Lambda
+btn.setOnAction(new EventHandler<ActionEvent>() {
+@Override
+public void handle(ActionEvent event) {
+System.out.println("Hello!");
+}
+});
+//Com Lambda
+btn.setOnAction(event -> System.out.println("Hello!"));
+
+2) Realização de operações em objetos do Framework Collections de forma mais objetiva e concisa.
+
+//Sem Lambda
+for (String s : list) {
+System.out.println(s);
+}
+//Com Lambda
+list.forEach(System.out::println);
+
+
+VANTAGENS
+Facilita a programação paralela;
+Possibilita a escrita de código mais compacto;
+Oferece um suporte extensivo às coleções e estruturas de dados;
+Permite o desenvolvimento de uma coleção de APIs mais enxutas.
+
+DESVANTAGENS
+Não são reutilizáveis;
+Limitados no seu escopo;
+Não podem ser testados de forma isolada;
+Dificuldade de manutenção;
+Diminuição da legibilidade do código;
+Dificuldade de depuração dos erros.
+
+
+Lambda – Considerações Finais
+
+Interface Funcional é aquela que possui apenas um método abstrato;
+O método gerado pela expressão lambda deve possuir a mesma assinatura do método abstrato definido na Interface Funcional.
+O tipo da expressão lambda deve ser o mesmo do método abstrato definido na Interface Funcional.
+
+
+1) No exercício feito na Unidade 4 (classes Cliente e Curso), criar o método listarCursos(...) fazendo uso do recurso Lambda.
+
+Referência de Métodos
+
+
+Uma Expressão Lambda é a forma utilizada para a criação de uma função anônima! Contudo, o que acontece se a função desejada já tiver sido
+escrita?
+
+A Referência de Métodos pode ser utilizada para fazer uso de uma função já existente, no lugar de uma Expressão Lambda.
+No Java 8 é possível a passagem por referência de métodos via operador::
+Sendo assim, uma Expressão Lambda pode ser escrita da seguinte forma:
+
+Function<String,Integer> f = s -> s.length();
+Function<String,Integer> f = String::length;
+
+Fica implícito que deverá ser chamado o método length do objeto String passado como parâmetro.
+
+Esta abordagem é utilizada tanto para métodos de classe quanto para métodos de objeto, bem como para construtores também.
+
+Exemplo - Método de Objeto
+
+@FunctionalInterface
+interface Converter<F, T> {
+T convert(F from);
+}
+class Something {
+String startsWith(String s) {
+return String.valueOf(s.charAt(0));}
+}
+
+
+Something something = new Something();
+Converter<String, String> converter = something::startsWith;
+String converted = converter.convert("Java");
+System.out.println(converted); // "J"
+
+
+A sintaxe é bem simples: define-se inicialmente o tipo (nesse caso a classe Something), seguido do delimitador :: e o nome do método, sem
+parênteses.
+
+Exemplo - Método de Classe
+
+Converter<String, Integer> converter =
+(from) -> Integer.valueOf(from);
+//Substituição
+Converter<String, String> converter = Integer::valueOf;
+
+Exemplo - Construtor
+
+Supplier<Usuario> criadorDeUsuarios = Usuario::new;
+Usuario novo = criadorDeUsuarios.get();
+
+A interface Supplier<T> representa uma factory. Pode-se guardar a expressão Usuario::new em um Supplier<Usuario> e chamar o seu método
+get sempre que for desejada a instanciação de um novo objeto do tipo Usuario.
+
+
+RESUMO
+
+Method Reference Type    |   Syntax                      |   Example
+Static                   | ClassName::StaticMethodName   | String::valueOf
+Constructor              | ClassName::new                | String::new
+Specific object instance | objectReference::MethodName   | System.out::println
+Arbitrary object of
+a particular type        | ClassName::InstanceMethodName | String::toUpperCase
+
+
+Exercícios
+1) Alterar o método listarCursos(...) do exercício anterior para fazer uso de referência de método.
+LojaVirtual2
+2) No exercício anterior, alterar a chamada ao método listarCursos(...) para fazer uso de Referência de Métodos. Utilizar a interface funcional Consumer<T>.
+LojaVirtual3
+
+
+Métodos Default
+
+A partir do Java 8, as Interfaces já podem possuir implementação de métodos! A esses métodos é dado o nome de default e são identificados
+pelo uso da palavra reservada default.
+
+interface Formula {
+double calcular(int a);
+default double sqrt(int a) {
+return Math.sqrt(a);
+}
+}
+
+As classes que implementarem a interface Formula só terão a obrigação de implementar o método abstrato calcular(...).
+
+Um classe pode implementar várias interfaces e herdar vários métodos default. Se houver dois métodos default iguais, um deles deverá ser
+anulado com a anotação @Override.
+
+Métodos Default
+
+interface Foo {
+default void talk() {
+out.println("Foo!");
+}
+}
+interface Bar {
+default void talk() {
+out.println("Bar!");
+}
+}
+class FooBar implements Foo, Bar {
+@Override
+void talk() {
+Foo.super.talk();
+}
+}
+
+No código acima, o método talk() da interface Bar foi anulado pela classe FooBar. O método será chamado da interface Foo.
+
+Os métodos default não podem ser acessados por Expressões Lambda.
+
+Formula formula = (a) -> sqrt( a * 100);
+//Erro de compilação
+
+Os métodos defaults foram adicionados para permitir que as interfaces evoluíssem sem "quebrar" o código existente!
+Métodos default permitem evoluir uma API antiga de maneira não disruptiva, sem romper com o passado.
+A partir do Java 8, as Interfaces já podem possuir métodos default de classe (estáticos)!
+
+Uma interface pode possuir vários métodos default e permanecer funcional.
+
+
+@FunctionalInterface
+public interface Iterable {
+Iterator iterator();
+default void forEach(Consumer<? super T> action){
+Objects.requireNonNull(action);
+for (T t : this) {
+action.accept(t);
+}
+}
+}
+
+
+A interface java.lang.Iterable é mãe de Collection, que por sua vez é mãe de List.
+
+Como ArrayList implementa List, ele implementa este método.
+
+Exercício
+1) Alterar a classe do exercício anterior para implementar a interface Formula.
+2) Ao incluir a anotação @FunctionalInterface na interface Formula, é gerado algum erro de código? E se houver mais métodos default? E se
+houver mais métodos abstratos?
+a)Nenhum errro de código.
+b)Funciona sem maiores problemas.
+c) Só pode conter um método abstrato.
+
+
+Streams
+
+
+AVANÇOS NO FRAMEWORK COLLECTIONS
+
+O Framework Collections já possui mais de 15 anos. A cada nova versão do Java ele sofre modificações. Contudo, nenhuma se compara com as
+mudanças realizadas pelo Java 8!
+
+O Java 8 introduziu o Stream. O Stream traz para o Java uma forma mais funcional de se trabalhar com coleções, usando uma interface específica
+para isso.
+
+Como já foi visto anteriormente, um Stream representa uma abstração de um “fluxo de dados”. No caso do Java 8, foi criado um pacote específico
+(java.util.stream) para permitir manipulações e transformações em coleções.
+
+A interface Stream<T> representa uma sequencia de elementos nos quais uma ou mais operações (filter, sorted, map, match, count, reduce) poderão
+ser executadas.
+
+Essas operações poderão ser intermediárias ou terminais. A primeira retorna um Stream para ser utilizado em outra operação. A segunda já
+retorna o resultado esperado.
+
+Um novo método default stream() foi adicionado à interface Collection.
+
+Como esta interface é “pai” de todas as outras coleções, todas elas herdam esse novo método.
+default Stream<E> parallelStream()
+default Stream<E> stream()
+A execução dessas operações se dá de forma sequencial
+(Collection.stream()) ou de forma paralela (Collection.parallelStream()).
+
+Class StreamApp { ...
+//listagem de funcionários
+List<String> funcionarios = new ArrayList<>();
+funcionarios.add("Antonio");
+funcionarios.add("José");
+funcionarios.add("Pedro");
+funcionarios.add("João");
+funcionarios.add("Andreia");
+//criação de um stream de funcionários para
+//manipulação dos seus objetos
+Stream<String> stream = funcionarios.stream();
+...}
+
+
+É importante ressaltar que o Stream gerado acima não é uma outra coleção. Ele não possui uma estrutura de dados interna para armazenar
+cada um dos elementos! Na verdade, ele usa uma coleção para executar uma serie de operações de forma sequencial ou paralela.
+
+Um Stream possui:
+
+
+Source – representa a fonte dos objetos a serem manipulados;
+Pipeline – representa o conjunto de operações intermediárias que irão atuar nos elementos do Stream;
+Terminal – representa a operação final que irá extrair os elementos desejados.
+É importante ressaltar que as operações intermediárias (pipeline) não executam, apenas preparam as estruturas para execução.
+Nas operações finais (terminal) as operações intermediárias (pipeline) são executadas e é produzido um resultado.
+
+
+FILTER
+É o método definido na interface Stream<T> que realiza um ‘filtro’ nos elementos de uma coleção. É uma operação intermediária.
+funcionarios.stream().filter((s) -> s.startsWith("a")).
+forEach(System.out::println);
+// Filtra todos os funcionários cujos nomes iniciam
+// com a letra "a" => Resultado "Antonio","Andreia"
+
+
+SORTED
+É o método definido na interface Stream<T> que realiza ordena os elementos de uma coleção. É uma operação intermediária.
+funcionarios.stream().sorted()
+.filter((s) -> s.startsWith("a"))
+.forEach(System.out::println);
+// "Andreia","Antonio"
+
+MAP
+É o método definido na interface Stream<T> que converte cada elemento recebido em um outro objeto, de acordo com a função passada. É uma
+operação intermediária.
+
+funcionarios.stream().map(String::toUpperCase)
+.sorted((a, b) -> b.compareTo(a))
+.forEach(System.out::println);
+//
+
+É importante observar que a interface Map não prove suporte ao método stream() .
+
+
+MATCH
+É o método definido na interface Stream<T> que verifica se determinada condição é atendida. É uma operação final.
+boolean anyStartsWithA =
+funcionarios.stream().anyMatch((s) -> s.startsWith("a"));
+System.out.println(anyStartsWithA); // true
+//Verifica se algum funcionário inicia com a letra "a"
+boolean allStartsWithA =
+funcionarios.stream().allMatch((s) -> s.startsWith("a"));
+System.out.println(allStartsWithA); // false
+//Verifica se todos os funcionários iniciam com a letra "a"
+boolean noneStartsWithZ =
+funcionarios.stream().noneMatch((s) -> s.startsWith("z"));
+System.out.println(noneStartsWithZ); // true
+//Verifica se nenhum funcionário inicia com a letra “z"
+
+COUNT
+É o método definido na interface Stream<T> que retorna o número de elementos existentes na stream. É uma operação final.
+long startsWithA =
+usuarios.stream().filter((s) -> s.startsWith("a")).count();
+System.out.println(startsWithB); // 2
+
+REDUCE
+É o método definido na interface Stream<T> que realiza a redução nos elementos existentes na stream, de acordo com a função passada. É uma
+operação final.
+
+Optional<String> reduced = funcionarios.stream().sorted()
+.reduce((s1, s2) -> s1 + "#" + s2);
+reduced.ifPresent(System.out::println);
+// "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
+
+
+
+Exercícios
+1) Escreva a classe Java StreamApp.
+2) Escreva os métodos abaixo na classe StreamApp.
+public static void filtrar(String letra){...}
+public static void ordenar(String letra){...}
+public static void contar(String letra) {...}
+
+
+
+Parallel Streams
+
+
+Como foi citado anteriormente, um Stream pode ser sequencial ou paralelo.
+
+A principal diferença é que no primeiro utiliza-se apenas uma thread, enquanto que no segundo são utilizadas várias threads. Assim sendo, o
+segundo tipo de Stream é muito mais ‘performático’ que o primeiro.
+
+Criação de uma coleção de String com valores (ids) únicos.
+
+public class ParallelStreamApp { ...
+int max = 1000000;
+List<String> values = new ArrayList<>(max);
+for (int i = 0; i < max; i++) {
+UUID uuid = UUID.randomUUID();
+
+
+Ordenação com Stream ‘sequencial’
+long t0 = System.nanoTime();
+long count = values.stream().sorted().count();
+System.out.println(count);
+long t1 = System.nanoTime();
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(“Tempo: %d ms", millis));
+
+Ordenação com Stream ‘paralela’
+long t0 = System.nanoTime();
+long count = values.parallelStream().sorted().count();
+System.out.println(count);
+long t1 = System.nanoTime();
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(“Tempo: %d ms", millis));
+values.add(uuid.toString()); }
+...}
+
+Exercícios
+1) Implemente a classe ParallelStreamApp que possua dois métodos:
+colecaoStream() e colecaoParallelStream().
+
+a) Cada método irá cadastrar uma coleção de 1.000.000 de elementos do
+tipo String únicos;
+b) Após o cadastro, essa coleção será ordenada;
+c) Por fim, os elementos dessa coleção serão impressos.
+
+2) Quais as diferenças de tempo observadas na chamada dos métodos colecaoStream() e colecaoParallelStream()?
+Método Parallel é mais rápido.

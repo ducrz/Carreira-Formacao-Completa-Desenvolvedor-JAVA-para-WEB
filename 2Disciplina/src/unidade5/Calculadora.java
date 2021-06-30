@@ -1,6 +1,6 @@
 package unidade5;
 
-public class Calculadora {
+public class Calculadora implements Formula{
 
 	public static void main(String[] args) {
 		IMatematica objeto = new IMatematica() {
@@ -23,5 +23,12 @@ public class Calculadora {
 			System.out.println("=> " + objeto.multiplicar(3,4));
 			System.out.println("=> " + objeto.dividir(10,2));
 	}
+
+	@Override
+	public double calcular() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 
 }
