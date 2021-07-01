@@ -17,7 +17,8 @@ public class Main extends Application {
 			Label lb = new Label();
 			btn.setOnAction(ev->lb.setText("\n\n\n Alo Pessoal"));
 			root.getChildren().add(btn);
-			root.getChildren().add(lb);			Scene scene = new Scene(root,400,400);
+			root.getChildren().add(lb);
+			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
