@@ -1,0 +1,330 @@
+UNIDADE 02
+
+INTRODUÇÃO A BANCO DE DADOS COM ORACLE
+
+Introdução a Banco de Dados
+
+Modelo de Aplicação JEE
+
+A plataforma JEE utiliza um modelo de aplicação distribuída multicamada.
+
+
+A lógica da aplicação é dividida em componentes de acordo com a sua função.
+
+Os vários componentes que constituem uma aplicação JEE são instalados em diferentes equipamentos.
+
+Dados e Informações
+
+Definição
+
+Dados: Matéria-prima da informação, sem significado aparente.
+Informação: Produto da manipulação dos dados.
+
+Informação é a base do Conhecimento!
+
+Na era da multimídia, a informação é composta por textos, imagens, aúdios e vídeos.
+
+Armazenamento dos Dados
+
+Bit e Byte
+
+Bit - É a menor forma de amazenamento.
+
+0 (zero) ->                 Menor unidade inteligível para um computador
+1 (um)  ->
+
+
+Byte - Conjunto de 8 bits
+
+
+
+Banco de Dados
+É uma coleção de dados relacionados que estão armazenados em algum dispositivo físico (disco, fita, pendrive, etc.).
+
+Um Banco de Dados é projetado, construído e preenchido com dados para um propósito específico.
+
+
+Data Centers
+
+O Data Center é um ambiente projetado para abrigar servidores e outros componentes como sistemas de armazenamento de dados (storages) e ativos de rede (switches, roteadores).
+
+O objetivo principal de um Data Center é garantir a disponibilidade de equipamentos que rodam sistemas cruciais para o negócio de uma organização, tais como o ERP ou CRM, garantindo assim a continuidade do negócio.
+
+
+Tipos de Banco de Dados
+
+Hierárquico
+
+Representa dados como uma estrutura em árvore, composto de uma hierarquia de registros de dados.
+
+
+Rede
+
+Representa os dados como registros vinculados uns aos outros formando conjuntos comuns de dados. Existe uma similaridade muito grande entre o modelo hierárquico e o modelo em rede, pode-se entender o modelo em rede como uma generalização do modelo hierárquico.
+
+Orientado a objetos
+
+Representa os dados em um único objeto, dentro de propriedades que são acessadas com métodos.
+
+
+Objeto-relacional
+
+Combina o modelo orientado a objeto com o modelo relacional. Isso é feito mapeando banco de dados e classes seguindo a mesma lógica. Há frameworks que fazem esse trabalho, como o Hibernate para Java.
+
+NoSQL
+
+Not Only SQL- Bancos de dados não relacionais.
+
+
+Relacional
+
+Representa os dados como uma simples coleção de linhas e colunas em tabelas bidimensionais, relacionadas entre si.
+
+
+Banco de Dados Relacional
+Campo
+
+É a menor unidade destinada ao armazenamento de valores existentes em um arquivo ou tabela de um banco de dados.
+
+Os dados armazenados são separados em pequenos fragmentos.
+
+Cada campo contém um tipo de dado.
+
+Registro
+
+
+Um registro é o conjunto de campos valorizados de uma tabela.
+É a unidade básica para o armazenamento e recuperaão de dados e que identifica a entrada de um único item de informação em particular numa tabela do banco de dados.
+
+São chamados de tuplas ou n-uplas.
+Também podemos chamar os registros de linhas da tabela.
+
+
+Tabela
+
+A tabela é um conjunto de registros de mesmo tipo.
+
+O banco de dados pode ser formado por uma ou mais tabelas.
+
+Cada tabela é identificada por um nome único e deve ser organizada de tal forma que só permita um tipo de informação.
+
+Alguns sistemas de banco de dados criam um arquivo para cada tabela, outros criam um arquivo só para o banco inteiro.
+
+
+Exercícios
+
+1) [AOCP - 2012 - BRDE] Sobre definições de banco de dados, analise as assertivas e assinale a alternativa que aponta as corretas.
+
+I. Um banco de dados é uma coleção de dados relacionados. Os dados são fatos que podem ser gravados e que possuem um significado implícito.
+II. Um banco de dados pode representar conceito surreal, e persistir a existência de características do mundo real.
+III. Um banco de dados representa alguns aspectos do mundo real, sendo chamado, às vezes, de minimundo ou de universo de discurso (UoD).
+IV. Um banco de dados pode ser uma coleção lógica e coerente de dados com algum significado inerente.
+a) Apenas I e II.
+b) Apenas I e III.
+c) Apenas I e IV.
+d) Apenas I, III e IV. CORRETO
+e) I, II, III e IV.
+
+
+2) [FCC - 2012 - TRT] Um banco de dados relacional é um banco de dados projetado segundo o chamado modelo relacional, que é um modelo de banco de dados baseado na lógica de predicados de primeira ordem. O objetivo do modelo é o de proporcionar uma linguagem declarativa para a descrição tanto dos dados como de consultas a seu respeito, de maneira que o usuário declara tanto a informação contida no banco de dados como a informação que dele deseja extrair, deixando a cargo do sistema gerenciador do banco de dados a tarefa de estabelecer estruturas de armazenamento de dados bem como os procedimentos de recuperação destes dados para responder consultas. O modelo relacional foi proposto formalmente há mais de 40 anos.
+
+O texto acima está
+a) incorreto, porque o modelo relacional é baseado na lógica de predicados de
+segunda ordem.
+b) correto. CORRETO
+c) incorreto, porque o modelo relacional não conduz naturalmente a uma
+linguagem declarativa de descrição de dados ou consultas.
+d) incorreto, porque nos bancos de dados relacionais, a tarefa de descrever os
+procedimentos de recuperação dos dados para a resposta a consultas é tarefa
+do usuário.
+e) incorreto, porque o modelo relacional foi proposto há menos de 30 anos.
+
+
+Sistemas Gerenciadores de Bancos de Dados Relacionais
+
+SGBD
+Definição
+É constituído por um conjunto de dados inter-relacionados e um conjunto de programas para acessá-los. Sua característica principal é prover uma maneira adequada de recuperação e armazenamento de dados, no Banco de Dados.
+
+Regra geral, um SGBD é projetado para gerenciar grandes volumes de dados.
+
+SGBDs
+Principais Características
+Gerenciar grandes volumes de dados
+Facilitar a eliminação de redundância e inconsistência de dados
+Facilitar o armazenamento e acesso aos dados
+Garantir o acesso a vários usuários ao mesmo tempo
+Garantir a segurança dos dados
+Garantir a integridade dos dados
+
+Open Source e Proprietários
+
+Open Source - São os SGBDs que eliminam as restrições sobre a cópia, redistribuição, entendimento e modificação (as quatro liberdades definidas pela Free Software Fundation). Exemplos: MySQL e PosgreSQL.
+
+Proprietários - São os SGBDs que não oferecem produtos gratuitos para a comunidade. Exemplos: Oracle, SQL Server, DB2, etc.
+
+Arquitetura dos SGBDs
+Interface de alto nível de abstração que provê:
+Consultas, manipulação de dados, definição de dados, geradores de
+relatórios, linguagem de 4 geração;
+Tradutor/otimizador de consultas;
+Visões do usuário de BD;
+Controle de concorrência (sincronização de acessos simultâneos ao BD);
+Controle de integridade (validação de restrições de integridade);
+Controle de segurança (autorização de acesso aos dados);
+Controle de recuperação ( torna o SGBD tolerante a falhas);
+Eficiente sistema de arquivos com técnicas de indexação eficientes que permitem armazenar e manipular os dados do BD.
+
+
+Exercício
+1) [FMP-RS - 2012 - PROCEMPA] Um Sistema Gerenciador de Banco de Dados (SGBD) é uma coleção de arquivos e programas inter-relacionados que permitem ao usuário o acesso para consultas e alterações desses dados. O maior benefício de um banco de dados é proporcionar ao usuário
+uma visão abstrata dos dados. Isto significa que o sistema acaba por ocultar determinados detalhes sobre a forma de armazenamento e manutenção desses dados. Com base no conhecimento sobre as diferentes abstrações dos dados em um SGBD, considere as seguintes afirmativas.
+
+I. A arquitetura do SGBD é definida em três níveis de abstração: nível físico que descreve, através de estruturas de dados complexas, como os dados estão de fato armazenados; nível lógico que descreve quais dados estão armazenados e quais os inter-relacionamentos que existem entre eles; e o nível de visão que abrange esquemas externos, no qual cada esquema externo descreve a parte de um banco de dados que um dado grupo de usuários tem interesse e oculta o restante do banco de dados desse grupo.
+II. A independência física de dados é a capacidade de alterar o esquema conceitual sem mudar o esquema externo ou os programas de aplicação enquanto o independência lógica de dados refere-se a capacidade de mudar o esquema interno sem ter que alterar o esquema conceitual.
+III. A independência lógica de dados é mais difícil de ser alcançada do que a
+independência física, uma vez que os programas de aplicação são mais fortemente dependentes da estrutura lógica dos dados do que de seu acesso.
+IV. O conceito de independência de dados é de várias formas similar ao conceito de tipo abstrato de dados empregados nas linguagens modernas de programação. Ambos os conceitos omitem detalhes de implementação do usuário, permitindo que o usuário se concentre em sua estrutura geral em vez de se concentrar nos detalhes tratados nos níveis mais baixos.
+Assinale a alternativa CORRETA.
+a) Somente as afirmativas I e IV são corretas.
+b) Somente as afirmativas I, III são corretas.
+c) Somente as afirmativas II e IV são corretas.
+d) Somente as afirmativas I, III e IV são corretas. CORRETO
+e) Somente as afirmativas II, III e IV são corretas.
+
+
+SGBD ORACLE
+
+A Oracle Corporation
+Líder mundial em vendas de banco de dados relacional, é uma das maiores empresas de informática do mundo, com mais de 420.000 clientes e implementações em mais de 145 países.
+Realizou aquisições estratégicas nos últimos tempos, sendo que no dia 20 de abril de 2009, comprou a Sun Microsystems por US$ 7,4 bilhões.
+Emprega cerca de 122.000 pessoas em vários países e as suas receitas foram de cerca de US$ 90,34 bilhões em 2014.
+A Oracle oferece um conjunto abrangente e totalmente integrado de aplicativos em nuvem, serviços de plataforma e sistemas projetados.
+
+Por que o Banco de Dados Oracle?
+Grande demanda por profissionais capacitados.
+Possui recursos avançados de alta disponibilidade, balanceamento de carga, backup e recuperação.
+Permite implementação de mecanismos consolidados de performance, segurança e auditoria.
+Amplo suporte técnico.
+Documentação sólida e bem detalhada.
+
+Tipos de Dados no Oracle
+
+Category              Datatypes
+Character             CHARM NCHARM VARCHAR2, NVARCHAR2
+Number                NUMBER
+Long and raw          LONG, LONG RAW, RAW
+Date and time         DATE, TIMESTAMP, TIMESTAMP WITH ZONE, TIMESTAMP WITH LOCAL TIME ZONE, 				INTERVAL YEAR TO MONTH, INTERVAL DAY TO SECOND
+Large object          CLOB, NCLOB, BCLOB, BFILE
+Row ID                ROWID, UROWID
+
+
+Principais Produtos Oracle
+
+Banco de Dados.
+Active Data Guard.
+Advanced Compression.
+Database Vault.
+Real Application Clusters.
+Partitioning.
+Exadata.
+
+
+Versões do SGBD Oracle
+ORACLE 12C
+Lançado em Junho de 2013.
+Conhecido por sua estabilidade, robustez, segurança, performance e constantes inovações.
+Largamente utilizado por grandes corporações e órgãos governamentais mundiais.
+Utiliza o modelo relacional para armazenar, manipular, recuperar e proteger os dados de aplicações.
+
+ORACLE 11G
+
+Disponível em 04 versões: EE (Enterprise Edition), SE (Standard Edition), SE1 (Standard Edition One) e XE (Express Edition).
+A única versão gratuita é a XE que será utilizada neste curso.
+
+
+Obtendo o Oracle 11 XE
+
+http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html
+
+Acesso ao SGBD Oracle via SQLDeveloper
+
+Primeiro Acesso ao SGBD Oracle
+
+Criar uma conexão com o banco de dados Oracle XE.
+
+Nome da Conexão: bdoracle
+Nome do Usuário: system
+Senha: oracle
+
+sudo service oracle-xe start
+
+SQL PLUS- sqlplus sys as sysdba
+
+Exercícios
+
+1) Criar as Tabelas Cliente e Curso que estão representadas pelo diagrama
+de classes abaixo:
+
+2) Criar o schema 'curso_java' com a senha 'schema' e criar novamente as Tabelas Cliente e Curso.
+
+grant connect, create session, resource, create view to curso_java identified by schema;
+
+
+Linguagem SQL
+
+
+
+DEFINIÇÃO
+
+É uma linguagem de pesquisa declarativa para banco de dados relacional.
+
+Muitas das características originais do SQL foram inspiradas na álgebra relacional.
+
+O SQL foi desenvolvido originalmente no início dos anos 70 nos laboratórios da IBM em San Jose, dentro do projeto System R, que tinha por objetivo demonstrar a viabilidade da implementação do modelo relacional proposto por E. F. Codd.
+
+
+CATEGORIAS
+
+A Linguagem SQL (Structured Query Language) é subdividida em cinco partes:
+DML - Linguagem de Manipulação de Dados: SELECT, INSERT, UPDATE e DELETE
+DDL - Linguagem de Definição de Dados: CREATE e DROP
+DCL - Linguagem de Controle de Dados: GRANT e REVOKE
+DTL - Linguagem de Transação de Dados: BEGIN WORK, COMMIT e ROLLBACK
+DQL - Linguagem de Consulta de Dados: FROM, WHERE, GROUP BY, HAVING, ORDER e DISTINCT
+
+
+CATEGORIAS
+
+DML - Linguagem de Manipulação de Dados 
+
+A DML é um subconjunto da linguagem usada para selecionar, inserir, atualizar e apagar dados. As DML incluem informações para consulta (SELECT), acrescentar novas linhas (INSERT), modificar as linhas existentes (UPDATE), elimine as linhas existentes (DELETE), executar uma atualização ou inserção subordinada operação (Merge).
+
+DDL - Linguagem de Definição de Dados
+Uma DDL permite ao usuário definir tabelas novas e elementos associados. A maioria dos bancos de dados de SQL comerciais tem extensões proprietárias no DDL. (ALTER e DROP)
+
+DCL - Linguagem de Controle de Dados
+
+DCL controla os aspectos de autorização de dados e licenças de usuários para controlar quem tem acesso para ver ou manipular dados dentro do banco de dados. Palavras chaves da DCL são: (GRANT e REVOKE).
+
+DTL - Linguagem de Transação de
+Dados A DTL Determina o controle da transação com as palavras chaves COMMIT e ROLLBACK.
+
+DQL - Linguagem de Consulta de Dado
+Embora tenha apenas um comando, a DQL é a parte da SQL mais utilizada. O comando SELECT é composto de várias cláusulas e opções, possibilitando elaborar consultas das mais simples as mais elaboradas.
+
+DML no SQL
+
+Os comandos DML suportados no Oracle são os seguintes:
+
+INSERT Adiciona linhas em uma tabela.
+UPDATE Altera valores de uma tabela.
+MERGE Adiciona ou remove linhas de uma tabela para outra.
+DELETE Remove registros de uma tabela.
+SELECT FOR
+UPDATE Impede a criação de outra seção na linha.
+LOCK TABLE Impede a criação de outra seção na tabela.
+
+Exercício
+
+1) Criar as operações de CRUD (Create Read Update Delete) em SQL para as Tabelas Cliente e Curso.
