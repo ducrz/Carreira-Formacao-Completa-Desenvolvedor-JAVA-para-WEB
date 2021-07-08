@@ -1,5 +1,6 @@
 package application;
 	
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class Main extends Application {
 			StackPane root = new StackPane();
 			primaryStage.setTitle("Aplicação JavaFx");
 			Button btn = new Button();
-			btn.setText(“Say Hello World!");
+			btn.setText("Say Hello World!");
 			Label lb = new Label();
 			btn.setOnAction(ev->lb.setText("\n\n\n Alo Pessoal"));
 			root.getChildren().add(btn);

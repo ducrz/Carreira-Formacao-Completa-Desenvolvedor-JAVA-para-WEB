@@ -1,1 +1,265 @@
 CURSO 04: JAVA ENTERPRISE – Persistência de Dados com JDBC e HIBERNATE
+
+UNIDADE 1
+
+ARQUITETURA JEE
+
+A Web Como Plataforma de Software
+
+Quem a Organiza?
+
+A W3C (The World Wide Web Consortium) é um consórcio internacional no qual organizações filiadas, uma equipe em tempo integral e o público trabalham juntos para desenvolver padrões para a Web. A missão do W3C é:
+
+"Conduzir a World Wide Web para que atinja todo seu potencial, desenvolvendo protocolos
+e diretrizes que garantam seu crescimento de longo prazo".
+
+Padrões W3C
+
+O W3C desenvolve padrões e diretrizes para a Web.
+Desde 1994, o W3C publicou mais de 110 desses padrões, denominados Recomendações do W3C.
+
+Principais Recomendações W3C:
+HTML 5, CSS 3, AJAX (WEB DESIGN E APLICAÇÕES)
+URI, HTTP (ARQUITETURA WEB)
+RDF, SPARQL, OWL, SKOS (WEB SEMÂNTICA)
+XML SCHEMA, XSLT, XSL-FO (TECNOLOGIA XML)
+HTTP, XML, SOAP, WSDLV (WEB SERVICES)
+CSS MOBILE, XHTML FOR MOBILE (WEB DE DISPOSITIVOS)
+BROWSERS, CMS (NAVEGADORES E FERRAMENTAS DE AUTORIA)
+
+
+Na Web como plataforma, os softwares funcionam pela Internet, sem a necessidade de estar instalados nos dispositivos pessoais (computadores, tablets, celulares, etc.).
+
+
+As aplicações Web de hoje em dia já possuem regras de negócio bastante complicadas. Codificar essas muitas regras já representa um grande trabalho. Além dessas regras, conhecidas como Requisitos Funcionais de uma aplicação, existem outros requisitos que precisam ser observados pela infraestrutura. São eles:
+
+(1) persistência em banco de dados;
+(2) Transação e acesso remoto;
+(3) web services e gerenciamento de threads;
+(4) gerenciamento de conexões HTTP e cache de objetos;
+(5) gerenciamento da sessão web, balanceamento de carga, etc.
+
+Os itens acima destacados são chamados de Requisitos Não-Funcionais.
+
+Qual é o padrão W3C para Construir Software na Web?
+•
+Não tem!
+Quais as Soluções do Mercado?
+•
+As principais são: JAVA, .NET e PHP. Essas soluções oferecem uma série de especificações que, quando implementadas, podem ser usadas pelos desenvolvedores para tirar proveito e reutilizar toda essa infraestrutura já pronta.
+
+JAVA ENTERPRISE (ORACLE)
+
+O JEE consiste de uma série de especificações bem detalhadas, dando uma receita de como deve ser implementado um software corporativo.
+
+.NET FRAMEWORK (MICROSOFT)
+
+O .NET Framework é uma plataforma de desenvolvimento popular para a criação de aplicativos para Windows, Windows Store, Windows Phone, Windows Server e Microsoft Azure. A plataforma .NET Framework inclui as linguagens de programação C# e Visual Basic, o Common Language Runtime e uma ampla biblioteca de classes.
+
+PHP (PHP GROUP)
+
+PHP é uma linguagem de script rápida, flexível e programática de propósito geral utilizada para o desenvolvimento web.
+
+1) [IESES – 2011 – PM-SC] Sobre a WWW (World Wide Web, WWW ou W3) é correto afirmar que:
+I. Foi desenvolvida por Tim Berners Lee na CERN, a Organização Europeia para Pesquisa Nuclear em Genebra, na Suíça.
+II. Os usuários da Web utilizam hiperlinks, textos destacados ou gráficos em um documento da Web que, quando clicado, abre uma nova página da Web ou seção da mesma página apresentando o conteúdo relacionado.
+III. Para acessar a Web e visualizar o seu conteúdo, há a necessidade da utilização de um navegador Web.
+IV. Todas as páginas Web são armazenadas em servidores locais e replicadas para um único servidor central em cada país onde a Internet é liberada para utilização.
+A sequência correta é:
+a) Apenas as assertivas II, e III estão corretas.
+b) Apenas as assertivas III e IV estão corretas.
+c) Apenas as assertiva I, III e IV estão corretas.
+d) Apenas as assertivas I, II e III estão corretas. CORRETO
+
+
+
+
+Introdução ao Java Enterprise Edition
+
+SE e JEE
+Diferenças
+
+O Java Standard Edition (JSE) é o coração da tecnologia Java.
+Nada é feito em Java sem o seu uso!
+
+O Java Enterprise Edition (JEE) é uma plataforma de software utilizada para a criação de aplicações distribuídas fazendo-se uso da linguagem JAVA.
+
+O JEE acrescenta ao Java SE vários recursos específicos (APIs) para a construção de serviços de software que rodam em servidores de aplicação disponíveis na "Nuvem".
+
+EE 7
+Principais Vantagens:
+
+A Plataforma Java EE oferece novas bibliotecas que disponibilizam funcionalidades para a criação de software multicamada, tolerante a falhas, distribuído, baseado em componentes modulares e que pode ser executado via Internet (Web).
+
+Arquitetura JEE 7
+
+A plataforma JEE contém uma série de especificações, cada uma com funcionalidades distintas.
+
+Especificações (APIs) JEE 7
+Java API for WebSocket (JSR 356)
+Java API for JSON Processing (JSR 353)
+Java Servlet 3.1 (JSR 340)
+JavaServer Faces 2.2 (JSR 344)
+Expression Language 3.0 (JSR 341)
+JavaServer Pages 2.3 (JSR 245)
+Standard Tag Library for JavaServer Pages (JSTL) 1.2 (JSR 52)
+Batch Applications for the Java Platform (JSR 352)
+Concurrency Utilities for Java EE 1.0 (JSR 236)
+Contexts and Dependency Injection for Java 1.1 (JSR 346)
+Dependency Injection for Java 1.0 (JSR 330)
+Bean Validation 1.1 (JSR 349)
+Enterprise JavaBeans 3.2 (JSR 345)
+Interceptors 1.2 (JSR 318)
+Java EE Connector Architecture 1.7 (JSR 322)
+
+Java Persistence 2.1 (JSR 338)
+Common Annotations for the Java Platform 1.2 (JSR 250)
+Java Message Service API 2.0 (JSR 343)
+Java Transaction API (JTA) 1.2 (JSR 907)
+JavaMail 1.5 (JSR 919)
+Java API for RESTful Web Services (JAX-RS) 2.0 (JSR 339)
+Implementing Enterprise Web Services 1.3 (JSR 109)
+Java API for XML-Based Web Services (JAX-WS) 2.2 (JSR 224)
+Web Services Metadata for the Java Platform (JSR 181)
+Java API for XML-Based RPC (JAX-RPC) 1.1 (Optional) (JSR 101)
+Java APIs for XML Messaging 1.3 (JSR 67)
+Java API for XML Registries (JAXR) 1.0 (JSR 93)
+Java Authentication Service Provider Interface for Containers 1.1 (JSR
+196)
+Java Authorization Contract for Containers 1.5 (JSR 115)
+
+Java Authorization Contract for Containers 1.5 (JSR 115)
+Java EE Application Deployment 1.2 (Optional) (JSR 88)
+J2EE Management 1.1 (JSR 77)
+Debugging Support for Other Languages 1.0 (JSR 45)
+Java Architecture for XML Binding (JAXB) 2.2 (JSR 222)
+Java API for XML Processing (JAXP) 1.3 (JSR 206)
+Java Database Connectivity 4.0 (JSR 221)
+Java Management Extensions (JMX) 2.0 (JSR 003)
+JavaBeans Activation Framework (JAF) 1.1 (JSR 925)
+Streaming API for XML (StAX) 1.0 (JSR 173)
+
+Exercícios
+1) [CESPE – 2013 – MPOG] Com referência às tecnologias Java SE (JSE), Java ME (JME) e Java EE (JEE), julgue os itens subsecutivos.
+
+Diferentemente do JSE, o JEE adiciona bibliotecas que proveem funcionalidades para desenvolvimento de aplicações com tolerância a falhas, distribuídas em multicamadas e baseadas em componentes modulares em servidores de aplicação.
+[a] Certo CORRETO [b] Errado
+
+2) [IBFC – 2014 – TER-AM] A plataforma JEE (Java Platform, Enterprise Edition) contém uma série de especificações e containers, cada uma com funcionalidades distintas, o Container utilizado no acesso ao banco de dados é conhecido como:
+a) JSP
+b) JABD
+c) JMS
+d) JDBC CORRETO
+
+
+Modelo de Aplicação JEE
+
+A plataforma JEE utiliza um modelo de aplicação distribuída multicamada.
+
+A lógica da aplicação é dividida em componentes de acordo com a sua função.
+
+Os vários componentes que constituem uma aplicação JEE são instalados em diferentes equipamentos.
+
+Baseado em 04 Camadas: Client Tier, Web Tier (JEE Server), Business Tier (JEE Server) e Enterprise Information Systems Tier (Database Server).
+
+Modelo JEE
+O modelo de aplicação JEE divide as aplicações corporativas em três partes:
+
+Componentes, Containers e Conectores.
+Um Componente JEE é uma unidade de software funcional independente que é montada em uma aplicação JEE com seus arquivos e classes relacionados e que se comunica com outros componentes.
+
+Os Containers ficam localizados entre os componentes e os clientes, provendo serviços transparentes para ambos, incluindo serviços transacionais, pooling de recursos, gerenciamento de ciclo de vida, segurança e transação.
+
+Os Conectores são utilizados para uniformizar os métodos de acesso/comunicação aos EIS (Sistemas de Informação Empresarial) em JAVA.
+
+Componentes JEE
+
+Clientes JEE (Client Tier) – Aplicações Java desktop, mobile, etc.
+
+Componentes WEB (Web Tier) – Aplicações Java Servlet, JSF e JSP
+
+Componentes de Negócios – Aplicações EJB.
+
+A lógica de negócios que soluciona e atende às necessidades de um domínio de negócios específico (bancárias, de varejo, financeiras, etc.) é tratado por enterprise java beans executando na camada de negócios.
+
+A Camada EIS representa sistemas de infra-estrutura empresarial como sistemas de banco de dados, ERP, processamento de transações em mainframe, sistemas de informações legados, etc.
+
+Container JEE
+
+São de dois tipos: CONTAINER WEB e CONTAINER EJB. O primeiro gerencia a execução dos componentes JSP, JSF e Servlet. O segundo gerencia a execução dos componentes EJB.
+
+Servidor de Aplicação JEE
+É um produto (software gratuito ou pago) que fornece os serviços de Container Web e EJB, além de oferecer suporte para o desenvolvimento de aplicações distribuídas multi-camadas.
+
+Age como a interface entre os clientes e as bases de dados e os sistemas de informação corporativos (ERPs, sistemas legados, etc.).
+
+Oferece os elementos básicos para a criação de serviços, componentes e aplicações: segurança, controle de transações, filas de processamento, elementos de gestão, escalabilidade, tolerância a falhas e outros elementos de infra-estrutura.
+
+O uso dos Servidores de Aplicação permite às equipes de desenvolvimento focarem na criação de soluções para os problemas de negócio.
+
+Servidores de Aplicação JEE Mais Utilizados
+
+Tomcat, JBoss/WildFly, Jetty, Glassfish e Weblogic.
+
+Exercícios
+1) [CESPE – 2014 – TJ-SE] Com relação a servidores de aplicação e à preparação de serviços Web, julgue os itens que se seguem:
+
+Jboss e Tomcat são servidores de aplicação equivalentes no que se refere ao suporte a aplicações corporativas na plataforma Java, visto que ambos implementam uma pilha JEE (Java Enterprise Edition) completa.
+[a] Certo [b] Errado CORRETO
+
+2) [CESPE – 2012 – PEFOCE] Em uma arquitetura JEE distribuída, um contêiner representa um ambiente de execução padronizado que fornece serviços específicos a determinado componente. Um contêiner EJB, por exemplo, destina-se a prover a infraestrutura necessária para a execução de componentes que executem funcionalidades que realizam a lógica de negócio e dados específicos de determinada aplicação.
+[a] Certo CORRETO [b] Errado
+
+
+Instalação do JEE 7 SDK
+
+Eclipse > Install New - http://download.eclipse.org/releases/luna
+
+Após a instalação é possível criar um novo projeto:
+File -> New Project -> Web -> Dynamic Web Project.
+
+Documentação: http://docs.oracle.com/javaee/7/api/
+
+
+Instalação do Servidor Tomcat
+
+
+Servidor de Aplicação JEE
+
+
+APACHE TOMCAT
+Desenvolvido pela Apache Software Foundation, o Apache Tomcat é o servidor JEE mais popular do mercado, por ser gratuito e possibilitar a execução de Componentes WEB JEE.
+
+Na época em que foi criado, foi oficialmente endossado pela Sun (antiga proprietária do Java) como a implementação de referência para as tecnologias Java Servlet e JavaServer Pages. Hoje, no entanto, a implementação de referência é o GlassFish.
+
+APACHE TOMCAT
+Ele cobre parte da especificação Java EE com tecnologias como Java Servlet, JSP e JSF, e tecnologias de apoio relacionadas como Realms e segurança, JNDI Resources e JDBC DataSources. 
+Ele tem a capacidade de atuar também como servidor web, ou pode funcionar integrado a um servidor web dedicado como o Apache ou o IIS. Como servidor web, ele provê um servidor web HTTP puramente em Java.
+
+O servidor inclui ferramentas para configuração e gerenciamento, o que também pode ser feito editando-se manualmente arquivos de configuração formatados em XML.
+
+
+Configuração do Tomcat no Eclipse
+Selecionar "Window-> Preferences ->Server -> Runtime Environments".
+Selecionar “Apache Tomcat v8.0” e pressionar o botão "Next >".
+
+Open Perspective -> Web -> servers.
+
+Exercícios
+
+1) [Instituto AOCP - 2013 - Colégio Pedro II] Por padrão o Apache Tomcat versão 7.0 ou superior vem confgurado para rodar utilizando a porta 8080.
+
+Caso o usuário precise alterar a porta do tomcat, em qual arquivo ele irá encontrar as confgurações necessárias para efetuar esta alteração?
+a) tomcatConfg.sh
+b) server.xml CORRETO
+c) tomcat-users.xml
+d) tomcat-properties.properties
+e) catalina-home.xml
+
+2) [CESPE - 2011 - TJ-ES] Na qualidade de servidor de aplicações Java para web, o Tomcat é parte da plataforma J2EE, que abrange as tecnologias Servlet e JSP, incluindo as tecnologias de apoio relacionadas, tais como Realms e segurança, JNDI Resources e JDBC DataSources. O Tomcat tem a capacidade de atuar também como servidor web/HTTP ou pode funcionar integrado a um servidor web dedicado, tais como o Apache httpd ou o Microsoft IIS.
+a) Certo CORRETO
+b) Errado
+
+
+
+
