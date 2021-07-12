@@ -1,0 +1,16 @@
+Criar uma conexão com o banco de dados Oracle XE.
+
+Nome da Conexão: bdoracle
+Nome do Usuário: system
+Senha: oracle
+
+SID: XE
+Host: localhost
+User Name: curso_java
+Passaword: schema
+
+sudo service oracle-xe start
+
+SQL PLUS- sqlplus sys as sysdba
+
+

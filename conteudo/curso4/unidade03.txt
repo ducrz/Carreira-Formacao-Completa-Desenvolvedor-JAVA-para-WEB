@@ -1,0 +1,362 @@
+UNIDADE 3
+
+PERSISTENCIA DE DADOS COM JDBC
+
+API JDBC
+
+A API JDBC (Java DataBase Conectivity) fornece um conjunto de classes e interfaces para manipular as Bases de Dados.
+
+A API JDBC é uma camada de abstração que permite a uma aplicação Java utilizar uma interface padrão para acessar um banco de dados relacional através da linguagem SQL.
+
+Abaixo, o exemplo de uma aplicação corporativa JEE que faz uso da API JDBC para ter acesso a um SGDB.
+
+A Versão atual do JDBC é a 4.2.
+
+É composta pelos pacotes java.sql e javax.sql já incluídos no Java 8.
+
+O pacote javax.sql contém outras classes e pacotes que permitem o uso de conexões JDBC de forma mais eficiente e portável.
+
+Classe javax.sql.DataSource
+
+- Obtém uma conexão a partir de um sistema de nomes JNDI;
+- DataSource é uma alternativa mais eficiente que DriverManager. Possui pool
+de conexões embutido.
+
+Classe javax.sql.RowSet
+- Extensão de ResultSet;
+- Permite manipulação customizada de ResultSet.
+
+Arquitetura JDBC
+JDBC consiste em duas partes:
+(1) API JDBC, puramente escrita em Java;
+(2) Gerenciador de Driver JDBC, o qual se comunica com os drivers dos fabricantes de Bancos de Dados.
+
+Driver JDBC
+É o componente de software utilizado para que uma aplicação escrita em Java tenha acesso a um Banco de Dados.
+
+Todos os principais bancos de dados do mercado possuem os seus drivers JDBC.
+O driver JDBC atua como tradutor entre uma aplicação Java e o Banco de Dados, implementando um protocolo de comunicação para a transferência de consultas e resultados.
+
+Tipos de Drivers:
+TIPO 1 – JDBC-ODBC
+TIPO 2 – Native-API partly Java Technology-enabled driver
+TIPO 3 – Pure Java Driver for Database Middleware
+TIPO 4 – Direct-to-Database Pure Java Driver
+
+TIPO 1 - JDBC-ODBC
+- Utilizado para fazer a ligação ("ponte") entre o JDBC e um driver ODBC.
+
+TIPO 2 – Native-API partly Java Technology-enabled driver
+- Converte chamadas JDBC em chamadas internas da API do cliente do banco de dados.
+
+TIPO 3 – Pure Java Driver for Database Middleware
+- A API do JDBC acessa uma aplicação intermediária (middleware) encarregada de traduzir chamadas JDBC e enviá-las ao banco de dados.
+
+TIPO 4 – Direct-to-Database Pure Java Driver
+- Este driver converte as chamadas JDBC diretamente para o protocolo nativo do SGBD.
+
+Vantagens JDBC
+Uma aplicação Java utiliza uma API JDBC única que independe do banco de dados ou driver que estiver sendo utilizado.
+
+Os drivers para conexão e acesso aos principais bancos de dados são fornecidos pelos seus próprios fabricantes.
+
+O desenvolvedor precisa apenas conhecer a API JDBC e utilizar o driver adequado.
+
+Exercícios
+
+1) [CESPE - 2008 - SERPRO] No BrOffice.org a configuração da conexão com o MySQL precisa de um conector para poder mover dados entre o OpenOffice.org e o MySQL. Os drivers para esse efeito podem ser o ODBC (Connector/ODBC) e o JDBC (Connector/J). O JDBC pode ser usado no
+Linux, Windows mas não no MaC OS.x.
+a) Certo
+b) Errado ERRADO
+
+2) [FCC - 2008 - TRT] A utilização de JDBC, em um programa Java, inicia com a indicação do pacote que contém a JDBC API pela declaração:
+a) import java.awt.*;
+b) import java.util.*;
+c) import java.sql.*; CORRETO
+d) import java.swing.*;
+e) import java.jdbc.*;
+
+Driver SGBD ORACLE
+
+
+Obtenção do Driver JDBC
+
+A ORACLE disponibiliza um site com todos os seus drivers JDBC (Tipo 4) para download gratuito.
+
+Configuração do Driver JDBC no Eclipse
+
+Será utilizado o driver (ojdbc6.jar) disponibilizado para a versão do SGBD Oracle 11g Release 2.
+
+
+No Eclipse, criar um novo Projeto Java com o nome de “3Disciplina”.
+Posteriormente, clicar com o botão direito no projeto e escolher a opção “Properties”.
+
+Selecionar a aba “Libraries” e clicar no botão “Add External Jars”.
+
+Selecionar o arquivo “ojdbc6.jar” e clicar no botão “OK”.
+
+Selecionar a perspectiva “DataBase Development”.
+
+Selecionar a opção “DataBase Connections New Oracle”. Adicionar o driver (ojdbc6.jar) e escolher a opção “Oracle Thin Driver”.
+
+Informar:
+SID: XE
+Host: localhost
+User Name: curso_java
+Passaword: schema
+
+Exercícios
+
+1) Acessar as Tabelas Cliente e Curso no esquema ‘curso_java’ via Eclipse.
+2) Realizar a operação de consulta nessas duas tabelas via Eclipse.
+
+
+Principais Classes e Interfaces JDBC
+
+
+As principais Classes e Interfaces JDBC estão listadas abaixo:
+public class DriverManager
+public interface Connection
+public interface Statement
+public interface PreparedStatement
+public interface CallableStatement
+public interface ResultSet
+public class SQLException
+
+DRIVERMANAGER
+
+É a classe utilizada para estabelecer uma conexão entre o driver apropriado e o Banco de Dados.
+
+O serviço de encontrar o driver certo é delegado para um controlador de
+drivers (DriverManager).
+
+Método getConnection(...)
+public static Connection getConnection (String url)
+throws SQLException
+//Inicia uma conexão ao banco de dados e retorna um
+//objeto Connection.
+
+O padrão da url para o driver Oracle é:
+
+jdbc:oracle:thin:@ip:1521:schema
+
+Exemplo
+
+DriverManager.getConnection
+("jdbc:oracle:thin:@localhost:1521:XE");
+
+O DriverManager procura por algum de seus Drivers que aceite essa URL como parâmetro.
+O sistema ainda não consegue descobrir qual implementação do JDBC deve ser usado para a URL mencionada.
+O primeiro passo é adicionar o driver ORACLE JDBC (ojdbc6.jar) no projeto Java relacionado.
+
+
+CONNECTION
+
+É a interface utilizada para representar uma conexão com um Banco de Dados específico. Oferece as seguintes funcionalidades:
+
+Executar os comandos SQL (select, insert, update, delete, etc.) via métodos (prepareStatement(...), etc.) e retornar os seus resultados;
+Tratar das transações com o BD (commit, rollback)
+Obter informações de metadados do BD (getMetaData())
+
+CONNECTION
+Principais Métodos
+public Statement createStatement() throws SQLException
+//Cria um objeto Statement para enviar comandos
+//SQL ao Banco de Dados
+public void commit() throws SQLException
+//Confirma a transação.
+public void rollback() throws SQLException
+//Cancela a transação.
+public void close() throws SQLException
+//Fecha a conexão atual.
+
+STATEMENT
+
+É a interface utilizada para representar uma instrução SQL e retornar os resultados produzidos.
+
+Principais Métodos
+public ResultSet executeQuery (String sql)
+throws SQLException
+//Executa a consulta SQL passada em SQL e
+//retorna o ResultSet com o resultado da consulta.
+public int executeUpdate(String sql) throws SQLException
+//Executa as instruções SQL INSERT, UPDATE ou DELETE.
+public void cancel() throws SQLException
+//Cancela a execução de uma instrução SQL.
+
+Exemplo
+Statement stm = connection.createStatement();
+
+PREPARED STATEMENT
+É a interface utilizada para representar uma instrução SQL pré-compilada e retornar os resultados produzidos.
+É ideal para ser executada várias vezes consecutivas, bem como receber a passagem de parâmetros.
+
+Principais Métodos
+public ResultSet executeQuery (String sql)
+throws SQLException
+//Executa a consulta SQL passada em SQL e
+//retorna o ResultSet com o resultado da consulta.
+public int executeUpdate(String sql) throws SQLException
+//Executa as instruções SQL INSERT, UPDATE ou DELETE.
+public setInt(int indice, int valor)
+//Define o valor de um parâmetro do tipo inteiro
+
+
+O código abaixo exemplifica o uso do método prepareStatement(...) para o recebimento de instrução SQL, cujos parâmetros são passados como argumentos posteriormente.
+
+Exemplo
+PreparedStatement stmt = con.prepareStatement(
+"insert into cliente(cpf,nome,email)
+values (?,?,?)"); // instrução SQL
+// passagem dos argumentos
+stmt.setInt(1, 573618);
+stmt.setString(2, “Antonio Sampaio Jr”);
+stmt.setString(3, “assoftbel@gmail.com”);
+//uma chamada ao método executeUpdate() para
+//executar a instrução SQL.
+stmt.executeUpdate();
+
+
+CALLABLE STATEMENT
+É a interface utilizada para executar stored procedures SQL.
+
+Métodos
+public CallableStatement prepareCall
+(String storedProcedure) throws SQLException
+//Executa a stored procedured armazenada no BD.
+public setString(String paramName, String x)
+//Define o valor de um parâmetro do tipo String
+
+Exemplo
+CallableStatment cstmt =
+connection.prepareCall("{call sp_xxx(?,?)}");
+cstmt.registerOutParameter(2, Types.FLOAT);
+cstmt.setInt(1, accountID);
+cstmt.setFloat(2, 2343.23);
+cstmt.execute();
+out.println("Novo valor:" + cstmt.getFloat(2));
+
+Esta procedure possui dois parâmetros. O primeiro é só de entrada, e para este é passado o conteúdo da variável accountID. O segundo é do tipo IN OUT. Para este, é um passado um número (2343.23) como entrada e o seu retorno, após execução, é impresso na tela. Note-se que o parâmetro de retorno foi registrado juntamente com seu tipo de dados.
+
+RESULT SET
+É a interface que representa o resultado de uma consulta SQL em um Banco de Dados.
+Fornece acesso aos dados dos registros retornados após a consulta.
+
+Métodos
+public boolean next()
+//Move para o próximo registro do objeto ResultSet
+getInt(int col) ou (String col)
+//Retorna o valor inteiro da coluna informada
+getString(int col) ou (String col)
+//Retorna o valor String da coluna informada
+
+RESULT SET
+Exemplo
+
+consulta = "select * from cliente";
+Resultset rs = sql.executeQuery(consulta);
+while(rs.next()){
+System.out.println(rs.getString("nome"));
+System.out.println(rs.getString("email"));
+}
+
+SQL EXCEPTION
+
+É a classe utilizada para tratar as possíveis exceções que podem ser geradas quando se acessa um Banco de Dados.
+
+Método
+public int getErrorCode()
+//Obtém o código de erro específico do fabricante do BD.
+• Exemplo
+try {
+//código Java
+}
+catch(SQLException e){...}
+
+Passos Necessários para Acessar o BD com JDBC
+
+1. Informar as propriedades do BD
+
+String url = "jdbc:oracle:thin:@localhost:1521:XE";
+String usuario = "curso_java";
+String senha = "schema";
+
+2. Conectar com o BD
+Connection conexao = DriverManager.getConnection( url,usuario,senha );
+
+3. Criar um Objeto Statement
+Statement statement = conexao.createStatement();
+
+4. Definir a Instrução SQL a ser executada
+String consulta = "SELECT * FROM Cliente";
+
+5. Criar um Objeto ResultSet
+ResultSet rs = statement.executeQuery(consulta);
+
+6. Listar o resultado da Instrução SQL
+while(rs.next()) {
+JOptionPane.showMessageDialog(null, "cpf:"+rs.getInt(1)+
+" nome:"+ rs.getString(2)+ " email"+ rs.getString(3));
+}
+
+7. Fechar a conexão com o BD
+conexao.close();
+
+Exercícios
+1) Criar a classe AcessoBD que faz uso das classes e interfaces JDBC listadas abaixo para realizar uma consulta na Tabela Cliente:
+
+public class DriverManager
+public interface Connection
+public interface Statement
+public interface ResultSet
+public class SQLException
+
+
+static String url = "jdbc:oracle:thin:@localhost:1521:XE";
+static String usuario = "curso_java";
+static String senha= "schema";
+
+2) Utilizar a interface DatabaseMetaData para obter o nome do fabricante do BD e a sua versão utilizada.
+
+3) Gerar uma exceção ClassNotFoundException removendo o driver Oracle do projeto ‘3Disciplina’.
+
+
+
+Stored Procedures e Transações
+
+DEFINIÇÃO
+Stored Procedure (SP) é um grupo de instruções SQL que formam uma unidade lógica para a realização de determinada tarefa específica.
+
+A SP agrupa um conjunto de operações ou consultas para serem executadasem um servidor de Banco de Dados.
+
+Uma SP encapsula tarefas repetitivas, aceita parâmetros de entrada e retorna um valor de status (para indicar aceitação ou falha na execução).
+
+O uso de SP pode reduzir o tráfego na rede, melhorar a performance da aplicação e aumentar os controles de segurança.
+
+PL/SQL
+
+PL/SQL (Procedural Language/Structured Query Language) é uma extensão da linguagem padrão SQL para a criação de SP bem específicas para o SGBD Oracle.
+
+Criação de Stored Procedure no SQL Developer
+
+Selecionar Procedures > Novo Procedure...
+
+CREATE OR REPLACE PROCEDURE
+SP_INSERIRCLIENTE
+(CPF IN INTEGER,
+NOME IN VARCHAR2,
+EMAIL IN VARCHAR2) AS
+BEGIN
+INSERT INTO CLIENTE
+VALUES(CPF,NOME,EMAIL);
+END SP_INSERIRCLIENTE;
+
+
+Executar a SP no Java
+
+try{
+	cstat = conexao.prepareCall
+	("{call SP_INSERIRREGISSTROCLIENTE('"+cpf+"','"+nome+"','"+email+"')}");
+	cstat.execute();
+
+}
