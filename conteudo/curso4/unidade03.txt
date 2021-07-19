@@ -360,3 +360,115 @@ try{
 	cstat.execute();
 
 }
+
+Transações
+Uma transação representa um conjunto de ações que devem ser realizadas de forma atômica, isto é, ou todas são realizadas com sucesso ou todas são canceladas.
+
+O conceito de transação em Banco de Dados visa preservar as ações realizadas pelas aplicações em um banco de dados.
+
+Quando múltiplas instruções SQL são agrupadas em uma única transação, todas as operações podem ser confirmadas (committed) ou canceladas (rolled back).
+
+Na interface Connection são definidos os métodos commit() e rollback().
+
+Por padrão, toda conexão JDBC considera uma instrução SQL como sendo uma transação. Pode-se utilizar o método setAutoCommit(false) para desabilitar esta opção.
+
+
+Transações
+
+Exemplo
+
+try {
+	Statement stmt = con.createStatement();
+	con.setAutoCommit(false);
+	stmt.executeUpdate("UPDATE ...");
+	stmt.executeUpdate("DELETE ...");
+...
+con.commit();
+}
+catch (Exception e)
+{
+try {
+con.rollback();
+}
+catch (SQLException e){}
+}
+
+
+Exercícios
+1) Criar a classe ClienteApp para realizar as operações de CRUD na Tabela
+Cliente.
+
+2) Criar na classe ClienteApp mais dois métodos inserir(...):
+- o primeiro para fazer uso da interface PreparedStatement;
+- e o segundo uso da SP SP_INSERIRREGISTROCLIENTE.
+
+3) Experimente retirar o controle de transações nas operações de CRUD. O que acontece? Retirando o commit o banco de dados não é atualizado.
+
+4) ATIVIDADE EXTRA: realizar os exercícios (1) e (2) para a Tabela Curso.
+CursoApp.java
+
+
+Padrões de Projeto
+
+
+DEFINIÇÃO
+Padrões de Projeto ou Design Patterns são utilizados para se alcançar objetivos na engenharia de software usando classes e métodos em linguagens orientadas a objeto.
+
+Padrões são um repertório de soluções e princípios que ajudam os desenvolvedores a criar software e que são codificados em um formato estruturado consistindo de: Nome, Problema que soluciona e Solução do problema.
+
+O objetivo dos padrões é codificar conhecimento (knowing) existente de uma forma que possa ser reaplicado em contextos diferentes.
+
+Há vários catálogos de padrões em software. Muitos são específicos a uma determinada área (padrões JEE, padrões de implementação em Java, em C#, padrões para concorrência, sistemas distribuídos, etc.).
+
+Os dois padrões apresentados nesta unidade são específicos para a melhor manipulação de dados em um SGBD. São eles: Transfer Object ou Value Object (VO) e Data Access Object (DAO).
+
+Padrão de Projeto VO
+OBJETIVO
+
+Reduzir a quantidade de requisições necessárias para recuperar um objeto.
+
+VO permite encapsular em um objeto um subconjunto de dados utilizável pelo cliente e utilizar apenas uma requisição para transferi-lo.
+
+Uma única chamada remota é necessária para transferir o VO.
+
+VO é a solução indicada para dados read-only ou informações que não são alteradas com freqüência, ou ainda, quando as alterações não são críticas (não afetam o processo).
+
+VANTAGENS e DESVANTAGENS
+
+Transfere mais dados em menos chamadas, reduzindo o tráfego de rede;
+Reduz a duplicação de código;
+
+
+Padrão de Projeto DAO
+OBJETIVO
+Abstrair e encapsular todo o acesso a uma fonte de dados. O DAO gerencia a conexão com a fonte de dados para obter e armazenar os dados.
+
+O DAO oferece uma interface comum de acesso a dados e esconde as características de uma implementação específica, com métodos genéricos para ler e gravar dados em um SGBD.
+
+VANTAGENS e DESVANTAGENS
+
+Transparência quanto à fonte de dados, facilitando a migração para outras implementações;
+Reduz complexidade do código nos objetos de negócio;
+Centraliza todo acesso aos dados em camada separada;
+Camada adicional que pode gerar impacto na performance.
+Pode introduzir objetos obsoletos e aumentar a complexidade do sistema.
+
+VO (DTO) e DAO
+
+
+
+Exercícios
+1) Criar o pacote com.abctreinamentos e reescrever a classe ClienteApp para fazer uso dos padrões de projeto DAO e VO.
+
+
+
+RESUMO
+
+TÓPICOS APRESENTADOS
+
+API JDBC
+Driver SGBD ORACLE
+Principais Classes e Interfaces JDBC
+Stored Procedures e Transações
+Padrões de Projeto
+
