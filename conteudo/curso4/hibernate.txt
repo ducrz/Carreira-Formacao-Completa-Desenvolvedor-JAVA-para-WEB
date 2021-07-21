@@ -1,0 +1,4 @@
+
+Para obter a versão mais atualizada do Hibernate: https://hibernate.org/orm/
+
+

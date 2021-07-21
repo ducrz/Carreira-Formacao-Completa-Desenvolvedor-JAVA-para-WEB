@@ -1,0 +1,527 @@
+UNIDADE 4
+
+Framework Hibernate
+
+Introdução ao Hibernate
+
+Framework Hibernate
+
+Motivação
+
+A utilização de código SQL dentro de uma aplicação agrava o problema da
+dependência de plataforma de banco de dados e complica, em muito, o
+trabalho de mapeamento entre classes e o banco de dados relacional.
+
+O que é um Framework?
+
+É um conjunto de componentes de software que provê uma arquitetura e estrutura básica para o desenvolvimento de uma aplicação.
+
+O que é o Hibernate?
+É um framework para o mapeamento objeto relacional (ORM) escrito na linguagem Java.
+
+Existe uma versão para a plataforma .Net conhecida como NHibernate.
+
+
+O que é o Hibernate?
+É um framework consolidado para fazer persistência (mundo OR  mundo OO).
+É mantido por uma comunidade muito ativa (http://hibernate.org).
+O maior esforço para usá-lo está na construção e manutenção dos mapeamentos.
+O overhead é extremamente satisfatório.
+Existem muitas ferramentas de apoio ao desenvolvimento usando Hibernate, tais como os plug-ins para o Eclipse.
+O uso adequado dessas ferramentas simplifica o trabalho do desenvolvedor.
+Quais os outros Java ORM Frameworks?
+Enterprise JavaBeans, Java Data Objects.
+Castor, TopLink, Spring DAO, etc.
+
+
+Principais Vantagens
+
+Produtividade:
+Elimina muito código repetido. Foco na lógica de negócio;
+O esquema do banco de dados é gerado automaticamente.
+Mantém:
+Poucas linhas de código;
+Fácil de entender e administrar mudanças em modelos de objetos.
+Performance:
+Lazy Loading – As associações só são chamadas quando for
+necessário;
+
+Faz uso de caching.
+Independência de BD:
+O banco de dados é abstraído;
+Pode ser configurado fora da aplicação.
+
+
+Mapeamento ORM
+O que é o Mapeamento Objeto-Relacional
+É uma técnica utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais.
+
+As tabelas do banco de dados são representadas através de classes (DAOs) e os registros de cada tabela são representados como instâncias das classes (VOs).
+
+Com esta técnica, o desenvolvedor não se preocupa com os comandos SQL, pois o framework de ORM faz todo o trabalho de persistência.
+
+A ideia da persistência O/R é reunir as vantagens de se utilizar um modelo orientado a objetos para a construção de uma aplicação, com a performance e a confiabilidade dos bancos de dados relacionais.
+
+Principais Características
+Programação OO (herança, polimorfismo, agregação, associação, composição e coleções Java).
+Sem aumento de tempo na construção da aplicação.
+Gratuito e aberto.
+Portável para todos os bancos compatíveis com o padrão SQL.
+Implementa mecanismos de mapeamento:
+- Classes Java <=> Tabelas em SGBDs relacionais;
+- Tipos Java <=> Tipos SQL.
+O Hibernate objetiva reduzir em cerca de 95% do tempo de desenvolvimento e tarefas relacionadas à persistência!
+O Hibernate persiste objetos Java comuns (POJO).
+
+
+Principais Características
+Usa reflexão para acessar as propriedades persistentes de um objeto.
+As classes persistentes são definidas (descritas) em documentos de mapeamento.
+Arquivos XML são usados para descrever os campos, associações e subclasses persistentes.
+Os Mapeamentos são "compilados" na inicialização da aplicação.
+
+
+Exercícios
+1) [CESPE - 2009 - SECONT-ES] O Hibernate, um framework de mapeamento objeto relacional (ORM), cria uma camada persistência na solução desenvolvida, o que permite ligar os objetos aos bancos de dados relacionais. Entre seus serviços, o Hibernate provê um meio de se controlar transações, por meio de métodos de suas interfaces session e transaction,
+tendo ainda suporte a herança e polimorfismo. É distribuído sob a licença LGPL, o que permite seu uso em projetos comerciais ou open source.
+a) Certo CORRETO
+b) Errado
+
+2) [CESPE - 2010 - TRE-BA] Quanto ao Hibernate, julgue o item abaixo.
+O Hibernate, um framework para o mapeamento objeto- relacional, é escrito na linguagem Java e, por isso, somente pode ser executado no ambiente Java.
+a) Certo
+b) Errado ERRADO
+
+
+3) [COPEVE-UFAL - 2012 - ALGÁS] Dadas as seguintes afirmações,
+I. Na arquitetura do JDBC, a diferença entre os tipos Statement e PreparedStatement é o fato do PreparedStatement manter os dados criptografados durante o tráfego entre o cliente e o servidor do SGBD.
+II. Um software que utiliza o framework Hibernate, necessariamente não utiliza JDBC.
+III. O framework Hibernate permite a implementação de transações na camada de persistência (aplicação), mesmo que o SGBD utilizado não implemente esse conceito.
+IV. O framework Hibernate é responsável por realizar o mapeamento objeto- relacional, mas possui a restrição de só aceitar chaves primárias compostas em relacionamentos, não em entidades.
+Verifica-se que está(ão) correta(s)
+a) I, II e III. b) II, apenas. c) III, apenas. d) II, III e IV, apenas. 
+e) III e IV, apenas. CORRETO
+
+Principais Componentes do Hibernate
+
+São 03 os Principais Componentes do Hibernate:
+1) Mapeamento das Tabelas em Classes
+	1.1) Com Arquivos .hbm.xml
+	1.2) Com Anotações
+	
+2) Arquivo de Configuração (hibernate.cfg.xml)
+
+3) Classe de Gerenciamento (HibernateSessionFactory.java)
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+USUARIO.HBM.XML
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+Principais Elementos
+<class> mapeia uma classe a uma tabela.
+<id> mapeia um atributo da classe à chave-primária da tabela.
+<generator> utilizado para gerar (automaticamente) os valores da chave- primária.
+<property> mapeia os demais atributos do objeto às colunas da tabela.
+Os arquivos de mapeamento (*.hbm.xml) podem ser gerados automaticamente a partir da base de dados ou das classes Java.
+Esses arquivos de mapeamento (*.hbm.xml) devem ser registrados no arquivo de configuração do Hibernate (hibernate.cfg.xml).
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+
+Mapeamento 1:1
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+PESSOA.HBM.XML
+
+<hibernate-mapping>
+<class name="Pessoa">
+<id name="id">
+<generator class="increment"/>
+</id>
+<property name="nome"/>
+<property name="telefone"/>
+<property name="email"/>
+<one-to-one name="endereco"
+class="Endereco" cascade="save-update"/>
+</class>
+</hibernate-mapping>
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+ENDERECO.HBM.XML
+
+<hibernate-mapping>
+<class name="Endereco">
+<id name="id“ column="Pessoa_id">
+<generator class="foreign">
+<param name="property">pessoa</param>
+</generator> </id>
+<property name="bairro"/>
+<property name="cidade"/>
+<property name="complemento"/>
+<property name="estado"/>
+<property name="numero"/>
+<property name="rua"/>
+<property name="cep"/>
+<one-to-one name="pessoa" class="Pessoa“ constrained="true"/>
+</class></hibernate-mapping>
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+Herança
+
+O Hibernate suporta três estratégias de mapeamento de
+herança:
+Uma tabela por hierarquia de classes
+Uma tabela por subclasse
+Uma tabela por classe concreta
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+PROFESSOR.HBM.XML
+
+<hibernate-mapping>
+<joined-subclass name="Professor" extends="Pessoa">
+<key column="Pessoa_id"/>
+<property name="titulo"/>
+<set name="turmas“ inverse="true">
+<key column="Pessoa_Professor_id"/>
+<one-to-many class="Turma"/>
+</set>
+</joined-subclass>
+</hibernate-mapping>
+
+O elemento <key> indica a chave estrangeira na tabela Turma.
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+
+Mapeamento 1:N
+
+Coleções são mapeadas usando os elementos <set>, <list>, <map>, <bag>, <array> e <primitive-
+array>.
+
+Uma tabela para a coleção é requerida quando ela contém valores ou referências para outras entidades mapeadas em 1:N.
+
+1) Mapeamento das Tabelas em Classes (com Arquivos)
+TURMA.HBM.XML
+
+<hibernate-mapping>
+<class name="Turma">
+<id name="id">
+<generator class="increment"/>
+</id>
+<property name="nome"/>
+<many-to-one name="professor” class="Professor”
+column="Professor_Pessoa_id"/>
+</class>
+</hibernate-mapping>
+
+
+1.2) Com Anotações
+
+1) Mapeamento das Tabelas em Classes (com Anotações)
+Mapeamento 1:N
+
+@Entity
+@Table
+public class Professor {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String name;
+	@OneToMany(mappedBy=“professor",
+	cascade=CascadeType.PERSIST)
+	private List<Turma> turmas =
+	new ArrayList<Turma>();
+	public Professor() {
+	super();
+}
+...
+}
+
+1) Mapeamento das Tabelas em Classes (com Anotações)
+Mapeamento 1:N
+
+@Entity
+@Table
+public class Turma {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String name;
+	@ManyToOne
+	private Professor professor;
+	public Turma() {}
+	...
+}
+
+
+Exercícios
+1) [FEPESE - 2013 - JUCESC] O hibernate pode utilizar o mapping document para mapear metadados. Que outra forma pode ser empregada para mapear metadados em hibernate?
+a) JPA
+b) Container
+c) Comments
+d) Webservice
+e) Annotation CORRETO
+
+2) [CESPE - 2013 – INPI] No Hibernate, caso o nome da classe seja diferente do nome da tabela mapeada, é necessário informar, na anotação @Table, o nome da tabela, por meio do atributo name.
+a) Certo CORRETO
+b) Errado
+
+
+2) Arquivo de Configuração (hibernate.cfg.xml)
+
+
+Todas as configurações de inicialização do Hibernate, como propriedades do banco de dados, mapeamento das classes relacionadas, pool de conexão de banco de dados, etc., estão definidas no arquivo hibernate.cfg.xml.
+
+<?xml version ="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	</session-factory>
+</hibernate-configuration>
+
+
+2) Arquivo de Configuração (hibernate.cfg.xml) com Arquivos
+
+
+2) Arquivo de Configuração (hibernate.cfg.xml) com Anotações
+hibernate.cfg.xml
+
+
+@Entity
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-configuration>
+<session-factory>
+	...
+	<mapping class="com.abctreinamentos.Turma" />
+	<mapping class="com.abctreinamentos.Professor" />
+	<!–
+	<mapping
+	resource="com/abctreinamentos/Turma.hbm.xml">
+	</mapping> -->
+	<!–
+	<mapping
+	resource="com/abctreinamentos/Professor.hbm.xml">
+	</mapping> -->
+</session-factory>
+</hibernate-configuration>
+
+
+Exercício
+1) [FCC - 2009 - TJ-PI] Hibernate é uma ferramenta open-source que facilita a comunicação entre aplicação Java e banco de dados, tais como manipulação de dados, gerenciamento de transações e pooling de conexões. A esse respeito, considere o trecho de código para configuração do Hibernate:
+
+Tendo em vista os dados acima, analise:
+I. o código exibe a estrutura básica de um arquivo XML de mapeamento que indica ao Hibernate como carregar e gravar os objetos de uma classe de persistência;
+II. as declarações de mapeamento estão circunscritas entre as tags </hibernate-mapping>;
+III. o elemento < id > é a declaração de uma propriedade identificadora de tabela (chave-primária) e o atributo column="ID_PESSOA" indica qual é o campo na tabela ao qual ele está ligado.
+É correto o que consta em
+a) I, apenas.
+b) I e II, apenas.
+c) I, II e III. CORRETO
+d) II e III, apenas.
+e) I e III, apenas.
+
+
+3) Classe de Gerenciamento (HibernateSessionFactory.java)
+
+
+Classe de Gerenciamento (HibernateSessionFactory.java)
+
+É a classe responsável por abrir novas sessões Hibernate a partir de uma conexão JDBC fornecida pelo usuário.
+
+Cada SessionFactory deve ser configurado a partir de um único arquivo de configuração hibernate.cfg.xml.
+
+Um objeto SessionFactory é construído a partir do objeto Configuration. A partir de sua construção não é mais necessária a utilização do objeto Configuration.
+
+
+HibernateSessionFactory.java
+
+Características
+Tem como principal propósito fornecer instâncias de Session.
+É baseado no Padrão de Projeto Factory.
+É compartilhado pelas Threads da aplicação.
+Criação: HibernateSessionFactory.currentSession();
+
+public class HibernateSessionFactory {
+	private static String CONFIG_FILE_LOCATION = "/hibernate.cfg.xml";
+	private static final ThreadLocal<Session> threadLocal =
+	new ThreadLocal<Session>();
+	...
+	public static void rebuildSessionFactory() {...}
+	public static void closeSession() throws HibernateException {...}
+	public static Session currentSession() throws HibernateException
+	{...}
+}
+
+Session.java
+
+Características
+
+É obtido de uma instância de SessionFactory;
+Principal interface entre a Aplicação Java e o Hibernate. Responsável por armazenar e recuperar objetos.
+
+Criação: Session session = sessionFactory.getCurrentSession();
+Principais Métodos:
+
+Inclusão 
+session.save(transientInstance);
+session.persist(transientInstance);
+
+Alteração
+session.merge(transientInstance);
+
+Consulta
+session.findAll(transientInstance);
+
+Exclusão
+session.delete(persistentInstance);
+
+
+Máquina de Estados
+
+
+Persistente (persistent)
+São objetos que estão associados aos registros de um banco de dados;
+
+Transiente (transient)
+São objetos que não estão associados aos registros de um banco de dados;
+
+Desanexado (detached)
+São objetos que existem no banco de dados, porém não existem na sessão hibernate;
+
+
+Transações no Hibernate
+São um conjunto de operações de persistência no Banco de Dados que devem ser executadas por completo.
+
+Todas as instruções devem ser finalizadas com um comando commit ou canceladas com um comando rollback.
+
+
+
+Exercícios
+
+1) [CESPE - 2009 - CEHAP-PB] No framework Hibernate, é comum que uma instância de uma classe persistente tenha três estados específicos. Assinale a opção que contém esses três estados.
+a) plugged, disconnected, timewait
+b) connected, disconnected, detached
+c) transient, persistent, detached CORRETO
+d) transient, connected, timewait
+
+2) [CESGRANRIO - 2008 - TJ-RO] Sobre o framework de mapeamento objeto/relacional Hibernate, é correto afirmar que a) após modificar um objeto que já está vinculado a uma session (sessão) aberta, é necessário utilizar o método update() do objeto session para que as modificações sejam gravadas no banco de dados.
+b) um objeto se encontra no estado detached quando tiver sido criado com o construtor new, estando ainda desvinculado de qualquer session (sessão) do Hibernate.
+c) um objeto gerenciado pelo Hibernate se encontra no estado transient quando tiver sido criado vinculado a uma session (sessão) do Hibernate, mas ainda não tiver sido gravado no banco de dados.
+d) um objeto gerenciado pelo Hibernate se encontra no estado persistent quando a session (sessão) a que o mesmo estava vinculado foi fechada e, em conseqüência, o objeto já foi gravado no banco de dados.
+e) uma session do Hibernate não é thread-safe, o que significa que pode gerar resultados imprevisíveis e instabilidade se uma instância for utilizada, simultaneamente, por mais de uma thread da aplicação sem a devida sincronização do acesso à mesma. CORRETO
+
+
+
+Projeto Prático com o Hibernate
+
+
+São necessários realizar 06 Passos:
+1. Configurar o acesso ao banco de dados no Eclipse
+2. Fazer o download do Hibernate e copiar os seus arquivos .jar para um projeto Java
+3. Instalar o Jboss Tools para poder utilizar o Hibernate no Eclipse
+4. Configurar no projeto Java os arquivos de configuração do Hibernate
+5. Realizar a Engenharia Reversa das Tabelas Cliente, Curso e Pagamento
+6. Fazer os Ajustes necessários nos Códigos Gerados
+
+
+
+1. Configurar o acesso ao banco de dados no Eclipse
+
+2. Fazer o download do Hibernate e copiar os seus arquivos .jar para um projeto Java
+
+
+
+Criar um novo projeto Java (Hibernate) e adicionar as principais bibliotecas
+do Hibernate nesse projeto:•
+
+…\hibernate-release-5.2.7.Final\lib\required
+
+Adicionar também o driver Oracle (ojdbc6.jar).
+
+
+Fazer o download do Apache Commons Logging
+
+Copiar o arquivo (commons-logging-1.2.jar) para o projeto Java (HibernateApp).
+
+
+3. Instalar o Jboss Tools para poder utilizar o Hibernate no Eclipse
+
+Necessário instalar o Jboss Tools para poder utilizar o Hibernate no Eclipse.
+No Eclipse, selecionar o Menu “Help” e depois a opção “Install New Software”. Informar o endereço abaixo:
+http://download.jboss.org/jbosstools/updates/stable/luna/
+
+
+4. Configurar no projeto Java os arquivos de configuração do Hibernate
+
+São 04 os arquivos de configuração necessários para criar um projeto Java no Eclipse com suporte ao Hibernate.
+
+4.1. Hibernate Configuration File (cfg.xml)
+Criar a pasta ‘META-INF’ em ‘src’. Em seguida, criar o arquivo de configuração (hibernate.cfg.xml) nesta pasta.
+
+Clicar com o botão direito na pasta ‘META-INF’ e escolha “New” “Other...” “Hibernate” “Hibernate Configuration File (cfg.xml)”
+Pressionar o botão “Next >”.
+Pressionar novamente o botão “Next >”
+
+4.1. Hibernate Configuration File (cfg.xml)
+
+Selecionar a opção “Get values from Connection” e preencher os campos restantes.
+
+4.2. Hibernate Console Configuration
+
+Clicar com o botão direito na pasta ‘META-INF’ e escolha “New”
+“Other...” “Hibernate” “Hibernate Console Configuration”
+Pressionar o botão “Next >”.
+Pressionar o botão “Finish”.
+
+4.3. Hibernate Reverse Engineering File (revenge.xml)
+Clicar com o botão direito na pasta ‘META-INF’ e escolha “New” “Other...” “Hibernate” “Hibernate Reverse Engineering File
+(revenge.xml)”
+Pressionar o botão “Next >”.
+Pressionar novamente o botão “Next >”.
+
+4.3. Hibernate Reverse Engineering File (revenge.xml)
+Selecionar as Tabelas Cliente, Curso e Pagamento.
+Pressionar o botão “Include >”.
+
+Pressionar o botão “Finish”.
+
+5. Realizar a Engenharia Reversa das Tabelas Cliente, Curso e Pagamento
+
+Criar o pacote com.abctreinamentos.
+Selecionar no menu a opção “Hibernate Code Generation Configurations ... >”.
+
+5. Realizar a Engenharia Reversa das Tabelas Cliente e Curso
+Pressionar o botão “Finish”.
+
+5. Realizar a Engenharia Reversa das Tabelas Cliente e Curso
+
+Pressionar o botão “Finish”.
+
+6. Fazer os Ajustes necessários nos Códigos Gerados
+
+A) Incluir os códigos abaixo no arquivo hibernate.cfg.xml
+<property name="hibernate.current_session_context_class">thread</property>
+<mapping resource="com/abctreinamentos/Cliente.hbm.xml"/>
+<mapping resource="com/abctreinamentos/Curso.hbm.xml"/>
+<mapping resource="com/abctreinamentos/Pagamento.hbm.xml"/>
+
+B) Trocar BigDecimal por long nas Classes e Arquivos XML
+
+C) Alterar o método getSessionFactory() nas classes DAO (Home)
+protected SessionFactory getSessionFactory() {
+SessionFactory sessionFactory = new Configuration().
+configure(new File("src/META-INF/hibernate.cfg.xml"))
+.buildSessionFactory();
+return sessionFactory;
+
+Exercícios
+
+1) Criar as classes ClienteApp, CursoApp e PagamentoApp para realizar as operações de CRUD nas suas respectivas Tabelas.
+
+2) ATIVIDADE EXTRA: Copiar o arquivo LojaVirtual escrito na Unidade 3 e adaptá-lo às operações de CRUD realizadas no exercício (1).
+
+
+Tipos de Consultas no Hibernate
+
