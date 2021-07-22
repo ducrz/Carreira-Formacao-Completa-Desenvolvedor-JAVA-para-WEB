@@ -1,5 +1,6 @@
 package com.abctreinamentos;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ClienteApp {
@@ -28,7 +29,8 @@ public class ClienteApp {
 				switch(opcao) { //Consultar Todos os Clientes
 					case 1:{
 						System.out.println("[1] Consultar todos");
-						//consultarTodos();
+						List<Cliente> clientes = dao.findAll();
+						clientes.forEach(System.out::println);
 						break;
 						
 					}

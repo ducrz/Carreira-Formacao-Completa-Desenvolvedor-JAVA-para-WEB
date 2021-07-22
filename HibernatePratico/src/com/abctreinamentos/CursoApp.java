@@ -1,5 +1,6 @@
 package com.abctreinamentos;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CursoApp {
@@ -27,7 +28,8 @@ public class CursoApp {
 				switch(opcao) { //Consultar Todos os Cursos
 					case 1:{
 						System.out.println("[1] Consultar todos");
-						//consultarTodos();
+						List<Curso> cursos = dao.findAll();
+						cursos.forEach(System.out::println);
 						break;
 						
 					}

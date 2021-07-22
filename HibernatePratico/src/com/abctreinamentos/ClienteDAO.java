@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  * Home object for domain model class Cliente.
@@ -79,15 +80,16 @@ public  List<Cliente> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		//HQL
+		String hql="from Cliente";
+		Query query = session.createQuery(hql);
+		List<Cliente> clientes = query.list();		
 		session.getTransaction().commit();
+		return clientes;		
 		
-		
-		logger.log(Level.INFO, "merge successful");
 	} catch (RuntimeException re) {
 		logger.log(Level.SEVERE, "merge failed", re);
 		throw re;
 	}
-	return null;
 }
 
 public  Cliente find(long cpf) {

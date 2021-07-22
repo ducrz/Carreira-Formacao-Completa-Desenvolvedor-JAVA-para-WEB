@@ -525,3 +525,74 @@ Exercícios
 
 Tipos de Consultas no Hibernate
 
+
+São três os tipos de consultas no Hibernate:
+Hibernate Query Language (HQL);
+Criteria Query API;
+SQL "puro".
+
+A maioria das consultas são resolvidas com HQL e Criteria. As específicas são resolvidas com o SQL "puro".
+
+Hibernate Query Language
+
+O HQL é uma linguagem parecida com o SQL, porém, "orientada a objetos".
+
+Possibilita descrever consultas polimórficas e consultas sobre coleções.
+
+from Pessoa pessoa where upper(pessoa.nome) like 'MARIA%’
+
+A consulta acima retorna todos os objetos da classe pessoa e de suas subclasses que tenham o nome iniciado por ‘MARIA’.
+
+public List find(String nome){
+	String sql = "from Contatos contatos where contatos.nome like :nome";
+	Query q = getSession().createQuery(sql);
+	q.setParameter("nome", nome);
+	List contatos = q.list();
+	return contatos;
+}
+
+A consulta acima retorna todos os objetos da classe Contatos e de suas subclasses que tenham o nome informado via parâmetro.
+
+
+Criteria
+
+É uma API (bastante intuitiva) utilizada para executar consultas.
+
+Para criar uma nova consulta, basta criar um objeto Criteria e definir os critérios da consulta desejada.
+
+Criteria consulta = session.createCriteria(Contatos.class);
+consulta.add( Expression.like("nome", "Maria%") );
+List resultado = consulta.list();
+
+A consulta acima vai retornar todas as ‘Marias’.
+
+Outro exemplo de consulta com a definição de ‘filtros’:
+
+Criteria criteria = session.createCriteria(Event.class);
+
+criteria.add(Restrictions.eq('title','Rolling Stones'));
+criteria.add(Restrictions.gt('date'.newDate());
+
+criteria.setMaxResults(10);
+
+List events = criteria.list();
+
+
+
+Exercícios
+
+1) [CESPE - 2010 - TRE-BA] No Hibernate, apenas a linguagem de consulta HQL (hibernate query language) pode ser utilizada. A HQL executa os pedidos SQL sobre as classes de persistência do Java em vez de tabelas no banco de dados, o que diminui a distância entre o desenvolvimento das regras de negócio e o banco de dados.
+
+a) certo b) errado CORRETO
+
+
+2) [CESPE - 2010 - TCU] A tecnologia Hibernate 3.5 é apropriada para o sistema a ser desenvolvido: entre as características que a credenciam, está o fato de ela possibilitar a recuperação de objetos por meio da formulação de queries em linguagens HQL (hibernate query language) e SQL (structured query language), bem como pelo uso de APIs (application programming interfaces) de busca por critério, entre outras.
+
+a) certo CORRETO  b) errado
+
+3) Incluir o método consultarTodos nas classes ClienteApp, CursoApp e PagamentoApp.
+
+
+
+
+

@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  * Home object for domain model class Curso.
@@ -79,15 +80,16 @@ public  List<Curso> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 		//HQL
+		String hql="from Curso";
+		Query query = session.createQuery(hql);
+		List<Curso> cursos = query.list();	
 		session.getTransaction().commit();
+		return cursos;		
 		
-		
-		logger.log(Level.INFO, "merge successful");
 	} catch (RuntimeException re) {
 		logger.log(Level.SEVERE, "merge failed", re);
 		throw re;
 	}
-	return null;
 }
 
 public  Curso find(long cdcurso) {

@@ -8,6 +8,10 @@ import java.math.BigInteger;
  */
 public class PagamentoId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BigInteger cpf;
 	private BigInteger cdcurso;
 
