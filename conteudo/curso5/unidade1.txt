@@ -1,0 +1,884 @@
+Curso 05: JAVA ENTERPRISE – Java Servlets e JSP (bônus: Orçamentação)
+
+
+UNIDADE 1: Introdução à Internet, WEB e HTML
+
+
+Internet
+
+Modelo de Aplicação JEE
+
+A plataforma JEE utiliza um modelo de aplicação distribuída multicamada.
+
+A lógica da aplicação é dividida em componentes de acordo com a sua função.
+ Os vários componentes que constituem uma aplicação JEE são  instalados em diferentes equipamentos.
+ 
+INTERNET
+Definição
+
+É uma rede que engloba várias outras redes que interligam bilhões de dispositivos computacionais (desktops, smartphones, tablets, etc.) de empresas privadas, públicas, acadêmicas e de governo, com alcance global e que faz uso de uma ampla variedade de tecnologias de comunicação, como satélites, cabos submarions, cabos terrestres, etc.
+
+Histórico
+Surgiu no período da guerra fria (década de 60) entre as duas maiores potências da época, os Estados Unidos e a antiga União Soviética.
+
+O intuito era criar um sistema de comunicação militar que permitisse a distribuição de informações entre várias localidades nos EUA, permitindo a replicação dessas no caso de um ataque nuclear.
+
+Foi criada a ARPANET, um projeto iniciado pelo Departamento de Defesa (DOD) dos Estados Unidos. Após o período mais crítico da guerra fria, o governo americano permitiu que os pesquisadores das universidades que desenvolvessem estudos na área de defesa também poderiam usar a ARPANET.
+
+Arquitetura TCP/IP
+
+A Internet utiliza o conjunto de protocolos padrão da internet (TCP/IP) para permitir a comunicação de vários bilhões de dispositivos computacionais no mundo inteiro.
+
+
+O sistema cresceu e se tornou um conglomerado de redes em escala mundial de bilhões de dispositivos interligados pelo Protocolo de Internet (TCP/IP), permitindo o acesso a todo e qualquer tipo de informações.
+
+Arquitetura TCP/IP
+
+O TCP/IP (também chamado de pilha de protocolos TCP/IP) é um conjunto de protocolos de comunicação entre computadores em rede. Seu nome vem de dois protocolos:
+TCP (Transmission Control Protocol - Protocolo de Controle de Transmissão);
+IP (Internet Protocol - Protocolo de Internet).
+
+Gestão
+
+A internet não tem governança centralizada. A ICANN - Internet Corporation for Assigned Names and Numbers (órgão mundial responsável por estabelecer regras do uso da Internet) é uma entidade sem fins lucrativos e de âmbito internacional, responsável pela distribuição de números de “Protocolo de Internet” (IPs) e pelo controle do sistema de nomes de domínios de primeiro nível (DNS).
+
+IETF
+É um grupo internacional composto por técnicos, agências, fabricantes, fornecedores e pesquisadores, que se ocupa do desenvolvimento e promoção de padrões para Internet, em estreita cooperação com o W3C e a ISO/IEC, em particular TCP/IP e o conjunto de protocolos Internet.
+O IETF tem como missão identificar e propor soluções a questões/problemas relacionados à utilização da Internet, além de propor padronização das tecnologias e protocolos envolvidos. As recomendações da IETF são usualmente publicadas em documentos denominados Request for
+Comments (RFCs).
+
+
+Serviços
+
+ Mídias Sociais
+ World Wide Web
+ Correio eletrônico
+ Acesso remoto
+ Colaboração
+ Compartilhamento de arquivos
+ Streamming
+ VOIP
+ 
+ Exercícios
+1) [FCC - 2006 - TRE-SP] Considere as afirmativas:
+I. O acesso à Internet é feito através da conexão de um computador a um provedor de acesso, ou seja, uma empresa que provê acesso à Internet aos seus clientes através da manutenção de uma infraestrutura tecnológica, tanto de hardware quanto de software (linhas telefônicas, computadores, roteadores, páginas, e-mail e outros).
+II. World Wide Web ou "WWW" é uma rede mundial de computadores que fornece informações para quem se conecta à Internet, através de um navegador (browser), que descarrega essas informações (chamadas "documentos" ou "páginas") de servidores de internet (ou "sites") para a tela do computador do usuário.
+III. Intranet é uma rede corporativa que se utiliza da mesma tecnologia e infra estrutura de comunicação de dados da Internet, mas restrita a um mesmo espaço físico de uma empresa.
+
+Em relação à Internet e à Intranet, é correto o consta APENAS em
+a) I. b) III.
+c) I e II. CORRETO
+d) I e III.
+e) II e III.
+
+
+2) [ESAF - 2012 – MF] O componente mais proeminente da Internet é o Protocolo de Internet (IP), que provê sistemas de endereçamento na Internet e facilita o funcionamento da Internet nas redes. O IP versão 4 (IPv4) é a versão inicial usada na primeira geração da Internet atual e ainda está em uso dominante. Ele foi projetado para endereçar mais de 4,3 bilhões de
+computadores com acesso à Internet. No entanto, o crescimento explosivo da Internet levou à exaustão de endereços IPv4. Uma nova versão de protocolo foi desenvolvida, denominada:
+a) IPv4 Plus. b) IP New Generation.
+c) IPV5.
+d) IPv6. CORRETO
+e) IPv7.
+
+
+Passado, Presente e Futuro da WEB
+
+WEB 1.0
+Passado (Hipertexto)
+O conceito foi descrito pela primeira vez por Vannevar Bush no texto "As We May Think" (1945).
+
+O termo "hypertext" foi definido por Ted Nelson em 1965.
+
+
+Passado (Hipertexto)
+
+Técnica de armazenamento e apresentação da informação baseada num sistema de referências cruzadas que formam uma rede de associações (à semelhança de forma como se processa o pensamento humano, baseado em associações de ideias num percurso não sequencial) que ligam texto, imagens, sons e ações, permitindo ao utilizador procurar e encontrar itens relacionados e circular entre eles facilmente, ativando palavras-chave que dão acesso a outros documentos.
+
+
+As ideias por trás da Web podem ser identificadas ainda em 1980, no CERN - Organização Europeia para a Investigação Nuclear (Suíça), quando Tim Berners-Lee construiu o ENQUIRE. Ainda que diferente da Web atualmente, o projeto continha algumas das mesmas ideias primordiais, e também algumas ideias da Web semântica. Seu intento original do sistema foi tornar mais fácil o compartilhamento de documentos de
+pesquisas entre os colegas.
+
+Um computador NeXTcube foi usado por Berners-Lee como primeiro servidor web e também para escrever o primeiro navegador. No final de 1990, Berners-Lee já havia construído o navegador, o servidor e as
+primeiras páginas web.
+
+
+Passado (Padrões)
+
+Tim Berners Lee inventou a Web em 1989/90. Sua genialidade foi criar e juntar três simples tecnologias, mas muito elegantes:
+
+Localizador ou Identificador Uniforme de Recursos (URI) para identificar recursos (por exemplo, documentos, dados) na Web, e saber onde encontrá-los;
+Hypertext Markup Language (HTML) linguagem para representar o conteúdo em páginas na Web e de expressá-las em links;
+Hypertext Transfer Protocol (HTTP) protocolo para mover dados na Web e em toda a Internet.
+Os sites tinham conteúdo estático com pouca interatividade dos internautas e diversos diretórios de links. Todo site tinha uma seção de
+links recomendados.
+
+Surgimento dos primeiros motores de busca (Google).
+
+WEB 2.0
+Presente (Hipermídia)
+
+No dia 12 de março de 2014 o mundo comemorou os 25 anos da Web.
+
+“Os bilhões de usuários da Web são o que a fizeram grande. Espero que muitos deles juntem-se a mim hoje para comemorar este importante marco. Eu também espero que este aniversário desencadeie uma conversa mundial sobre a nossa necessidade de defender os princípios que fizeram da Web um sucesso.” [Tim Berners-Lee]
+
+
+Presente (A Era Social)
+A Web 2.0, também chamada de web participativa, foi a revolução dos blogs e chats, das mídias sociais colaborativas, das redes sociais e do conteúdo produzido pelos próprios internautas.
+Nesse momento, a internet se popularizou em todo o mundo, e começou a abranger muito mais do que algumas empresas para se tornar obrigatória para qualquer um que queira ter sucesso no mercado.
+
+Por meio do YouTube, Facebook, Instagram, Snapchat, Wikipédia, e muitas outras redes sociais, todos passaram a ter voz e essa voz passou a ser escutada e respeitada fielmente.
+
+
+Presente (A Era da Mobilidade)
+
+“A iniciativa da Internet móvel é importante, informações devem ser igualmente disponíveis em qualquer dispositivo” [Tim Berners-Lee]
+O volume de usuários que acessam a Internet por meio de dispositivos móveis cresceu exponencialmente nos últimos anos. Usuários de smartphones e tablets têm demandas diferentes dos usuários desktop.
+
+WEB 3.0
+Futuro (O Que Vem Por Aí)
+Nomear movimentos e acontecimentos da história enquanto eles são vividos é sempre muito difícil, porém o termo Web 3.0 não é exatamente algo inédito e há um tempinho já estamos vendo ele por ai.
+
+A Web 3.0 é uma internet onde teremos toda informação de forma organizada para que não somente os humanos possam entender, mas principalmente as máquinas, assim elas podem nos ajudar respondendo
+pesquisas e perguntas com uma solução concreta, personalizada e ideal.
+
+É uma internet cada vez mais próxima da inteligência artificial. É um uso ainda mais inteligente do conhecimento e conteúdo já disponibilizado online, com sites e aplicações mais inteligentes, experiência
+personalizada e publicidade baseada nas pesquisas e no comportamento de cada individuo.
+
+
+Exercícios
+1) [IESES – 2011 – PM-SC] Sobre a WWW (World Wide Web, WWW ou W3) é correto afirmar que:
+I. Foi desenvolvida por Tim Berners Lee na CERN, a Organização Européia para Pesquisa Nuclear em Genebra, na Suíça.
+II. Os usuários da Web utilizam hiperlinks, textos destacados ou gráficos em um documento da Web que, quando clicado, abre uma nova página da Web ou seção da mesma página apresentando o conteúdo relacionado.
+III. Para acessar a Web e visualizar o seu conteúdo, há a necessidade da utilização de um navegador Web.
+IV. Todas as páginas Web são armazenadas em servidores locais e replicadas para um único servidor central em cada país onde a Internet é liberada para utilização.
+A sequência correta é:
+a) Apenas as assertivas II, e III estão corretas.
+b) Apenas as assertivas III e IV estão corretas.
+c) Apenas as assertiva I, III e IV estão corretas.
+d) Apenas as assertivas I, II e III estão corretas. CORRETO
+
+2) [FCC - 2010 - AL-SP] Considere:
+I. Afirmar que a web é independente de plataforma significa dizer que as informações disponíveis na web podem ser acessadas de qualquer hardware de computador, executando qualquer sistema operacional e usando qualquer tela para exibição.
+II. Com o surgimento durante anos de inúmeros recursos especiais, tecnologias e tipos de mídia, a web perdeu um pouco da sua capacidade de ser verdadeiramente independente das plataformas.
+III. O termo servidor web refere-se somente a um computador que recebe solicitações de navegadores da web e responde a essas solicitações.
+IV. Cada site da web, e cada página nele inserida possui um endereço exclusivo chamado de Uniform Resource Locator (URL). O Uniform Resource Locator é um Uniform Resource Identifier (URI).
+Está correto o que se afirma APENAS em
+a) I e II. b) III e IV.
+c) I, II e III.
+d) I, II e IV. CORRETO
+e) II, III e IV. 
+
+
+
+HTML
+
+Definição
+• É uma Linguagem de Marcação de Hipertexto utilizada para produzir páginas na Web que são interpretados por browsers e não devemos confundir o HTML como uma linguagem de programação como:
+JAVA, PHP, .NET, etc.
+
+A criação de um documento HTML é simples, podemos usar qualquer editor de texto convencional, inclusive um bloco de notas.
+
+<html>
+<body>
+<p>Primeira Página em HTML</p>
+</body>
+</html>
+
+O documento é formado por tags (marcações).
+
+Tags são elementos entre sinais de menor e maior (< >) que servem para definir uma porção do documento, e assim marcamos onde começa e termina o texto com a formatação especificada .
+
+<html>
+<head>
+	<title>HyperText Markup Language</title>
+</head>
+<body>
+	<p>
+		<strong>HTML</strong> (acrônimo para a expressão
+		inglesa <i>HyperText Markup Language</i>, que
+		significa <i>Linguagem de Formatação de
+		Hipertexto</i>)é uma linguagem de marcação utilizada para
+		produzir páginas na WEB.
+	</p>
+</body>
+</html>
+
+Principais Elementos
+1. <html>…</html> - Indicam respectivamente o início e o fim do documento.
+2. <head>…</head> - Delimitam a seção de cabeçalho do documento. Trata-se da primeira seção do documento.
+3. <title>…</title> - Define o título da página.
+4. <body>…</body> - O corpo do documento. Entre essa tag fica a maior parte do documento que será apresentado, textos, imagens, etc.
+5. <p>…</p> - É a tag de parágrafo. Por padrão todo e qualquer texto deve ficar entre essas tags.
+6. <strong>…</strong> - Coloca em Negrito o texto que a compõem;
+7. <i>…</i> - é a tag para deixar o texto em itálico;
+8. <a> - cria um link na página.
+
+Cabeçalhos
+São usados para títulos e subtítulos do conteúdo de textos de uma página.
+O HTML possui 6 níveis de cabeçalhos, numerados de 1 a 6, sendo o número 1 o de maior destaque.
+Sintaxe: <hn ° >
+Cabeçalho Desejado </hn ° >
+
+<h1>Design para WEB (h1)</h1>
+<h2>Design para WEB (h2)</h2>
+<h3>Design para WEB (h3)</h3>
+<h4>Design para WEB (h4)</h4>
+<h5>Design para WEB (h5)</h5>
+<h6>Design para WEB (h6)</h6>
+
+Âncora
+
+É uma marcação dentro de um hiperdocumento. Pode referenciar conteúdos internos (mesma página) ou externos (outros sites).
+
+Sintaxe: <a href="endereco">Texto</a>
+<a href="#p1">Período de Inscrição do Curso</a>
+<!– Marcação interna -->
+
+<a href="http://www.abctreinamentos.com.br">Curso de Java 8</a>
+<!– Marcação externa -->
+
+Link
+É a marcação que faz a ligação para a mesma página ou para sites externos.
+No exemplo acima, o atributo href tem o valor "http://www.abctreinamentos.com.br" , que é o endereço completo do site da ABC e é chamado de URL.
+
+Tabelas
+
+São utilizadas para o armazenamento de dados tabulados.
+
+Imagens
+
+A Web é rica em imagens. Para inserir imagem em um documento HTML, é preciso que a imagem esteja disponível na internet através de uma URL.
+http://www.abctreinamentos.com.br/lib/img/logo/abctreinamentos-logotipo.png
+
+Sintaxe: <img src="endereco"”>Texto</a>
+<img
+src="http://www.abctreinamentos.com.br/lib/img/logo/abctreinamentos-logotipo.png" border="0" />
+
+
+Formulários
+O uso de formulários é o meio mais simples para a prestação de serviços interativos na WEB.
+
+O usuário precisa ter uma boa experiência, por esse motivo, torna-se imprescindível que o formulário seja compreensível, não só visualmente, mas também na sua formatação interna do HTML.
+
+
+Formulários – Principais Elementos
+
+form - o contêiner do formulário.
+<form>
+...
+</form>
+
+
+input: especifica os campos de um formulário como: text, submit, button, radio, checkbox, file, image, reset.
+
+<input type="text" name="Nome" />
+<input type="checkbox" name="checkbox" />
+<input type="radio" name="radiobutton" />
+
+
+textarea: campo de texto multi linha;
+<textarea name="sugestoes"></textarea>
+
+select: usado para listas selecionáveis;
+
+<select name="select">
+	<option value="1">Unidade 1</option>
+</select>
+
+
+button: botão do formulário
+<input type="button" name="enviar" />
+
+ESTRUTURA DE PROJETO WEB JEE
+
+Todo projeto WEB JEE segue a seguinte a estrutura de pastas:
+
+A estrutura de diretórios gerada é composta por:
+src - código fonte Java (.java);
+build - onde o Eclipse compila as classes (.class);
+WebContent – páginas html, jsp, imagens, css, etc;
+WebContent/WEB-INF/ - pasta com configurações e recursos do projeto;
+WebContent/WEB-INF/lib/ - bibliotecas .jar;
+WebContent/WEB-INF/classes/ - arquivos compilados são copiados para cá;
+WebContent/META-INF – opcional, é o local onde fica o arquivo de manifesto usado em arquivos .jar.
+
+WEB.XML
+
+Todo projeto JEE define um arquivo de configuração (web.xml) que contém as configurações das aplicações deste servidor, como por exemplo o mapeamento dos servlets que serão criados.
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+id="WebApp_ID" version="3.1">
+<display-name>ProjetoWEB</display-name>
+<welcome-file-list>
+<welcome-file>index.html</welcome-file>
+<welcome-file>index.htm</welcome-file>
+<welcome-file>index.jsp</welcome-file>
+<welcome-file>default.html</welcome-file>
+<welcome-file>default.htm</welcome-file>
+<welcome-file>default.jsp</welcome-file>
+</welcome-file-list>
+</web-app>
+
+Exercícios
+
+1) Criar o projeto WEB 4Disciplina (“File”, "New", "Dynamic web Project”).
+
+2) Criar a página index.html e adicionar um link para a página descricao.html.
+
+
+A âncora deverá ser definida no início da palavra HTML.
+http://localhost:8080/4Disciplina/
+
+3) Incluir na página descricao.html uma logomarca (imagem) e uma tabela (com borda) que descreve os principais elementos HTML.
+http://localhost:8080/4Disciplina/descricao.html
+
+4) Criar a página formulario.html.
+
+
+CSS E JAVASCRIPT
+
+
+CSS
+Definição
+
+CSS (Cascading Style Sheets ou Folhas de Estilos) é uma linguagem de estilo utilizada para definir a apresentação de documentos escritos em uma linguagem de marcação, como HTML, XHTML ou XML. Seu
+principal benefício é prover a separação entre o formato e o conteúdo de um documento.
+
+Ao invés de colocar a formatação dentro do documento, o desenvolvedor cria um link (ligação) para um arquivo que contém os estilos, procedendo de forma idêntica para todas as páginas de um
+portal. Quando quiser alterar a aparência do portal basta portanto modificar apenas um arquivo.
+
+Vantagens
+Controle do layout de vários documentos a partir de uma simples folha de estilo;
+Maior precisão no controle do layout;
+Aplicação de diferentes layouts para servir diferentes tipos de dispositivos (desktop, smartphones, tablets, etc.).
+
+
+Sintaxe Básica
+
+Suponha que desejamos uma cor de fundo vermelha para a página web.
+
+body {
+background-color: #FF0000;
+}
+
+
+Utilização
+
+A aplicação do CSS a um conjunto de páginas HTML pode ser feita
+de 03 formas:
+(1) Método In-line (o atributo style)
+(2) Método Interno (a tag style)
+(3) Método Externo (link para uma folha de estilo)
+
+Utilização - (1) Método In-line
+
+Uma maneira de aplicar CSS é pelo uso do atributo style do HTML. Tomando como base o exemplo mostrado
+anteriormente, a cor vermelha para o fundo da página pode ser aplicada conforme mostrado a seguir:
+
+<html>
+<head>
+<title> Exemplo </title>
+</head>
+<body style="background-color: #FF0000;">
+<p> Esta é uma página vermelho </p>
+</body>
+</html>
+
+
+Utilização - (2) Método Interno
+
+Uma outra maneira de aplicar CSS é pelo uso da tag <style> do HTML, como mostrado a seguir:
+
+<html>
+<head>
+<title> Exemplo </title>
+<style type="text/css">
+	body {background-color: #FF0000;}
+</style>
+</head>
+<body>
+<p> uma página vermelha </p>
+</body>
+</html>
+
+Utilização - (3) Método Externo
+
+Cria-se um arquivo com a extensão .css (no exemplo style.css)
+
+body {background-color: #FF0000;}
+
+O método recomendado é o de fazer referência para uma folha de estilos externa.
+
+<html>
+<head>
+<title> Meu Documento </title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<p> uma página vermelha </p>
+</body>
+</html>
+
+Principais Elementos
+
+id
+"id" é representada por "#" seguido do seletor:
+
+...
+#textoPadrao {color: red}
+
+...
+<p id="textoPadrao">
+esta é uma id
+</p>
+
+
+class
+
+"class" é representada por "." seguido do seletor:
+
+
+...
+.textoPadrao {color: red}
+...
+
+<p class="textoPadrao">
+esta é uma classe
+</p>
+
+
+Atributo “id” versus “class”
+
+O atributo id atribui um nome exclusivo a um elemento. Cada nome pode ser usado apenas uma única vez em uma determinada página. Por exemplo, se sua página tiver um id chamado “content”, ela não poderá conter outro id com o mesmo nome.
+
+O atributo class, ao contrário, pode ser usado na mesma página em vários elementos.
+
+
+SPAN
+
+imagine que você tem um texto e nesse texto você quer formatar uma palavra, frase ou qualquer outra parte do texto. Para isso você irá usar o span:
+
+<p>
+Essa parte do texto está em preto
+<span class="benefit">mas está aqui é diferente</span>, <span class="benefit">grande</span> e <span class="benefit">pequena</span>.
+</p>
+
+DIV
+
+É a abreviatura de divisão, usada para criar uma divisão entre agrupamentos de conteúdo. Por exemplo, a representação de duas listas de presidentes dos Estados Unidos agrupados segundo suas filiações políticas.
+
+#democrats{
+background:blue;
+}
+#republicans{
+background:red;
+}
+
+<div id="democrats">
+	<ul>
+		<li>Franklin D. Roosevelt</li>
+		<li>Harry S. Truman</li>
+		<li>John F. Kennedy</li>
+	</ul>
+</div>
+<div id="republicans">
+	<ul>
+		<li>Dwight D. Eisenhower</li>
+		<li>Richard Nixon</li>
+		<li>Gerald Ford</li>
+	</ul>
+
+</div>
+
+
+JAVASCRIPT
+
+Definição
+É uma linguagem de scripts para WEB (criada pela Netscape em 1995), utilizada para criar pequenos aplicativos encarregados de realizar ações simples e inteligentes.
+
+O JavaScript atua normalmente no lado cliente, ou seja, o código geralmente está incluído em páginas HTML. Quando um usuário acessa uma página HTML com JavaScript, o script é carregado pelo
+navegador. O navegador por sua vez lê as instruções, as interpreta e as executa.
+
+<html>
+<head>
+<title>Titulo</title>
+<script>
+alert('hello world');
+</script>
+</head>
+<body>
+</body>
+</html>
+
+Definição
+
+Pode-se definir na tag <head>, fazendo uso da tag <script>, uma referência a um arquivo .js externo.
+
+<html>
+<head>
+<title>Titulo</title>
+<script src="teste.js">
+</script>
+</head>
+<body>
+<h1>Texto qualquer</h1><br />
+</body>
+</html>
+
+Sintaxe Básica
+document.write(<texto>) → Escreve o texto na tela do navegador;
+
+Ex: document.write('Olá Mundo!');
+var nota; var media = 7.0 → Declaração de variáveis;
+
+Comando if ... else
+
+var d = new Date();
+var time = d.getHours();
+if (time<12) {
+document.write("<b>Bom Dia</b>");
+} else if (time>=12 && time<18) {
+document.write("<b>Boa Tarde</b>");
+} else {
+document.write("<b>Boa Noite</b>");
+
+
+Alert Box → Exibe uma pequena janela com uma mensagem e um botão “OK”;
+Ex:
+alert("Alert Box!");
+}
+
+Confirm Box → Exibe uma pequena janela com uma mensagem e os botões “OK” e “Cancelar”.
+
+Ex:
+
+confirmou = confirm("Confirmar?");
+if (confirmou) {
+document.write('Confirmou!');
+} else {
+document.write('Não Confirmou!');
+
+Prompt Box → Exibe uma pequena janela com uma caixa de texto para informar um valor.
+
+Ex:
+nome = prompt("Informe seu nome:","");
+document.write(nome);
+}
+
+Funções
+
+Sintaxe Básica
+function <nome da funcao>(<arg1,arg2,...,argN>) {
+<comandos>
+return <valor de retorno>; // opcional
+}
+
+Exemplo:
+function soma(val1,val2) {
+return val1+val2;
+}
+document.write(soma(3,5));
+
+
+Eventos
+
+São ações que podem ser detectadas pelo JavaScript.
+
+Ex: clique de um botão, passar o ponteiro do mouse sobre uma imagem, etc.
+
+As tags html possuem atributos que se referem a eventos.
+
+Geralmente se cria uma função referente aos eventos e se atribuem a eles os eventos da tag html.
+
+
+Eventos
+Onabort
+Carregamento de uma imagem é interrompido
+
+Onblur
+Um elemento perde o foco
+
+Onchange
+O usuário altera o valor de um campo
+
+Onclick
+O usuário clica em um objeto
+
+Ondblclick
+O usuário realiza um duplo click em um objeto
+
+Onerror
+Um erro ocorre quando carrega um documento ou imagem
+
+Onfocus
+Um elemento recebe o foco
+
+Onkeydown
+Uma tecla foi pressionada
+
+Onkeypress
+Uma tecla foi mantida pressionada por um tempo
+
+Onkeyup
+Uma tecla foi liberada
+
+Onload
+Uma página ou imagem foi carregada
+
+onmousedown
+O botão do mouse foi pressionado
+
+onmousemove
+O mouse foi movimentado
+
+onmouseout
+O mouse foi movimentado para fora de um elemento
+
+onmouseover
+O mouse foi movimentado sobre um elemento
+
+onmouseup
+O botão do mouse foi liberado
+
+onreset
+O botão reset foi clicado
+
+onresize
+Uma janela foi redimensionada
+
+onselect
+Um texto foi selecionado
+
+onsubmit
+O botão submit foi clicado
+
+onunload
+O usuário saiu da página
+
+
+Exemplo:
+
+<html>
+<head>
+<script>
+function clicou() {
+alert('Clicou!');
+}
+</script>
+</head>
+<body>
+<input type="button" value="Clique Aqui"
+onclick="clicou();" />
+</body>
+</html>
+
+Formulário
+
+Referenciando elementos de um formulário.
+
+<html>
+<head>
+<title>Titulo</title>
+<script>
+function mostrarValor() {
+alert(document.formulario.valor.value);
+}
+</script>
+</head>
+<body>
+<form name="formulario" action="index.php" method="post"
+onsubmit="mostrarValor()">
+Valor: <input type="text" name="valor" /><br/>
+<input type="submit" value="OK"/>
+</form>
+</body>
+</html>
+
+
+Exercícios
+
+1) Criar o arquivo de estilo abaixo (estilo.css) e aplicá-lo às páginas HTML index.html, descricao.html e formulario.html.
+
+body {
+padding-left: 11em;
+font-family: Georgia, "Times New Roman",
+Times, serif;
+color: purple;
+background-color: #d8da3d }
+h2 {
+font-family: Helvetica, Geneva, Arial,
+SunSans-Regular, sans-serif }
+
+
+2) Fazer referência a um arquivo externo (funcoes.js) para fazer a validação do campo CPF do arquivo formulario.html.
+
+<title>Página de Formulário</title>
+<script src="lib/js/funcoes.js">
+</script>
+</head>
+<body>
+<form name="form" action=""
+onsubmit="validacao(document.form.cpf.value)">
+CPF: <br>
+<input type="text" name="cpf" maxlength="11"/> <br>
+Senha: <br>
+<input type="text" name="senha"/> <p>
+<input type="submit" value="Entrar" />
+</form>
+</body>
+
+
+HTML 5
+
+HTML 5
+Definição
+O HTML5 é o novo padrão para a estruturação e apresentação de conteúdo na WEB trazendo melhorias significativas com novas funcionalidades de semântica e acessibilidade, além de melhorar o
+suporte aos mais recentes conteúdo multimídias.
+
+As principais mudanças que a nova versão proporcionará aos usuários são: melhor tratamento de exceção, mais tags para substituir scripts, independência de plataforma e redução da necessidade de
+plugins externos.
+
+Principais Características
+
+Inclusão do elemento canvas para desenho
+
+<canvas id="myCanvas" width="400" height="400"></canvas>
+
+
+Manipulação do elemento com Javascript:
+
+<script type="text/javascript">
+var myCanvas = document.getElementById("myCanvas");
+var canvas = myCanvas.getContext("2d");
+canvas.fill"#FF0000";
+canvas.fillRectt(0,0,100,100);
+</script>
+
+
+Inclusão dos elementos vídeo e áudio para reprodução multimídia
+
+Elemento vídeo:
+<video width="100" height="100" controls="controls">
+<source src="video.mp4" type="video/mp4" />
+<source src="video.ogg" type="video/ogg" />
+O seu navegador não suporta o formato.
+</video>
+
+
+Elemento áudio:
+
+<audio controls="controls">
+	<source src="audio.mp3" type="audio/mpeg" />
+	<source src="audio.ogg" type="audio/ogg" />
+	O seu navegador não suporta o formato
+</audio>
+
+
+
+nclusão de novos controles para formulário
+
+<datalist>
+Uma lista de opções de entrada.
+
+<keygen>
+Gera chaves para autenticação de usuários.
+
+<output>
+Para diferentes tipos de saídas, como as geradas por scripts.
+
+Total suporte ao CSS3
+O HTML5 dá total suporte a mais nova versão(3) do CSS. Com essa integração, as páginas webs podem receber os mais variados tipos de estilos como sombra nos textos e quadros, efeitos de transição, quadro com cantos arredondados e vários recursos novos que o
+CSS3 oferece.
+
+Validação de Formulários
+
+O HTML5 trouxe diversas possibilidades e, principalmente, facilidades para os desenvolvedores. Uma delas é relacionada a validação de formulários. O que antes só era feito com o uso de JavaScript, hoje pode ser feito diretamente no HTML e em um tempo muito menor.
+
+O HTML5 inclui um mecanismo bastante sólido na validação de formulários com base nos atributos da tag input: type, pattern e require. Graças a esses novos atributos, é possível delegar algumas funções de verificação de dados para o navegador.
+
+
+Validação de Formulários
+
+O atributo type
+
+Esse atributo indica o tipo de controle de entrada de dados como o popular <input type="text"> para manipulação de dados de texto simples.
+
+<input type="email"> valida o campo para garantir que o dado digitado seja de fato um endereço de e-mail válido.
+
+Há também o <input type="number"> , <input type="url"> e <input type="tel"> para validar números, URLs e telefones respectivamente.
+
+O atributo pattern
+Esse atributo especifica um formato (na forma de expressão regular do JavaScript) em que o valor do campo é testado.
+
+Expressões regulares são utilizadas para analisar e manipular texto.
+
+Elas são frequentemente utilizadas para executar operações complexas e para garantir que os dados de texto estão corretos.
+
+Exemplo: Por exemplo, para um número de telefone 0803-555-8205 (xxxx-xxx-xxxx), teríamos uma RegEX ^\d{4} \d{3} \d{4}$ que corresponde ao formato no HTML5:
+
+<label for=""phonenum">Número do telefone:</label>
+
+<input pattern="^\d{4} \d{3} \d{4}$" type="tel">
+
+
+O atributo required
+
+Esse é um atributo booleano usado para indicar que um determinando campo de formulário é obrigatório. Ao adicionar esse atributo a um campo de formulário, o navegador obriga o usuário a inserir dados
+naquele campo antes de enviar o formulário.
+
+Essa validação substitui a validação básica de formulário implementada com JavaScript, tornando as coisas um pouco mais úteis e nos poupando algum tempo de desenvolvimento.
+
+<input name="my_name" required="required" type="text">
+
+1) [UFG - 2014 – UEAP] Vários elementos da linguagem HTML 4.01 foram reescritos na nova versão HTML5, ou removidos desta. Qual dos elementos a seguir deixou de ser suportado pela linguagem HTML5?
+a) <video>
+b) <table>
+c) <embed>
+d) <applet> CORRETO
+
+2) [FCC - 2014 – SABESP] São elementos da linguagem HTML 4.01 que não fazem mais parte da HTML5, ou seja, não são suportados em HTML5:
+a) applet e iframe.
+b) font e frame. CORRETO
+c) center e option.
+d) acronym e button.
+e) frameset e fieldset.
+
+3) Criar uma outra versão do arquivo formulario.html e fazer a validação dos campos CPF e Senha sem o uso de JS.
+formularioV2.html
+
+
+Projeto Prático (Parte 1)
+
+Transformar a Aplicação Loja Virtual em um Produto WEB.
+
+
+São necessários realizar 05 Passos:
+
+1. Fazer download do projeto LojaVirtual.zip e descompactá-lo em um diretório qualquer.
+
+2. Criar no Eclipse um ‘Dynamic Web Project’ intitulado ProjetoWEB.
+
+3. Copie todos os arquivos do projeto LojaVirtual.zip para a pasta WebContent do ProjetoWEB.
+
+4. Publicar o projeto ProjetoWEB no servidor de aplicação JEE Apache Tomcat 8.
+
+5. Executar o projeto no Browser: http://localhost:8080/ProjetoWEB/
+
+Exercícios
+1) Realizar os 05 passos informados anteriormente para a criação do ProjetoWEB.
+
+2) Testar todas as validações de dados informadas nos campos dos formulários.
+
+
+ATIVIDADES PARA APROFUNDAMENTO
+1) Analisar o código-fonte de todas as páginas HTML da Loja Virtual – Site WEB.
+2) Analisar os arquivos JS e CSS utilizados na Loja Virtual – SiteWEB.
+3) Alterar a cor do site para Azul e da fonte utilizada para Verdana.
+
+Cor Azul Steel: #4682B4
+
+
