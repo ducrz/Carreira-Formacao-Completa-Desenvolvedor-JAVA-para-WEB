@@ -1,0 +1,452 @@
+UNIDADE 2
+JAVA SERVLETS
+
+Componentes WEB JEE
+Modelo de Aplicação JEE
+
+A plataforma JEE utiliza um modelo de aplicação distribuída multicamada.
+
+A lógica da aplicação é dividida em componentes de acordo com a sua função.
+
+Os vários componentes que constituem uma aplicação JEE são instalados em diferentes equipamentos.
+
+COMPONENTES WEB JEE
+
+A Plataforma JEE define quatro tecnologias básicas para a construção de
+Aplicações WEB:
+Java Servlets 3.1
+JavaServer Pages 2.2
+JavaServer Faces 2.2
+JavaServer Pages Standard Tag Library 1.2.1
+
+JAVA SERVLETS
+Definição
+
+Servlets são módulos que estendem servidores orientados a requisição/resposta, como servidores Web JEE.
+
+ Um servlet é similar a extensão proprietária de um servidor, sendo executado na JVM do mesmo.
+
+Esta tecnologia surgiu em 1997, tendo como objetivo ser o novo paradigma de programação para servidores WEB.
+
+Servlets são utilizados para a criação de aplicações WEB com java.
+
+
+API SERVLET
+A API Servlet é composta por dois pacotes: javax.servlet e javax.servlet.http.
+
+O pacote javax.servlet define um conjunto de classes e interfaces utilizados na comunicação entre os servlets e o seu ambiente de execução (web conteiner).
+
+Exemplo: Servlet, ServletConfig, ServletContext, ServletContextListener, ServletRequest, ServletResponse, etc.
+
+O pacote javax.servlet.http define um conjunto de classes e interfaces utilizados na comunicação - via protocolo HTTP - entre os servlets e o seu ambiente de execução (web conteiner).
+
+Exemplo: HttpSession, HttpServletRequest, HttpServletResponse, etc.
+
+
+MODELO SERVLET
+Todo servlet criado pelo desenvolvedor deverá implementar a interface Servlet e ser subclasse de HttpServlet.
+
+A interface javax.servlet.Servlet define todos os métodos que um servlet deverá implementar.
+
+A classe abstrata javax.servlet.http.HttpServlet define um servlet para utilizar o protocolo de
+comunicação hipermídia HTTP.
+
+A subclasse de javax.servlet.http.HttpServlet (MyServlet) deverá anular pelo menos 01 método daquela superclasse.
+
+CLASSE HTTPSERVLET
+
+Principais métodos dessa classe:
+
+doGet(...), para oferecer suporte aos métodos GET do protocolo HTTP;
+
+doPost(...), para oferecer suporte aos métodos POST do HTTP;
+
+doPut(...), para oferecer suporte aos métodos PUT do HTTP;
+
+doDelete(...), para oferecer suporte aos métodos DELETE do HTTP;
+
+init(...) e destroy(...), para gerenciar o ciclo de vida de um servlet;
+
+getServletInfo(...), para fornecer informações do servlet.
+
+
+HTTP GET e POST
+
+Métodos de requisição definidos no protocolo HTTP
+ GET (requisições normais)
+ POST (requisições através de formulários)
+ PUT
+ DELETE
+ 
+ 
+PRINCIPAIS INTERFACES
+
+HttpServletRequest e HttpServletResponse
+
+HTTPSERVLETREQUEST
+Esta interface fornece informações de requisição aos servlets.
+
+Os seus principais métodos estão definidos abaixo:
+String getParameter(String parameter) → Retorna o valor de um parâmetro.
+String [] getParameterValues(String parameter) → Retorna um vetor de String contendo todos os valores que aquele dado parametro possui, ou null se não houver.
+String getRequestedURI() → Retorna a URI requisitada.
+String getQueryString() → Retorna uma string contendo todos os
+parâmetros e valores associados em uma consulta.
+
+HTTPSERVLETRESPONSE
+Esta interface fornece informações de resposta dos servlets.
+Os seus principais métodos estão definidos abaixo:
+
+PrintWriter getWriter() throws IOException → Retorna um objeto
+PrintWriter que pode enviar texto como resposta a uma requisição.
+ServletOuputStream getOuputStream() throws IOException → Retorna um objeto ServletOutputStream que pode enviar dados binários como resposta a uma requisição.
+public void setContentType(String tipo) → Define o formato da resposta (text/html;charset=UTF-8;etc.) que será enviado pelo servlet.
+
+
+Exercício
+1) [AOCP - 2012 – BRDE] Sobre Servlets, analise as assertivas e assinale a alternativa que aponta as corretas.
+I. Servlets são implementadas como arquivos de classe da Linguagem Java.
+II. Servlets são independentes de plataforma, de modo que podem ser executadas em diferentes servidores, em diferentes sistemas operacionais.
+III. As Servlets podem acessar qualquer uma das APIs Java. Uma Servlet pode usar a API JDBC para acessar e armazenar dados ou para acessar objetos remotos.
+IV. Ao criar uma Servlet, somos obrigados a reescrever nove métodos presentes à interface que foi implementada.
+a) Apenas I e II.
+b) Apenas I e III.
+c) Apenas II e III.
+d) Apenas I, II e III. CORRETO
+e) I, II, III e IV.
+
+
+Primeiro Servlet
+
+
+CRIAÇÃO DO PRIMEIRO SERVLET
+
+Criar o pacote unidade2 no projeto 4Disciplina.
+Selecionar a opção “New” “Servlet”.
+
+
+CÓDIGO DO PRIMEIRO SERVLET
+
+package unidade2;
+…
+@WebServlet(description = "Este é o nosso primeiro servlet!",
+urlPatterns = { "/PrimeiroServlet" })
+public class PrimeiroServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+public PrimeiroServlet() {
+super();
+}
+protected void doGet(HttpServletRequest request,
+HttpServletResponse response) throws ServletException,
+IOException {
+}
+protected void doPost(HttpServletRequest request,
+HttpServletResponse response) throws ServletException,
+IOException {
+}
+}
+
+Incluir no método doGet(...) o trecho de código abaixo:
+
+protected void doGet(…){
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+out.println("<HTML>");
+out.println("<HEAD><TITLE>Servlet</TITLE></HEAD>");
+out.println("<BODY>");
+out.print("Esta é a ");
+out.print(this.getClass());
+out.println(" usando o método GET");
+out.println(" </BODY>");
+out.println("</HTML>");
+out.flush();
+out.close();
+}
+
+DEPLOY DO PROJETO
+Na aba “Servers” do Eclipse, clicar com o botão direito no servidor JEE Tomcat.
+Escolha a opção “Add and Remove...”. Selecionar “Add” para o “4Disciplina”. Clicar no botão “Finish”. Clique no botão para iniciar o servidor.
+
+Sugestão: alterar a porta padrão do servidor JEE Tomcat de 8080 para 80. É possível fazer a alteração no arquivo server.xml ou no editor do Eclipse.
+
+Tendo iniciado corretamente o servidor Tomcat, abrir um navegador Web e digitar o seguinte endereço:
+
+http://máquina:porta/projeto/Classe
+
+ANATOMIA DO SERVLET
+
+Todo servlet deve importar classes e interfaces dos seguintes pacotes:
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+Todo Servlet é sub-classe de HttpServlet.
+public class PrimeiroServlet extends HttpServlet
+
+Diferente do que ocorre com uma aplicação Java desktop, o servlet não possui o método main(). 
+Deve implementar um dos seguintes
+métodos: service(), doGet() e doPost().
+
+public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException,
+IOException
+
+
+Os objetos request (HttpServletRequest) e response (HttpServlet Response) representam, respectivamente, a requisição do cliente para o servidor WEB e a resposta do servlet a esta requisição.
+
+Os métodos service(), doGet() e doPost() sempre “lançam” as exceções ServletException e IOException.
+O método setContentType(...) especifica o formato da resposta que a será enviado pelo servlet via objeto response. O padrão MIME padrão para páginas HTML é “text/html”.
+
+res.setContentType("text/html");
+
+O método println(...) é utilizado para retornar dados do servlet para o
+cliente.
+PrintWriter out = response.getWriter();
+out.println("<HTML>");
+
+
+Exercícios
+1) [VUNESP - 2013 – FUNDUNESP] Considere o Servlet a seguir:
+
+import java.io.*;
+importjavax.servlet.*;
+importjavax.servlet.http.*;
+public class ClasseServlet extends HttpServlet {
+public void doGet(HttpServletRequest request,
+HttpServletResponse response){
+response.write(“<html>”);
+response.write(“<body>”);
+response.write(“Servlet em operação!”);
+response.write(“</body>”);
+response.write(“</html>”);
+}
+}
+
+1) Sobre o código do Servlet, é possível afirmar que:
+a) ao ser executado por um contêiner de Servlet, será exibida uma tela em branco no navegador.
+b) ao ser executado por um contêiner de Servlet, será exibida a mensagem “Servlet em operação!” na tela do navegador.
+c) não pode ser compilado, pois a classe HttpServletResponse não possui o método write. CORRETO
+d) não pode ser compilado, pois HttpServlet é uma interface e, portanto, não pode ser estendida por uma classe.
+e) o conteúdo exibido na tela do navegador não será codificado corretamente, pois a codificação da página não foi informada.
+
+2) Escrever o Servlet PrimeiroServlet que informe quantas vezes o mesmo é acessado pelo usuário.
+
+
+Ciclo de Vida
+
+
+Os servlets possuem um ciclo de vida bem definido que é gerenciado pelo servidor JEE.
+
+Este ciclo é dividido em 05 etapas:
+1) Carregar em memória o servlet especificado;
+2) Criar a instância dele;
+3) Chamar o método init() do servlet;
+4) Chamar o método service(...) dele;
+5) Chamar o método destroy() do servlet.
+
+MÉTODO INIT()
+Este método é executado apenas uma vez, após o servlet ter sido carregado em memória e ter sido criado uma instância dele.
+
+Muito útil para realizar a leitura de dados de configuração.
+
+Sintaxe:
+
+public void init () throws Servlet Exception{
+//code
+}
+
+MÉTODO SERVICE()
+Após o servlet ter sido inicializado, o servidor WEB envia requisições a ele utilizando o método service(...).
+Este método só é chamado quando há uma requisição.
+Ao receber uma requisição HTTP, o método service(...) é responsável por enviar a requisição recebida para o método ‘equivalente’ doXXX(...).
+
+Sintaxe
+
+public void service(Servletrequest request, Servletresponse response) throws ServletException, IOException{
+//code
+}
+
+MÉTODO DOGET()
+
+Após o método service(...) ter sido executado, ele aciona o método doGet(...) quando receber dados passados pelo usuário via HTTP GET, isto é, parâmetros passados via URL.
+
+Sintaxe:
+
+public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//code
+
+}
+
+MÉTODO DOPOST()
+
+Após o método service(...) ter sido executado, ele aciona o método doPost(...) quando receber dados passados pelo usuário via HTTP POST, isto é, uma grande quantidade de dados é enviada por uma
+forma mais segura, no corpo da mensagem HTTP (invisível ao usuário comum), e não na sua URL (visível a qualquer usuário).
+É o padrão adotado para a passagem de dados de autenticação (login e senha) e dados fornecidos via formulários.
+
+Sintaxe
+
+public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//code
+
+}
+
+MÉTODO DESTROY()
+Após uma aplicação WEB ter sido finalizada, o método destroy() é chamado.
+Este chamamento é para eliminar o servlet da memória do servidor de aplicação.
+Ao definir este método, as ações de fechamento de arquivos, fechamento de conexões de banco de dados, etc. deverão ser realizadas.
+
+Sintaxe
+
+public void destroy(){
+//code
+}
+
+Exercícios
+1) [FCC - 2013 - DPE-SP] Um Servlet Contêiner controla o ciclo de vida de uma servlet onde são invocados três métodos essenciais: um para inicializar a instância da servlet, um para processar a requisição e outro para descarregar a servlet da memória. Os itens a seguir representam, nessa ordem, o que ocorre
+quando um usuário envia uma requisição HTTP ao servidor:
+I. A requisição HTTP recebida pelo servidor é encaminhada ao Servlet Contêiner que mapeia esse pedido para uma servlet específica.
+II. O Servlet Contêiner invoca o método init da servlet. Esse método é chamado em toda requisição do usuário à servlet não sendo possível passar parâmetros de inicialização.
+III. O Servlet Contêiner invoca o método service da servlet para processar a requisição HTTP, passando os objetos request e response. O método service não é chamado a cada requisição, mas apenas uma vez, na primeira requisição do usuário à servlet.
+IV. Para descarregar a servlet da memória, o Servlet Contêiner chama o método unload, que faz com que o garbage collector retire a instância da servlet da memória.
+
+Está correto o que se afirma em
+a) I, II, III e IV.
+b) I, apenas. CORRETO
+c) I e IV, apenas.
+d) II, III e IV, apenas.
+e) II e III, apenas.
+
+
+2) Criar o servlet ‘CicloVida’ que mostre no browser os seus ‘estados’.
+CicloVida.java
+
+
+Passagem de Parâmetros
+
+São 03 as principais formas que um cliente WEB tem para enviar parâmetros a um servlet:
+1) Via Solicitações Comum (método ‘get’)
+2) Via Formulário (método ‘post’)
+3) Via Contexto ou Sessão do servidor JEE
+
+O tipo (1) não necessita de formulário, sendo que os parâmetros são enviadas como Query String.
+
+URL= http://localhost:8080/curso/SeuServlet?param1=valor1&param2=valor2
+
+A Query String inicia após o nome do recurso, seguido do ‘?’. Cada parâmetro é separado por ‘&’.
+
+
+O tipo (2) necessita de formulário, sendo que os parâmetros são enviados no corpo da mensagem, sem fazer uso da Query String.
+
+No tipo (1), o cliente não pode enviar uma QS maior que 240 caracteres. No tipo (2), não existe esta limitação.
+
+O tipo (2) é mais seguro, visto que os parâmetros não serão ‘facilmente’ visualizados.
+
+O método getParameter(...) é utilizado para receber os parâmetros enviados ao servlet.
+getParameter(String nomeParâmetro)
+
+A sintaxe padrão para o tipo (1) está destacada abaixo:
+
+public void doGet(HttpServletRequest request,
+	HttpServletResponse response)
+	throws ServletException, IOException {
+	String login = request.getParameter(“login”);
+	String senha = request.getParameter(“senha”);
+	
+A sintaxe padrão para o tipo (2) está destacada abaixo:
+
+public void doPost(HttpServletRequest request,
+	HttpServletResponse response)
+	throws ServletException, IOException {
+	String login = request.getParameter(“login”);
+	String senha = request.getParameter(“senha”);
+
+
+Exercício
+1) Criar o servlet ServletControlador que recebe os dados CPF e Senha informados pelo arquivo formulario.html.
+ServletControlador.java
+
+
+
+
+Contexto e Sessão
+
+MODELO SERVLET CONTAINER
+Todo servlet faz parte de um único contexto e utiliza várias sessões (uma para cada usuário).
+O objeto contexto é uma instância da interface ServletContext. Para toda aplicação Web, existe um único objeto Contexto!
+
+Todo cliente WEB de um servlet possui a sua própria sessão. Uma sessão pode ser compreendida como o local onde todas as ações realizadas por um determinado usuário podem ser acessadas.
+
+Uma sessão é criada quando o usuário envia a sua primeira requisição para um servlet. O objeto sessão é uma instância da interface HttpSession.
+
+ATRIBUTOS
+Um atributo é um objeto que é incorporado a um contexto ou sessão de um servlet.
+
+Os métodos associados a um atributo são:
+void setAttribute(String nome_atributo, Object valor)
+Object getAttribute(String nome_atributo)
+void removeAttribute(String nome_atributo)
+Um atributo é incluído no contexto/sessão pelo uso do método setAttribute(...).
+O valor de um atributo é obtido de um contexto/sessão pelo uso do método getAttribute(...).
+
+ATRIBUTOS NO CONTEXTO
+
+INCLUSÃO DE UM ATRIBUTO
+
+public void doGet(HttpServletRequest request,
+HttpServletResponse response)
+ServletContext context = getServletContext();
+context.setAttribute(“cpf”, cpf);
+
+OBTENÇÃO DE UM ATRIBUTO
+
+public void doGet(HttpServletRequest request,
+HttpServletResponse response)
+ServletContext context = getServletContext();
+String cpf = context.getAttribute(“cpf”);
+
+ATRIBUTOS NA SESSÃO
+
+INCLUSÃO DE UM ATRIBUTO
+
+public void doGet(HttpServletRequest request,
+HttpServletResponse response)
+HttpSession session = request.getSession();
+session.setAttribute(“cpf”, cpf);
+
+OBTENÇÃO DE UM ATRIBUTO
+
+public void doGet(HttpServletRequest request,
+HttpServletResponse response)
+HttpSession session = request.getSession();
+String cpf = session.getAttribute(“cpf”);
+
+DESTRUIÇÃO DE UMA SESSÃO
+
+Após um período de inatividade, a sessão é destruída. Essa
+destruição pode ser feita de duas formas:
+Via arquivo de configuração web.xml
+Via uso dos métodos public void setMaxInactiveInterval (int sec) ou public void invalidate()
+
+<web-app>
+...
+<session-config>
+<session-timeout>15</session-timeout>
+</session-config>
+</web-app>
+
+
+HttpSession.setMaxInactiveInterval(15);
+HttpSession.invalidate();
+
+
+Exercícios
+
+1) Realizar as seguintes operações no Servlet ServletControlador:
+Armazenar o nome do componente (this.getClass()) no contexto da aplicação;
+Armazenar os valores de CPF e Senha passados na sessão do usuário.
+
+2) Criar o Servlet ServletLeitor para obtenção desses dados armazenados no contexto da aplicação e na sessão do usuário.
+
+ServLeitor.java
+
+Encaminhamento/ Redirecionamento de Requisições e Tratamento de Exceção
+
