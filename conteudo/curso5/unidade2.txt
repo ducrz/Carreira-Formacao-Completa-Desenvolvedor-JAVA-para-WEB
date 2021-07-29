@@ -448,5 +448,203 @@ Armazenar os valores de CPF e Senha passados na sessão do usuário.
 
 ServLeitor.java
 
+
 Encaminhamento/ Redirecionamento de Requisições e Tratamento de Exceção
 
+
+ENCAMINHAMENTO
+Uma tarefa realizada com frequência em uma aplicação WEB é o encaminhamento de uma requisição para ser atendida por outro recurso. Utiliza-se o método forward(...) da interface RequestDispatcher.
+
+O forward(...) serve para transferir o controle para outro componente web (servlet/JSP/JSF). Existe outra opção (include(...)), que não encaminha mas inclui o conteúdo informado.
+
+String uri = “servlet/ServletTwo”;
+RequestDispatcher dispatcher =
+request.getRequestDispatcher(uri);
+dispatcher.include(request, response);
+dispatcher.forward(request, response);
+
+
+O método include(...) mantém o controle do servlet “chamador” na saída de informações. O método forward(...) não mantém este controle.
+
+É possível redirecionar uma requisição fazendo uso do método sendRedirect(String URL).
+
+Este método está definido na interface HttpServletResponse.
+
+response.sendRedirect("pagina.html");
+
+No caso do sendRedirect(...), o cliente receberá uma resposta http em cujo cabeçalho haverá a informação de que ele deve requisitar outra página, e o browser fará esta requisição. Ou seja, o redirecionamento ocorre no lado no cliente.
+
+No caso do forward(...), o servidor irá encaminhar a requisição do usuário para ser atendida por outro recurso (outro servlet). Este outro servlet eventualmente devolverá outra página para o usuário.
+• A diferença é bem grande principalmente no que tange à experiência do usuário.
+
+
+TRATAMENTO DE EXCEÇÃO
+
+
+No mundo real, todas as aplicações podem falhar. Neste caso, o servidor WEB envia mensagens de erro. Essas mensagens podem ser tratadas das seguintes formas:
+
+1) Mensagem de erro enviada pelo servidor
+2) Mensagem de erro enviada pelo servidor com os métodos
+métodos sendError(...) e setStatus(...))
+3) Criação de uma página de erro padrão
+4) Criação de uma página de erro dinâmica
+
+Abaixo, um exemplo do tipo (1).
+
+try{
+arq = getFile(file);
+}
+catch(FileNotFoundException e){
+out.println(“arquivo não encontrado”);}
+
+
+Abaixo, um exemplo do tipo (2).
+
+try{
+arq = getFile(file);
+}
+catch(FileNotFoundException e){
+response.sendError(res.SC_NOT_FOUND,
+“O arquivo não foi encontrado”);}
+
+Outro exemplo do tipo (2).
+
+try{
+arq = getFile(file);
+response.setStatus(res.SC_OK);
+} catch(FileNotFoundException e) {
+response.sendError(res.SC_NOT_FOUND,
+“O arquivo não foi encontrado”);}
+
+
+Abaixo, um exemplo do tipo (3) ‘erro404.html’.
+
+<HTML>
+<HEAD>
+<TITLE>Página de Erro</TITLE>
+</HEAD>
+<BODY>
+<H1>Documento não encontrado</H1>
+</BODY>
+</HTML>
+
+Alteração (necessária) no arquivo web.xml.
+
+
+<web-app>
+<error-page>
+<error-code>404</error-code>
+<location>/erro/404.html</location>
+</error-page>
+</web-app>
+
+
+No tipo (4) é necessário utilizar dois atributos de erro pré-definidos:
+javax.servlet.error.status_code
+javax.servlet.error.message
+
+Além disso, é necessário alterar o arquivo web.xml.
+<location>/erro/ErrorServlet</error-code>
+
+Exemplo do ErrorServlet
+
+public void doGet(HttpServletRequest req,
+HttpServletResponse res) throws ServletException,
+IOException
+{
+Integer code = (Integer)req.getAttribute
+(“javax.servlet.error.status_code”);
+String msg = (String) req.getAttribute
+(“javax.servlet.error.message”);
+out.println(“<BODY><H1>”+code+”</H1>”);
+out.println(“<BODY><H1>”+msg+”</H1>”);
+}
+
+Exercícios
+1) Utilizar o método forward(...) no ServletControlador para chamar o componente JEE ServletLeitor.
+2) Criar as páginas erro 404.html e 500.html no projeto 4Disciplina. Simular a chamada desses erros.
+
+
+
+
+
+Servlet e JDBC
+
+
+Servlet e JDBC
+Todo componente WEB (Servlet, JSP, JSF) irá fazer uso das informações armazenadas em um SGBD.
+
+Todos os conceitos vistos nas aplicações Java Desktop (JSE) para fazer uso de um SGBD, via JDBC ‘puro’ ou via frameworks de persistência ORM (JPA/Hibernate), serão utilizados de forma idêntica nos componentes WEB.
+
+Para executar qualquer operações no SGBD escolhido, é requisito indispensável de publicar o driver jdbc (no nosso caso, ojdbc6.jar) no projeto WEB (pasta lib) ou no servidor JEE (também na pasta lib).
+
+Exercício
+1) Renomear a página formulariov2.html para login.html e fazer a autenticação do usuário via ServletAutenticador .
+
+Criar no esquema CursoJava a tabela Login (#cpf,senha); Fazer a checagem nessa tabela via JDBC.
+
+
+Formatos de Compressão
+
+
+
+O Java oferece três formatos para a compressão de arquivos:
+ 1) JAR (Java ARchive)
+ 2) WAR (Web ARchive)
+ 3) EAR (Enterprise ARchive)
+
+
+JAR
+O Java adotou o formato JAR como padrão para facilitar a distribuição e utilização de bibliotecas de classes. O JDK fornece o aplicativo jar que gera arquivos neste formato.
+
+Um JAR é um arquivo compactado no formato ZIP que contém um conjunto de classes (“.class”) e arquivos de configuração.
+
+Criar arquivo: jar cvf arq.jar *.class
+Extrair arquivo: jar xvf arq.jar
+
+
+WAR
+
+Para a distribuição de aplicações WEB, o formato utilizado é o WAR.
+Este contém as classes necessárias, os arquivos de configuração e a estrutura de diretórios.
+
+Criar arquivo: jar -cfv ShoppingCart.war *
+Extrair arquivo: jar -xvf ShoppingCart.war
+
+
+EAR
+
+Para a distribuição de aplicações JEE, o formato utilizado é o EAR.
+Este contém um conjunto de arquivos (.jar) e (.war).
+
+Criar arquivo: jar -cfv ShoppingCart.war *
+Extrair arquivo: jar -xvf ShoppingCart.war
+
+Exercícios
+
+1) [CESGRANRIO - 2013 – BNDES] Ao instalar uma aplicação Java EE, a ferramenta de instalação deve ler o descritor de instalação de aplicação do arquivo .ear da aplicação, que é encontrado em
+
+a) META-INF/application.xml CORRETO
+b) META-INF/application-client.xml
+c) META-INF/deployment.xml
+d) META-INF/ejb-jar.xml
+e) META-INF/MANIFEST.ML.
+
+2) Exportar o projeto 4Disciplina para o formato .WAR (4Disciplina.war).
+
+4Disciplina.war
+
+
+Projeto Prático (Parte 2)
+
+
+Projeto Prático
+
+Criar um Servlet que gerencie todas as Operações realizadas em Clientes, Cursos e Pagamentos
+
+
+Exercícios
+
+1) Criar as páginas de erro padrão 404 e 500 no ProjetoWEB.
+2) Criar o Servlet Controlador no ProjetoWEB que trate de todas as operações de CRUD realizadas nos Clientes, Cursos e Pagamentos.
+Controlador.java

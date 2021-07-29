@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+
 public class PagamentoApp {
 
 	public static void main(String[] args) {
@@ -54,7 +55,7 @@ public class PagamentoApp {
 
 						System.out.println("Favor informar o CDCURSO >>>");
 						cdcurso= teclado.nextLong();
-						
+
 						Pagamento pagamento = em.find(Pagamento.class,cpf);
 						System.out.println(pagamento);
 						break;							
@@ -114,7 +115,7 @@ public class PagamentoApp {
 						
 					}
 					case 5:{
-						System.out.println("[2] Consultar um Pagamento");
+						System.out.println("[2] Excluir um Pagamento");
 						System.out.println("Favor informar o CPF >>>");
 						cpf= teclado.nextLong();
 						teclado.nextLine(); //Esvaziar o buffer do teclado

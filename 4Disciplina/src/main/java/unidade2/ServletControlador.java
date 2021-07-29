@@ -3,6 +3,7 @@ package unidade2;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,19 +46,9 @@ public class ServletControlador extends HttpServlet {
 		session.setAttribute("cpf", cpf);
 		session.setAttribute("senha", senha);
 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ServletLeitor");
+		dispatcher.forward(request, response);
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<HTML>");
-		out.println("<HEAD><TITLE>Servlet</TITLE></HEAD>");
-		out.println("<BODY>");
-		out.println("CPF: "+cpf);
-		out.println("Senha: "+senha);
-		
-		out.println(" </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
 		
 	}
 
