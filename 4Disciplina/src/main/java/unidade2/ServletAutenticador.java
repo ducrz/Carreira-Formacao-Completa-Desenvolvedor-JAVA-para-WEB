@@ -54,18 +54,22 @@ public class ServletAutenticador extends HttpServlet {
 		String senha = request.getParameter("senha");
 		
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		
 		String consulta = "SELECT * FROM Login WHERE cpf='"+cpf+"' AND senha='"+senha+"'";
 		Statement statement;
+		HttpSession session = request.getSession();
 		try {
 			statement = conexao.createStatement();
 			ResultSet rs = statement.executeQuery(consulta);
-			if(rs.next()) { //Usuario Autenticado
-				out.println("<h2>Usuário Autenticado</h2>");
+			if(rs.next()) { //Usuario Autenticado	
+				session.setAttribute("mensagem", "Usuário Autenticado!");
+				response.sendRedirect("unidade3/sucesso.jsp");
+				
 			}
 			else {
-				out.println("<h2>Usuário Não Autenticado</h2>");
+				session.setAttribute("mensagem", "Usuário Não Autenticado!");
+				response.sendRedirect("unidade3/login.jsp");
 
 			}
 
