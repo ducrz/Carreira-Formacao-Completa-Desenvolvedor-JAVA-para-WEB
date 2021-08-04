@@ -1044,3 +1044,40 @@ Para concluir, o JSP só estará em desuso se a tecnologia JSF for utilizada ple
 
 
 Projeto Prático (Parte 3)
+
+
+Algumas Diretrizes:
+
+1. Necessário autenticação para acessar o Sistema de Gerenciamento de Cursos.
+login.jsp
+
+
+2. Proibir o acesso a qualquer página sem realizar essa autenticação.
+
+3. Realizar todas as operações de CRUD no banco de dados com JPA/Hibernate.
+
+4. Criar a página “ConsultarTodos” para Clientes, Cursos e Pagamentos.
+
+
+Exercício
+1) Para atender as 04 Diretrizes informadas, realizar os passos abaixo no ProjetoWEB:
+a) Implantar a Autenticação no Projeto
+- Alterar o web.xml (única página de entrada: login.jsp)
+- Copiar a página /cliente/cadastro.html para a raiz do projeto e alterar o seu nome para login.jsp
+- Fazer as alterações necessárias (caminhos e campos)
+- Incluir a página autenticacao.jsp no projeto
+- Criar a página logout.jsp
+b) Proibir o acesso a qualquer página sem realizar a Autenticação
+- Alterar o formato (de html para jsp) todas as páginas de Clientes, Cursos e Pagamentos.
+- Criar a página topo.jsp que verificar se o usuário está autenticado
+- Incluir a página topo.jsp em todas as páginas jsp de Clientes, Cursos e Pagamentos.
+- Alterar as referências às antigas páginas html nos arquivos index.jsp
+
+c) Realizar as operações de CRUD no BD
+
+- Importar os pacotes jpa/hibernate (…\hibernate-release- 5.2.7.Final\lib\required) para a pasta lib do Tomcat
+- Copiar o pacote com.abctreinamentos do projeto JPAApp da 3Disciplina
+- Copiar os arquivos hibernate.cfg.xml e persistence.xml para a pasta src/META-INF do projeto
+- Fazer as alterações necessárias no Servlet Controlador
+d) Criar as páginas ConsultarTodos para Clientes, Cursos e Pagamentos
+

@@ -1,12 +1,14 @@
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
-    <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/padrao.css" rel="stylesheet" type="text/css">
-  </head><body>
+    <script type="text/javascript" src="http://localhost:8080/ProjetoWEB/lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/ProjetoWEB/lib/js/bootstrap.min.js"></script>
+    <link href="http://localhost:8080/ProjetoWEB/lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/ProjetoWEB/lib/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8080/ProjetoWEB/lib/css/padrao.css" rel="stylesheet" type="text/css">
+  </head>
+  <title>Página de Autenticação</title>  
+  <body>
     <div class="section section-danger text-justify">
       <div class="container">
         <div class="row text-center">
@@ -20,12 +22,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3 class="tt_menu">&gt;&gt; CLIENTES - CADASTRAR UM NOVO CLIENTE &lt;&lt;</h3>
+            <h3 class="tt_menu">&gt;&gt; AUTENTICAÇÃO &lt;&lt;</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal" role="form" action="http://localhost:8080/ProjetoWEB/Controlador" method="post">
+            <form class="form-horizontal" role="form" action="http://localhost:8080/ProjetoWEB/util/autenticacao.jsp" method="post">
               <div class="form-group">
                 <div class="col-sm-2">
                   <label for="inputEmail3" class="control-label">Informar o CPF:</label>
@@ -36,29 +38,22 @@
               </div>
               <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="inputNome" class="control-label">Informar o NOME:</label>
+                  <label for="inputNome" class="control-label">Informar a SENHA:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Nome" required>
+                  <input type="password" name="senha" class="form-control" id="inputSenha" placeholder="SENHA" required>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputEMAIL" class="control-label">Informar o EMAIL:</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="email" name="email" class="form-control" id="inputEMAIL" placeholder="E-mail" required>
-                </div>
-              </div>
-                  <input type ="hidden" name="idformulario" value="1"/> 
-                  <input type ="hidden" name="tipoformulario" value="13"/> 
-                  <button type="submit" class="btn btn-danger">Cadastrar</button>
+            
+          
+                  <button type="submit" class="btn btn-danger">Entrar</button>
 
             </form>
           </div>
         </div>
       </div>
     </div>
+   <p style="text-align: center;color: red;"> ${mensagem}</p>
     <div class="section">
       <div class="container">
         <div class="row">

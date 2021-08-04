@@ -1,4 +1,7 @@
-<html><head>
+<jsp:include page="../util/topo.jsp"></jsp:include>
+
+<html>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
@@ -6,7 +9,8 @@
     <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="../lib/css/padrao.css" rel="stylesheet" type="text/css">
-  </head><body>
+</head>
+<body>
     <div class="section section-danger text-justify">
       <div class="container">
         <div class="row text-center">
@@ -20,7 +24,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3 class="tt_menu">&gt;&gt; CURSOS - CADASTRAR UM NOVO CURSO &lt;&lt;</h3>
+            <h3 class="tt_menu">&gt;&gt; CURSOS - ALTERAR UM CURSO &lt;&lt;</h3>
           </div>
         </div>
         <div class="row">
@@ -31,7 +35,7 @@
                   <label for="inputCURSO" class="control-label">Informar o CURSO:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="number" name="cdcurso" class="form-control" id="inputCURSO" placeholder="Curso" required>
+                  <input type="number" name="cdcurso "class="form-control" id="inputCURSO" placeholder="Curso" required>
                 </div>
               </div>
               <div class="form-group">
@@ -47,7 +51,7 @@
                   <label for="inputVALOR" class="control-label">Informar o VALOR:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="number" name="valor"  class="form-control" id="inputVALOR" placeholder="Valor" required>
+                  <input type="number" name="valor" class="form-control" id="inputVALOR" placeholder="Valor" required>
                 </div>
               </div>
               <div class="form-group">
@@ -58,9 +62,9 @@
                   <input type="url" name="site" class="form-control" id="inputSITE" placeholder="Site" required>
                 </div>
               </div>
-				  <input type ="hidden" name="idformulario" value="2"/> 
-                  <input type ="hidden" name="tipoformulario" value="23"/> 
-                  <button type="submit" class="btn btn-danger">Cadastrar</button>
+				<input type ="hidden" name="idformulario" value="2"/> 
+                  <input type ="hidden" name="tipoformulario" value="24"/> 
+                  <button type="submit" class="btn btn-danger">Alterar</button>
 
             </form>
           </div>
@@ -87,4 +91,5 @@
     </footer>
   
 
-</body></html>
+</body>
+</html>
