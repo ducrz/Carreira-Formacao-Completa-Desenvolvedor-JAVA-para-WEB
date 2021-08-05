@@ -105,4 +105,310 @@ A Análise de Pontos de Função (APF) foi elaborada por Allan Albrecht da IBM e
 (Medindo a Produtividade no Desenvolvimento de Aplicativos).
 
 
+OBJETIVOS
+Medir a funcionalidade solicitada pelo usuário, antes do projeto de software, de forma a estimar o seu tamanho e o seu custo;
+
+Medir projetos de desenvolvimento e manutenção de software, independentemente da tecnologia utilizada na implementação, de forma a acompanhar sua evolução;
+
+Medir a funcionalidade recebida pelo usuário, após o projeto de software, de forma a verificar o seu tamanho e o seu custo, comparando-os com o que foi originalmente estimado.
+
+BENEFÍCIOS
+Controlar o andamento da produtividade de um determinado software.
+
+Um sistema pode ter mais de uma equipe envolvida em seu desenvolvimento e é possível avaliar a produtividade de diferentes equipes pela quantidade de Pontos de Função entregados;
+
+Realizar a medição do tamanho funcional do software e com isso estimar custo, esforço e prazo. Uma vez realizada a medição ou estimativa dos Pontos de Função totais do sistema é possível utilizar este número para realizar derivações;
+
+Sabendo o tamanho funcional de um software é possível realizar comparações. Pode ser realizada uma avaliação entre dois ou mais sistemas;
+
+Com a utilização da técnica é possível tomar decisões do tipo “Make or Buy”, isto é, tomar a decisão de desenvolver um sistema ou comprar uma solução pronta no mercado;
+
+Utilizar a medida para fundamentar contratos de compra e venda de softwares ou contratar serviços.
+
+TIPOS DE PROJETOS
+
+DESENVOLVIMENTO
+- PF associados com o desenvolvimento de um sistema novo.
+
+PF_Desenvolvimento = PF_Incluido + PF_Conversão_Dados
+
+MELHORIA
+- PF associados com a manutenção de um sistema já existente.
+
+PF_Melhoria = PF_Incluido + FI * PF_Alterado + FI *
+PF_Excluido + PF_Conversao_Dados
+* FI (Fator de Impacto)
+
+PRODUÇÃO
+
+PF associados com um sistema em produção.
+
+TIPOS FUNCIONAIS
+FUNÇÕES DE DADOS
+- São as funcionalidades fornecidas para o armazenamento de dados na aplicação. São caracterizados como arquivos lógicos que podem ser mantidos pela aplicação ou lidos a partir de outra aplicação.
+- Os arquivos lógicos que estão dentro da fronteira da aplicação e são mantidos pela mesma são chamados de Arquivos Lógicos Internos (ALI), já os arquivos lógicos lidos de outra aplicação são chamados de Arquivos de Interface Externa (AIE).
+
+TIPOS FUNCIONAIS
+FUNÇÕES DE DADOS – ALI
+Arquivo Lógico Interno
+- Grupo lógico de dados persistentes mantidos dentro da fronteira da aplicação e alterados por meio de processos elementares.
+- Exemplos:
+1. Arquivo de configuração, conexão, segurança (senhas) mantidos pela aplicação;
+2. Tabelas ou grupos de tabelas do banco de dados mantidas pela aplicação.
+
+Não são Exemplos:
+1. Arquivos temporários ou de backup;
+2. Tabelas temporárias ou views.
+
+FUNÇÕES DE DADOS – AIE
+Arquivo de Interface Externa
+- Grupo lógico de dados persistentes mantidos fora da fronteira da aplicação, mas referenciados por ela.
+- Exemplos:
+1. Dados de segurança armazenados em arquivos lógicos e mantidos por aplicações específicas para este fim;
+2. Dados salariais armazenados na aplicação financeira, mas utilizados por outra aplicação.
+-
+Não são Exemplos:
+1. Dados armazenados na sua aplicação e utilizados por uma outra aplicação externa. Neste caso, a sua aplicação possui um ALI e a outra aplicação possui um AIE.
+
+
+FUNÇÕES DE TRANSAÇÃO
+- São as funcionalidades do sistema que permitem o armazenamento de informações nos arquivos, bem como recuperá-los da própria ou de outras aplicações. Fazem parte destas funções as seguintes
+funcionalidades:
+Entradas Externas (EE).
+Saídas Externas (SE).
+Consultas Externas (CE).
+- As funções de transação são em geral dos seguintes tipos: inclusão de registros; alteração de registros; exclusão de registros;
+consulta a registros; emissão de relatórios; envio de dados; etc.
+- As funções de transação têm como principal objetivo manter ALI e apresentar ou recuperar dados ou informações de controle dos ALI e AIE.
+
+FUNÇÕES DE TRANSAÇÃO - EE
+Entrada Externa
+- É um processo elementar no qual dados atravessam a fronteira de fora para dentro.
+- Os dados podem ser provenientes de uma tela de entrada, de um arquivo ou por meio de um outro aplicativo.
+- Os dados podem ser informações de controle ou informações de negócio.
+- A sua principal intenção é incluir, alterar ou excluir dados de um ou mais ALIs e/ou alterar a forma como o sistema se comporta.
+
+FUNÇÕES DE TRANSAÇÃO - EE
+Entrada Externa
+- Exemplos:
+1. Transações destinadas a manter Arquivos Lógicos Internos;
+2. Processos destinados a realizar registros.
+-
+Não são Exemplos:
+1. Telas de filtro;
+2. Preenchimento de campos de dados;
+3. Telas de login;
+4. Gerar relatórios.
+
+
+FUNÇÕES DE TRANSAÇÃO - SE
+Saída Externa
+- É um processo elementar no qual dados derivados passam através da fronteira, de dentro para fora.
+- Dados derivados são criados a partir de transformação de dados existentes, através de conversão ou formatação: cálculo, gerar número por extenso, gráfico, etc.
+- Os dados criam consultas, relatórios ou arquivos de saída com
+totalização de dados relatórios estatísticos, geração de relatórios com atualização de log, downloads com barra de progresso, etc.
+- A sua principal intenção é apresentar informação que não seja uma simples recuperação de dado ou informação de controle, podendo manter Arquivos Lógicos Internos e alterar o comportamento do
+sistema.
+
+FUNÇÕES DE TRANSAÇÃO - SE
+Saída Externa
+- Exemplos:
+1. Tela de login (com criptografia);
+2. Relatórios financeiros, supondo estes gerados por cálculos;
+3. Consultas complexas com processamento de dados a partir de
+cálculos;
+4. Apresentação de gráficos com dados processados a partir de
+cálculos.
+- Não são Exemplos:
+1. Telas de filtro;
+2. Consultas simples, sem processamento de dados utilizando cálculos.
+
+FUNÇÕES DE TRANSAÇÃO - CE
+Consulta Externa
+- Resulta na recuperação de dados primitivos de um ou mais ALIs e/ou AIEs.
+- Dado primitivo representa o dado na sua forma original.
+- São processos do tipo “lê-imprime”, “lê-apresenta dados”, incluindo consultas, relatórios, geração de arquivos, etc.
+- A sua principal intenção é apresentar informações ao usuário por meio de uma simples recuperação de dados ou informações de controle de ALIs e/ou AIEs, sendo que a lógica de processamento não deve conter cálculos ou fórmulas matemáticas e não deve alterar o comportamento do sistema.
+
+FUNÇÕES DE TRANSAÇÃO - CE
+Consulta Externa
+- Exemplos:
+1. Consultar clientes pelo nome;
+2. Apresentar dados em formato gráfico a partir de recuperação
+simples.
+- Não são Exemplos:
+1. Relatórios financeiros, gerados a partir de cálculos;
+2. Telas de filtro.
+
+
+TAMANHO
+TIPOS DE DADOS (TDs)
+- São campos únicos, não repetidos e reconhecidos pelo usuário.
+- Em uma visão simplista, seriam os atributos de uma tabela.
+
+TIPOS DE REGISTROS (TRs)
+- É um subgrupo de dados reconhecido pelo usuário dentro de uma
+função de dados.
+
+ARQUIVOS REFERENCIADOS (ARs)
+- Um arquivo referenciado é todo arquivo lógico lido, podendo ser um
+ALI ou AIE.
+
+
+Métodos de Contagem de APF
+
+
+NESMA (Netherlands Software Metrics Users Association)
+
+A NESMA reconhece três métodos de Análise de Pontos de Função
+(APF):
+– APF INDICATIVA
+– APF ESTIMATIVA
+– APF DETALHADA
+
+
+NESMA
+Os métodos estimativo e indicativo para a contagem de pontos de função foram desenvolvidos pela NESMA para permitir que uma contagem de pontos de função seja feita nos momentos iniciais do ciclo de vida de um
+sistema. A contagem indicativa da NESMA é também conhecida no mundo como "método holandês".
+
+A contagem detalhada de pontos de função é obviamente mais exata que a contagem estimativa e indicativa; mas em contrapartida consome mais tempo e necessita de especificações mais detalhadas. Cabe ao gerente
+do projeto e à fase do ciclo de vida em que se encontra o sistema para se decidir qual tipo de contagem de pontos de função pode ser usada.
+
+O objetivo principal de estimar não é adivinhar o resultado final do projeto, mas determinar se os objetivos do projeto são realistas o bastante para permitir que o projeto seja controlado para alcançá-
+los.
+
+CONTAGEM INDICATIVA
+- Esta estimativa é baseada somente na quantidade de arquivos lógicos existentes (ALIs e AIEs):
+
+TAMANHO_INDICATIVO (PF) = ALI * 35 + AIE * 15
+
+- É importante explicar que a contagem indicativa é baseada na premissa de que existem aproximadamente três EEs (para cadastrar, alterar e excluir dados do ALI), duas SEs, e uma CE na média para
+cada ALI, e aproximadamente uma SE e uma CE para cada AIE.
+
+Dessa forma, obtém-se uma estimativa ágil do tamanho do sistema, porém não muito precisa.
+- Em muitas aplicações uma contagem indicativa de pontos de função fornece surpreendentemente uma boa estimativa do tamanho da aplicação.
+
+CONTAGEM ESTIMATIVA
+-
+A contagem estimativa é utilizada quando é possível identificar as funções do sistema, porém não se define a complexidade (tipos de dados, tipos de registros e arquivos referenciados). Dessa forma,
+assume-se uma complexidade padrão para as funções, sendo as funções de dados (ALIs e AIEs) classificadas como de baixa complexidade, enquanto as funções transacionais (EEs, CEs e SEs) são classificadas como de média complexidade.
+
+TAMANHO_ESTIMATIVO (PF) = PF_DADO (COMPL. BAIXA) + PF_TRANSAÇÃO (COMPL. MÉDIA)
+
+CONTAGEM DETALHADA
+- A contagem detalhada dar-se-á pela aplicação da técnica de contagem seguindo as regras estabelecidas no Manual de Práticas de Contagem (CPM) versão 4.3.1 (ou superior) do IFPUG.
+- A contagem detalhada é a contagem usual de pontos de função e é realizada da seguinte forma:
+1. Determina-se todas as funções de todos os tipos (ALI, AIE, EE, SE, CE);
+2. Determina-se a complexidade de cada função (Baixa, Média, Alta);
+3. Calcula-se o total de pontos de função não ajustados.
+
+COMPARAÇÕES ENTRE OS TIPOS DE CONTAGEM
+- Usando um banco de dados com aproximadamente 100 aplicações desenvolvidas e implementadas, a NESMA pesquisou a exatidão das contagens estimativa e indicativa.
+- As aplicações implementadas foram medidas usando os três tipos de contagem de pontos de função.
+- Os resultados são apresentados a seguir:
+
+NESMA
+CONTAGEM INDICATIVA X CONTAGEM DETALHADA
+
+CONTAGEM ESTIMATIVA X CONTAGEM DETALHADA
+
+COMPARAÇÕES ENTRE OS TIPOS DE CONTAGEM
+- Observa-se uma boa correlação (linha reta) em ambos os casos. No gráfico da contagem indicativa, contudo, observa-se que há desvios consideráveis (em até 50%) em alguns casos. Isto mostra que se
+deve usar a contagem indicativa com o devido cuidado. O ponto forte deste tipo de contagem é que é possível obter facilmente uma estimativa aproximada do tamanho de uma aplicação rapidamente.
+- Em uma aplicação com maior (ou com menor) número de saídas, talvez seja necessário alterar os multiplicadores de 35 e 15; mas a filosofia usada nessa abordagem pode ser usada de maneira geral.
+- O resultado da contagem estimativa e da contagem detalhada de pontos de função é muito próximo.
+
+NESMA
+CONTAGEM INDICATIVA
+- É muito subjetiva, não possui acurácia, superestima a contagem e não apresenta memória de cálculo.
+- É ideal para ser utilizada na contagem de legados, editais, PDTI, etc.
+- A sua principal vantagem é poder obter facilmente uma estimativa do tamanho (custo) de um sistema.
+
+NESMA
+CONTAGEM ESTIMATIVA
+- Apresenta maior acurácia que a contagem indicativa.
+- Essa acuracidade pode ser melhorada mediante a identificação da complexidade da função.
+- Recomenda-se o seu uso na “Proposição de Projetos”, tendo em vista que o Gerente de Projetos possui conhecimento do negócio.
+
+ESTIMATIVA DE PRAZO
+FÓRMULA DE CAPERS JONES
+
+Td(meses) = (V)t
+
+
+Projeto Prático (Parte 5 - Final)
+
+
+Passos para o Cálculo dos PFs
+São necessários realizar 06 Passos:
+1. Reunir a documentação disponível
+2. Determinar o propósito da contagem
+3. Contar as Funções de Dados
+4. Contar as Funções de Transação
+5. Calcular o Tamanho Funcional
+6. Documentar e Reportar
+
+Cálculo dos PFs
+1. Reunir a documentação disponível
+A documentação a ser utilizada na contagem deve ser aquela que descreve os requisitos, os modelos de dados/objetos, os diagramas de classe e de casos de uso, layout de telas, etc.
+
+No nosso Projeto Prático (ProjetoWEB), far-se-á uso do Diagrama Entidade Relacionamento (DER) e o Projeto de Interfaces (layout das telas).
+
+2. Determinar o propósito da contagem
+O propósito da contagem é definir qual tipo será utilizado e o seu escopo.
+O escopo da contagem será o ProjetoWEB.
+A fronteira da aplicação que será medida está restrita ao projeto em si, sem qualquer interação/integração com outro sistema.
+Será utilizado o Método de Contagem ESTIMATIVA NESMA.
+
+3. Contar as Funções de Dados
+Autenticacao é um AIE pois não possui funcionalidades no sistema que seriam responsáveis por manter os dados nesta Tabela.
+Cliente é um ALI pois possui funcionalidades no sistema (operações de CRUD) responsáveis por manter os dados nesta Tabela.
+Curso e Pagamento são mais dois ALIs pelos mesmos motivos.
+
+4. Contar as Funções de Transação
+
+Listar os processos elementares:
+
+Classificar os processos elementares quanto ao seu tipo.
+
+Determinar a complexidade de cada processo.
+
+5. Calcular o Tamanho Funcional
+Somar os valores encontrados nos Passos 4 (Funções de Dados) e 5 (Funções de Transação):
+
+Na Contagem Indicativa foi encontrado o valor abaixo:
+TAMANHO_INDICATIVO (PF) = ALI (3) * 35 + AIE (1) * 15
+TAMANHO_INDICATIVO (PF) = 120
+
+A Contagem Indicativa (120) foi 29% superior à Contagem Estimativa (93).
+
+6. Documentar e Reportar
+
+A documentação da contagem de pontos de função deve incluir a identificação da documentação de origem (DER e o Projeto de Interface) na qual a contagem foi baseada.
+
+Prazo e Custo
+Cálculo do Prazo (FÓRMULA DE CAPERS JONES)
+Td (Meses) = (93)^0,34
+Td (Meses) = 4,67 meses
+
+Cálculo do Custo - Homens-Hora (HH)
+Java 15 h/PF
+jsp 13H/PF
+html 7H /PF
+
+Esforço = 12h (média ‘estimada’ para HTML + Java + JSP)
+Esforço = 93 PFs x 12h = 1.116 Horas
+
+Cálculo do Custo - Homens-Hora (HH)
+
+Esforço = 93 PFs x 12h = 1.116
+Horas
+Custo (R$) = 1.116 H x 44,38 R$/H = 49.528,08
+
+Cálculo do Prazo - PF estipulado pelo Contratante
+
+Custo (R$) = 93 x R$800,00 a R$1200,00
+Custo (R$) = R$ 74.400,00 a R$ 111.600,00
+
+
 
