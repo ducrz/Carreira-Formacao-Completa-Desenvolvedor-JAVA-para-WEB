@@ -1,0 +1,108 @@
+UNIDADE 5: Orçamentação de Sistemas
+
+Medição de Software
+
+Por que Medir Software?
+
+“Não se consegue controlar aquilo que não se consegue medir.”
+(Tom De Marco)
+
+
+Em diversas áreas da Engenharia, a medição é algo extremamente importante e comum, seja para definir o tamanho de um apartamento, a distância de um lugar para outro, entre outros exemplos. Para isto, são
+estabelecidos padrões que são, em sua maioria, amplamente aceitos pela comunidade mundial que desenvolve trabalhos ligados a essasáreas.
+
+Na área computacional, mais especificamente na área de Engenharia de Software, a definição de padrões para o estabelecimento de medidas de um software não é tão simples.
+
+A dificuldade vem do fato da difícil concordância sobre o que medir em um software, quais critérios analisar, como definir padrões de avaliação, entre outras diversas divergências de pensamentos.
+
+Segundo a empresa FattoCS (www.fattocs.com.br), a medição de software deve ter por objetivo:
+Estimar custo e recursos de projetos;
+Avaliar a aquisição de pacotes (make-or-buy);
+Suportar análises de produtividade e qualidade;
+Remunerar fornecedores;
+Apoiar a gerência de escopo do projeto;
+Apoiar a gerência de requisitos do projeto;
+Benchmarking.
+
+
+Dilema na Medição de Software
+Requisitos - qualidade, funcionalidade e performance são infinitos: tendem a expansão
+
+Recursos - trabalho, logística, capital são restritos: pressão para menor utilização
+
+Como manter esta situação sob controle?
+- Atender ao máximo as expectativas com a utilização do mínimo de recursos.
+
+Métricas de Software
+Uma métrica é a medição de um atributo (propriedades ou características) de uma determinada entidade (produto, processo ou recursos).
+
+As métricas devem ser indicadores e não medidas exatas.
+
+Devem prover granularidade suficiente para mostrar as tendências gerais, identificar os problemas e demonstrar progresso.
+
+Métricas ajudam a mostrar os problemas, não resolve os problemas, somente antecipa e mostra tendências.
+
+Permite a comparação e consequentemente a melhoria de processos.
+
+
+Métricas de Software – Exemplos:
+Tamanho do produto de software (número de linhas de código, número de casos de uso, número de tabelas, etc.);
+
+Número de pessoas necessárias para implementar cada caso de uso;
+
+Número de defeitos encontrados por etapa de desenvolvimento;
+
+Esforço/Tempo/Custo para a realização de uma tarefa;
+
+Grau de satisfação do cliente com o produto de software (adequação do produto com o que foi especificado, qualidade do produto quanto ao uso, estabilidade do produto quanto à performance, etc.).
+
+Principais Métricas de Software
+
+LOC – Lines Of Code
+- Dimensionamento do sistema através da quantidade de linhas de código.
+
+Sistema Halstead
+- Dimensionamento do sistema através da quantidade de operandos (itens de dados) e operados (comandos de linguagem de dados).
+
+Pontos de Caso de Uso
+- Proposta por Gustav Karner (1993) com o propósito de estimar recursos para projetos de software orientados a objeto, modelados por meio de especificação de casos de uso.
+
+Análise de Ponto de Função – APF
+- Técnica que visa medir o desenvolvimento e manutenção de software em termos significativos para os seus usuários, com base na visão do usuário.
+
+
+Quem Faz Uso da APF?
+
+ADMINISTRAÇÃO PÚBLICA FEDERAL (RFB, MF, MPOG, etc.)
+BNDES
+CEF
+SERPRO
+DATAPREV
+CORREIOS
+BRADESCO
+ABN/REAL
+EXÉRCITO
+PETROBRÁS
+EMBRATEL
+EDS
+POLITEC
+CPM
+STEFANINI
+
+
+Análise de Pontos de Função (APF)
+
+Análise de Pontos de Função
+DEFINIÇÃO
+Análise de Pontos de Função (APF) é uma técnica para a medição de projetos de desenvolvimento de software, visando estabelecer uma medida de tamanho, em Pontos de Função (PF), considerando a
+funcionalidade implementada, sob o ponto de vista do usuário. A medida é independente da linguagem de programação ou da tecnologia que será usada para implementação.
+
+O ponto de função é a unidade utilizada para tal fim e busca em um único número ponderar os requisitos funcionais de armazenamento e transação de um sistema.
+Técnica padronizada pela International Function Point Users Group IFPUG. As regras, procedimentos e práticas de contagem estão definidos no Counting Practices Manual – CPM – atualmente em sua versão 4.3.1.
+
+HISTÓRICO
+A Análise de Pontos de Função (APF) foi elaborada por Allan Albrecht da IBM e trazida a público em 1979 através da publicação do trabalho Measuring Application Development Productivity
+(Medindo a Produtividade no Desenvolvimento de Aplicativos).
+
+
+
